@@ -1,3 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.scss';
 
 import './js/calendar';

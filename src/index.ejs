@@ -12,6 +12,11 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <%= include('calendar', {a:1}) %>
+  <div class="container-fluid p-5">
+    <h1><%= htmlWebpackPlugin.options.title %></h1>
+    <div class="row">
+      <%= include('calendar', {a:1}) %>
+    </div>
+  </div>
 </body>
 </html>
