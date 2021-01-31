@@ -1,0 +1,17 @@
+<% 
+  function include(component, vars) {
+    return require(`./views/${component}.ejs`)({...{include}, ...vars})
+  }
+%> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <%= include('calendar', {a:1}) %>
+</body>
+</html>
