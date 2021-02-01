@@ -22,10 +22,12 @@ export default class Storage {
   }
 }
 
-let testStorage = new Storage();
+function createStartData() {
+  const testStorage = new Storage();
 
-if (!testStorage.store.users) testStorage.save('users', JSON.stringify(DATA.users));
+  if (!testStorage.store.users) testStorage.save('users', JSON.stringify(DATA.users));
 
-if (!testStorage.store.events) testStorage.save('events', JSON.stringify(DATA.events));
+  if (!testStorage.store.events) testStorage.save('events', JSON.stringify(DATA.events));
+}
 
-testStorage = null;
+createStartData();
