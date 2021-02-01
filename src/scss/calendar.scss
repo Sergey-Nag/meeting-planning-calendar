@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 .calendar {
   height: 70vh;
@@ -28,12 +28,6 @@
 
       & .card__avatar {
         margin-right: -5px;
-      }
-    }
-    
-    &:active {
-      & .calendar__btn_close {
-        opacity: 1;
       }
     }
   }
@@ -71,6 +65,9 @@
     &:hover {
       z-index: 2;
       transform: scale(1.2);
+    }
+    &:active {
+      opacity: 1;
     }
   }
 }
