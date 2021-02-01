@@ -1,41 +1,821 @@
- 
+
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendar app</title>
-<link href="css/style.css?0c3e5cf65b0563fd0e09" rel="stylesheet"></head>
-<body>
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link href="css/style.css?c3e7536ebeac533c770e" rel="stylesheet"></head>
+  <body>
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-6">
+          <h1>Calendar</h1>
+        </div>
+        <div class="col-3 pt-1">
+          <div class="input-group">
+  <select class="form-select" id="filterUsers" aria-label="Example select with button addon">
+    <option selected>Select participant...</option>
+  </select>
+  <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search font-icons"></i></button>
+</div>
+        </div>
+        <div class="col-3 pt-1">
+          <button type="button" class="btn btn-outline-primary w-100">New Event <i class="bi bi-calendar-plus font-icons"></i></button>
+        </div>
+      </div>
+      <div class="row pt-2">
+        
+
+<table class="table table-bordered calendar" id="calendar">
+  <thead class="calendar__head">
+    <tr class="text-center">
+      <th scope="col">Name</th>
+      
+        <th scope="col" class="calendar__col">Mon</th>
+      
+        <th scope="col" class="calendar__col">Tue</th>
+      
+        <th scope="col" class="calendar__col">Wed</th>
+      
+        <th scope="col" class="calendar__col">Thu</th>
+      
+        <th scope="col" class="calendar__col">Fri</th>
+      
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  <tbody class="calendar__body">
+    
+      <tr>
+        <th scope="row">10:00</th>
+        
+          <td data-day="Mon" data-time="10:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="10:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="10:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="10:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="10:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">11:00</th>
+        
+          <td data-day="Mon" data-time="11:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="11:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="11:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="11:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="11:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">12:00</th>
+        
+          <td data-day="Mon" data-time="12:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="12:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="12:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="12:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="12:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">13:00</th>
+        
+          <td data-day="Mon" data-time="13:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="13:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="13:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="13:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="13:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">14:00</th>
+        
+          <td data-day="Mon" data-time="14:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="14:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="14:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="14:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="14:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">15:00</th>
+        
+          <td data-day="Mon" data-time="15:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="15:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="15:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="15:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="15:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">16:00</th>
+        
+          <td data-day="Mon" data-time="16:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="16:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="16:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="16:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="16:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">17:00</th>
+        
+          <td data-day="Mon" data-time="17:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="17:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="17:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="17:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="17:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
+      <tr>
+        <th scope="row">18:00</th>
+        
+          <td data-day="Mon" data-time="18:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Tue" data-time="18:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Wed" data-time="18:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Thu" data-time="18:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        
+          <td data-day="Fri" data-time="18:00">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+         
+      </tr>
+    
   </tbody>
 </table>
-<script src="js/bundle.js?0c3e5cf65b0563fd0e09"></script></body>
+      </div>
+    </div>
+  <script src="js/bundle.js?c3e7536ebeac533c770e"></script></body>
 </html>
