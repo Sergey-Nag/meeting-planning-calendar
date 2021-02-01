@@ -6,7 +6,7 @@ function createEventCard(data) {
   const avatarsUrl = data.participants
     .map((name) => {
       const { avatar } = store.getUserInfo(name);
-      return `<img src="h${avatar}" alt="${name}" class="card__avatar">`;
+      return `<img src="${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
   return `<div class="card calendar__card">
