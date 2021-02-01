@@ -1,70 +1,41 @@
-<table class="table table-bordered" id="calendar">
-  <thead>
-    <tr>
+<%
+  const CALENDAR = {
+    headers: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    body: [...Array(9)].map((el,i)=> `1${i}:00`)
+  }
+%>
+
+<table class="table table-bordered calendar" id="calendar">
+  <thead class="calendar__head">
+    <tr class="text-center">
       <th scope="col">Name</th>
-      <th scope="col">Mon</th>
-      <th scope="col">Tue</th>
-      <th scope="col">Wed</th>
-      <th scope="col">Thu</th>
-      <th scope="col">Fri</th>
+      <% for (let title of CALENDAR.headers) { %>
+        <th scope="col" class="calendar__col"><%= title %></th>
+      <% } %>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
+  <tbody class="calendar__body">
+    <% for (let time of CALENDAR.body) { %>
+      <tr>
+        <th scope="row"><%= time %></th>
+        <% for (let title of CALENDAR.headers) { %>
+          <td data-day="<%= title %>" data-time="<%= time %>">
+
+            <div class="card calendar__card">
+              <div class="card__title"><span>Hello world</span></div>
+              <div class="card__avatars">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
+              </div>
+              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+            </div>
+
+          </td>
+        <% } %> 
+      </tr>
+    <% } %>
   </tbody>
 </table>

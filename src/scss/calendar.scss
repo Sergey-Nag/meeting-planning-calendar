@@ -1,0 +1,76 @@
+@import './variables';
+
+.calendar {
+  height: 70vh;
+
+  &__head {
+    background: $light;
+  }
+
+  &__body tr th:first-child {
+    text-align: center;
+    padding-top: 14px;
+  }
+
+  &__col {
+    width: 18%;
+  }
+
+  &__card {
+    padding: 5px;
+    height: 100%;
+    background: $card-color;
+
+    &:hover {
+      & .calendar__btn_close {
+        opacity: 0.5;
+      }
+
+      & .card__avatar {
+        margin-right: -10px;
+      }
+    }
+    
+    &:active {
+      & .calendar__btn_close {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__btn {
+    &_close {
+      @extend %transition;
+      opacity: 0;
+      position: absolute;
+      right: 5px;
+      top: calc(50% - 8.5px);
+      box-sizing: border-box;
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+.card {
+  &__title {
+    color: $card-color--darken;
+    font-weight: bold;
+  }
+
+  &__avatar {
+    @extend %transition;
+    position: relative;
+    width: 25px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid $card-color;
+    margin-right: -15px;
+    z-index: 1;
+
+    &:hover {
+      z-index: 2;
+      transform: scale(1.2);
+    }
+  }
+}

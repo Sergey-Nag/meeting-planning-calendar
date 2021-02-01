@@ -35,12 +35,13 @@ module.exports = {
       },
     ],
   },
+  devtool: 'eval-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),
     new HtmlWebpackPlugin({
-      title: 'Calendar app',
+      title: 'Calendar',
       hash: true,
       minify: false,
       template: path.resolve(__dirname, 'src', 'index.ejs'),

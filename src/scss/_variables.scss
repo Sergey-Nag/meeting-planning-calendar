@@ -1,0 +1,6 @@
+$card-color: lighten($info, 30%);
+$card-color--darken: darken($info, 30%);
+
+%transition {
+  transition: all .3s ease;
+}
