@@ -3,10 +3,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    createPage: './src/create-page.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/bundle.js',
+    filename: 'js/[name]-bundle.js',
   },
   module: {
     rules: [
@@ -37,7 +40,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader',
         options: {
-          name: 'img/[name].[ext]'
+          name: 'img/[name].[ext]',
         },
       },
     ],
@@ -51,19 +54,21 @@ module.exports = {
       title: 'Calendar',
       templateParameters: {
         view: 'calendar',
-        controls: 'calendar-controls'
+        controls: 'calendar-controls',
       },
+      chunks: ['index'],
       hash: true,
       minify: false,
       template: path.resolve(__dirname, 'src', 'template.ejs'),
       filename: path.resolve(__dirname, 'dist', 'index.html'),
     }),
-        new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       title: 'Create event',
       templateParameters: {
         view: 'create-event',
-        controls: null
+        controls: 'create-event-controls',
       },
+      chunks: ['createPage'],
       hash: true,
       minify: false,
       template: path.resolve(__dirname, 'src', 'template.ejs'),

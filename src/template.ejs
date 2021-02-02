@@ -1,4 +1,11 @@
-<% const include = (component, vars)=> require(`./views/${component}.ejs`)({...{include}, ...vars}); %>
+<% 
+  const include = (component, vars)=> require(`./views/${component}.ejs`)({...{include}, ...vars}); 
+
+  const CALENDAR = {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    times: [...Array(9)].map((el,i)=> `1${i}:00`)
+  }
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +28,7 @@
       </div>
       <div class="row pt-2">
        <div class="col">
-        <%= include(view) %>
+        <%= include(view, {CALENDAR}) %>
        </div>
       </div>
     </div>

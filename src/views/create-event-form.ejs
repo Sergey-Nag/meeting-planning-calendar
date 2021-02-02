@@ -1,0 +1,28 @@
+<div class="mb-3 row">
+  <label for="eventName" class="col-sm-3 col-form-label">Name of the event:</label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" id="eventName" placeholder="Type the name of event...">
+  </div>
+</div>
+<div class="mb-3 row">
+  <label for="day" class="col-sm-3 col-form-label">Day:</label>
+  <div class="col-sm-9">
+    <select class="form-select" id="day">
+      <option selected>Select weekday</option>
+      <% for (let title of CALENDAR.days) { %>
+        <option value="Mon"><%= title %></option>
+      <% } %>
+    </select>
+  </div>
+</div>
+<div class="mb-3 row">
+  <label for="time" class="col-sm-3 col-form-label">Time:</label>
+  <div class="col-sm-9">
+    <select class="form-select" id="time">
+      <option selected>Select time</option>
+      <% for (let time of CALENDAR.times) { %>
+        <option value="Mon"><%= time %></option>
+      <% } %>
+    </select>
+  </div>
+</div>

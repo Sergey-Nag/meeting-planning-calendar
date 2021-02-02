@@ -1,4 +1,3 @@
-$enable-gradients: true;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 
@@ -11,9 +10,9 @@ body {
   background-color: #fafafa;
 }
 
-.font-icons {
+.font-icon {
   font-size: .9em;
   vertical-align: 2px;
 }
 
-@import './scss/calendar.scss';
+@import './scss/calendar.scss', './scss/create-event.scss';

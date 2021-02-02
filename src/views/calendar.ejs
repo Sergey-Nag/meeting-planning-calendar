@@ -1,25 +1,18 @@
-<%
-  const CALENDAR = {
-    headers: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    body: [...Array(9)].map((el,i)=> `1${i}:00`)
-  }
-%>
-
 <table class="table table-bordered calendar" id="calendar">
   <thead class="calendar__head">
     <tr class="text-center">
       <th scope="col">Name</th>
-      <% for (let title of CALENDAR.headers) { %>
-        <th scope="col" class="calendar__col"><%= title %></th>
+      <% for (let title of CALENDAR.days) { %>
+        <th scope="col" class="calendar__col"><%= title.slice(0, 3) %></th>
       <% } %>
     </tr>
   </thead>
   <tbody class="calendar__body">
-    <% for (let time of CALENDAR.body) { %>
+    <% for (let time of CALENDAR.times) { %>
       <tr>
         <th scope="row"><%= time %></th>
-        <% for (let title of CALENDAR.headers) { %>
-          <td data-day="<%= title %>" data-time="<%= time %>">
+        <% for (let title of CALENDAR.days) { %>
+          <td data-day="<%= title.slice(0, 3) %>" data-time="<%= time %>">
 
 <!--
             <div class="card calendar__card">
