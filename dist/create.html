@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create event</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link href="css/style.css?9ab5d3b0b153dd754976" rel="stylesheet"></head>
+  <link href="css/style.css?2a1e295aed0f1ec43b6a" rel="stylesheet"></head>
   <body>
     <div class="container p-5">
       <div class="row">
@@ -15,15 +15,102 @@
         </div>
         <div class="col-6 pt-1">
           <div class="row">
-            
+            <div class="col-6"></div>
+<div class="col-6">
+  <a href="index.html" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-left font-icon"></i> Back to Calendar</i></a>
+</div>
           </div>
         </div>
       </div>
       <div class="row pt-2">
        <div class="col">
-        <h3>HELLO WORLD</h3>
+        <div class="card p-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="mb-3 row">
+  <label for="eventName" class="col-sm-3 col-form-label">Name of the event:</label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" id="eventName" placeholder="Type the name of event...">
+  </div>
+</div>
+<div class="mb-3 row">
+  <label for="day" class="col-sm-3 col-form-label">Day:</label>
+  <div class="col-sm-9">
+    <select class="form-select" id="day">
+      <option selected>Select weekday</option>
+      
+        <option value="Mon">Monday</option>
+      
+        <option value="Mon">Tuesday</option>
+      
+        <option value="Mon">Wednesday</option>
+      
+        <option value="Mon">Thursday</option>
+      
+        <option value="Mon">Friday</option>
+      
+    </select>
+  </div>
+</div>
+<div class="mb-3 row">
+  <label for="time" class="col-sm-3 col-form-label">Time:</label>
+  <div class="col-sm-9">
+    <select class="form-select" id="time">
+      <option selected>Select time</option>
+      
+        <option value="Mon">10:00</option>
+      
+        <option value="Mon">11:00</option>
+      
+        <option value="Mon">12:00</option>
+      
+        <option value="Mon">13:00</option>
+      
+        <option value="Mon">14:00</option>
+      
+        <option value="Mon">15:00</option>
+      
+        <option value="Mon">16:00</option>
+      
+        <option value="Mon">17:00</option>
+      
+        <option value="Mon">18:00</option>
+      
+    </select>
+  </div>
+</div>
+    </div>
+    <div class="col-4">
+      <label class="col-sm-3 col-form-label">Participants:</label>
+      <div class="participants__wrapp">
+        <div class="card participant p-3 mb-3">
+          <div class="row">
+            <div class="col-3">
+              <img src="/img/boy_1.png" alt="" class="participant__avatar border rounded-circle w-100">
+            </div>
+            <div class="col-7 d-flex flex-column justify-content-center">
+              <span class="participant__name">Mary</span>
+            </div>
+            <div class="col-2 d-flex flex-column justify-content-center">
+              <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="Mary">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row pt-4">
+  <div class="col-6"></div>
+  <div class="col-3">
+    <a href="index.html" class="btn btn-outline-secondary w-100">Cancel</i></a>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success w-100">Submit Event</button>
+  </div>
+</div>
        </div>
       </div>
     </div>
-  <script src="js/bundle.js?9ab5d3b0b153dd754976"></script></body>
+  <script src="js/createPage-bundle.js?2a1e295aed0f1ec43b6a"></script></body>
 </html>
