@@ -1,17 +1,18 @@
+import { Tooltip } from 'bootstrap';
 import Storage from './localStorageApi';
 
 const store = new Storage();
 
-function createEventCard(data) {
-  const avatarsUrl = data.participants
+function createEventCard({ title, participants }) {
+  const avatarImgs = participants
     .map((name) => {
       const { avatar } = store.getUserInfo(name);
-      return `<img src="${avatar}" alt="${name}" class="card__avatar">`;
+      return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
-  return `<div class="card calendar__card">
-    <div class="card__title"><span>${data.title}</span></div>
-    <div class="card__avatars">${avatarsUrl}</div>
+  return `<div class="card calendar__card d-flex justify-content-between">
+    <div class="card__title"><span>${title}</span></div>
+    <div class="card__avatars">${avatarImgs}</div>
     <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
   </div>`;
 }
@@ -20,9 +21,13 @@ const events = store.getAllEvents();
 
 events.forEach((event) => {
   const card = createEventCard(event);
-  const selector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
-  const ceil = document.querySelector(selector);
+
+  const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
+  const ceil = document.querySelector(ceilSelector);
+
   ceil.innerHTML = card;
 });
+
+document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 
 export default store;

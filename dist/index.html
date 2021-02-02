@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,26 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link href="css/style.css?0e12b5a65a3c8d7529b4" rel="stylesheet"></head>
+  <link href="css/style.css?25b3ad066af75fb38432" rel="stylesheet"></head>
   <body>
     <div class="container p-5">
       <div class="row">
         <div class="col-6">
           <h1>Calendar</h1>
         </div>
-        <div class="col-3 pt-1">
-          <div class="input-group">
-  <select class="form-select" id="filterUsers" aria-label="Example select with button addon">
-    <option selected>Select participant...</option>
-  </select>
-  <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search font-icons"></i></button>
+        <div class="col-6 pt-1">
+          <div class="row">
+            <div class="col-6">
+  <div class="input-group">
+    <select class="form-select" id="filterUsers" aria-label="Example select with button addon">
+      <option selected>Select participant...</option>
+    </select>
+    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search font-icons"></i></button>
+  </div>
 </div>
-        </div>
-        <div class="col-3 pt-1">
-          <button type="button" class="btn btn-outline-primary w-100">New Event <i class="bi bi-calendar-plus font-icons"></i></button>
+<div class="col-6">
+  <button type="button" class="btn btn-outline-primary w-100">New Event <i class="bi bi-calendar-plus font-icons"></i></button>
+</div>
+
+          </div>
         </div>
       </div>
       <div class="row pt-2">
+       <div class="col">
         
 
 <table class="table table-bordered calendar" id="calendar">
@@ -905,7 +910,8 @@
     
   </tbody>
 </table>
+       </div>
       </div>
     </div>
-  <script src="js/bundle.js?0e12b5a65a3c8d7529b4"></script></body>
+  <script src="js/bundle.js?25b3ad066af75fb38432"></script></body>
 </html>

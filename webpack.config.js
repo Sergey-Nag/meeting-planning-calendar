@@ -33,6 +33,13 @@ module.exports = {
           MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        },
+      },
     ],
   },
   devtool: 'eval-source-map',
@@ -42,10 +49,25 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Calendar',
+      templateParameters: {
+        view: 'calendar',
+        controls: 'calendar-controls'
+      },
       hash: true,
       minify: false,
-      template: path.resolve(__dirname, 'src', 'index.ejs'),
+      template: path.resolve(__dirname, 'src', 'template.ejs'),
       filename: path.resolve(__dirname, 'dist', 'index.html'),
+    }),
+        new HtmlWebpackPlugin({
+      title: 'Create event',
+      templateParameters: {
+        view: 'create-event',
+        controls: null
+      },
+      hash: true,
+      minify: false,
+      template: path.resolve(__dirname, 'src', 'template.ejs'),
+      filename: path.resolve(__dirname, 'dist', 'create.html'),
     }),
   ],
   devServer: {

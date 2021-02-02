@@ -1,5 +1,4 @@
 <% const include = (component, vars)=> require(`./views/${component}.ejs`)({...{include}, ...vars}); %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,15 +13,16 @@
         <div class="col-6">
           <h1><%= htmlWebpackPlugin.options.title %></h1>
         </div>
-        <div class="col-3 pt-1">
-          <%= include('dropdown-filter') %>
-        </div>
-        <div class="col-3 pt-1">
-          <button type="button" class="btn btn-outline-primary w-100">New Event <i class="bi bi-calendar-plus font-icons"></i></button>
+        <div class="col-6 pt-1">
+          <div class="row">
+            <%= controls ? include(controls) : '' %>
+          </div>
         </div>
       </div>
       <div class="row pt-2">
-        <%= include('calendar') %>
+       <div class="col">
+        <%= include(view) %>
+       </div>
       </div>
     </div>
   </body>
