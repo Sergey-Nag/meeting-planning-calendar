@@ -2,7 +2,6 @@
 // import '@fortawesome/fontawesome-free/js/fontawesome';
 
 // import 'bootstrap-icons';
-
 import './styles.scss';
 
 import './js/calendar';

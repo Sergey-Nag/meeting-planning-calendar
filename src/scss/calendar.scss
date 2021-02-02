@@ -1,6 +1,8 @@
 @import "./variables";
 
 .calendar {
+  background-color: #fff;
+  
   &__head {
     background: $light;
   }
@@ -47,6 +49,12 @@
       width: 15px;
       height: 15px;
     }
+  }
+  
+  &__filter {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 }
 
