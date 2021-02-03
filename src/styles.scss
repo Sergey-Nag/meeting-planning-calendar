@@ -1,5 +1,5 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
-
+@import "./scss/variables";
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #fafafa;
+  background-color: $bg-color;
 }
 
 .font-icon {

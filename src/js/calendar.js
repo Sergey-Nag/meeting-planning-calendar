@@ -1,7 +1,5 @@
 import { Tooltip } from 'bootstrap';
-import Storage from './localStorageApi';
-
-const store = new Storage();
+import store from './localStorageApi';
 
 function createEventCard({ title, participants }) {
   const avatarImgs = participants

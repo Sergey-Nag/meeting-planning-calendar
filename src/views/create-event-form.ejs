@@ -1,14 +1,14 @@
 <div class="mb-3 row">
-  <label for="eventName" class="col-sm-3 col-form-label">Name of the event:</label>
+  <label for="event-name" class="col-sm-3 col-form-label">Name of the event:</label>
   <div class="col-sm-9">
-    <input type="text" class="form-control" id="eventName" placeholder="Type the name of event...">
+    <input type="text" class="form-control" id="event-name" placeholder="Type the name of event...">
   </div>
 </div>
 <div class="mb-3 row">
-  <label for="day" class="col-sm-3 col-form-label">Day:</label>
+  <label for="event-day" class="col-sm-3 col-form-label">Day:</label>
   <div class="col-sm-9">
-    <select class="form-select" id="day">
-      <option selected>Select weekday</option>
+    <select class="form-select" id="event-day">
+      <option selected value="">Select weekday</option>
       <% for (let title of CALENDAR.days) { %>
         <option value="Mon"><%= title %></option>
       <% } %>
@@ -16,13 +16,21 @@
   </div>
 </div>
 <div class="mb-3 row">
-  <label for="time" class="col-sm-3 col-form-label">Time:</label>
+  <label for="event-time" class="col-sm-3 col-form-label">Time:</label>
   <div class="col-sm-9">
-    <select class="form-select" id="time">
-      <option selected>Select time</option>
+    <select class="form-select" id="event-time">
+      <option selected value="">Select time</option>
       <% for (let time of CALENDAR.times) { %>
-        <option value="Mon"><%= time %></option>
+        <option><%= time %></option>
       <% } %>
     </select>
+  </div>
+</div>
+<div class="mb-3 row">
+  <label for="event-participants" class="col-sm-3 col-form-label">Participants:</label>
+  <div class="col-sm-9">
+    <div class="w-100 d-flex flex-wrap participants__wrapp">
+      
+    </div>
   </div>
 </div>

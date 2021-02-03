@@ -1,6 +1,6 @@
 import DATA from './_data';
 
-export default class Storage {
+class Storage {
   constructor() {
     this.store = window.localStorage;
   }
@@ -22,12 +22,13 @@ export default class Storage {
   }
 }
 
-function createStartData() {
-  const testStorage = new Storage();
+function createStartData(store) {
+  if (!store.store.users) store.save('users', JSON.stringify(DATA.users));
 
-  if (!testStorage.store.users) testStorage.save('users', JSON.stringify(DATA.users));
-
-  if (!testStorage.store.events) testStorage.save('events', JSON.stringify(DATA.events));
+  if (!store.store.events) store.save('events', JSON.stringify(DATA.events));
 }
 
-createStartData();
+const store = new Storage();
+createStartData(store);
+
+export default store;

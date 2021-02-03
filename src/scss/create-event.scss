@@ -1,3 +1,43 @@
-.participants {
+.user {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 10px;
 
+  &s__cover {
+    height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(136, 136, 136, 0.3);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(136, 136, 136, .8);
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.participant {
+  @extend .d-flex, .justify-content-center, .flex-column, .align-items-center;
+  margin-right: -10px;
+
+  &__avatar {
+    @extend .rounded-circle;
+    width: 65px;
+    border: 3px solid $primary;
+    background: #fff;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: .8em;
+  }
 }
