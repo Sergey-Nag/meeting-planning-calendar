@@ -1,17 +1,17 @@
-import Storage from './localStorageApi';
+import store from './localStorageApi';
 
+console.log(store);
 const eventName = document.getElementById('event-name');
 const eventDay = document.getElementById('event-day');
 const eventTime = document.getElementById('event-time');
+const eventParticipans = document.getElementById('event-participants');
 
-const store = new Storage();
-
-const eventData = {
-  title: null,
-  day: null,
-  time: null,
-  prticipants: null,
-};
+// const eventData = {
+//   title: null,
+//   day: null,
+//   time: null,
+//   prticipants: null,
+// };
 
 function valueInputChangeHandle() {
   const { value } = this;
@@ -24,3 +24,5 @@ function valueInputChangeHandle() {
 eventName.addEventListener('change', valueInputChangeHandle);
 eventDay.addEventListener('change', valueInputChangeHandle);
 eventTime.addEventListener('change', valueInputChangeHandle);
+
+console.log(eventParticipans);

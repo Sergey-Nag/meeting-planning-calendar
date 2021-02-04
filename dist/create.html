@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create event</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link href="css/style.css?62e882610cfdbdac8a65" rel="stylesheet"></head>
+  <link href="css/style.css?f847a911e904c9d5e2ee" rel="stylesheet"></head>
   <body>
     <div class="container p-5">
       <div class="row">
@@ -27,17 +27,18 @@
         <div class="card p-5">
   <div class="row">
     <div class="col-8">
+      <h3>Form</h3>
       <div class="mb-3 row">
-  <label for="eventName" class="col-sm-3 col-form-label">Name of the event:</label>
+  <label for="event-name" class="col-sm-3 col-form-label">Name of the event:</label>
   <div class="col-sm-9">
-    <input type="text" class="form-control" id="eventName" placeholder="Type the name of event...">
+    <input type="text" class="form-control" id="event-name" placeholder="Type the name of the event...">
   </div>
 </div>
 <div class="mb-3 row">
-  <label for="day" class="col-sm-3 col-form-label">Day:</label>
+  <label for="event-day" class="col-sm-3 col-form-label">Day:</label>
   <div class="col-sm-9">
-    <select class="form-select" id="day">
-      <option selected>Select weekday</option>
+    <select class="form-select" id="event-day">
+      <option selected value="">Select weekday</option>
       
         <option value="Mon">Monday</option>
       
@@ -53,49 +54,44 @@
   </div>
 </div>
 <div class="mb-3 row">
-  <label for="time" class="col-sm-3 col-form-label">Time:</label>
+  <label for="event-time" class="col-sm-3 col-form-label">Time:</label>
   <div class="col-sm-9">
-    <select class="form-select" id="time">
-      <option selected>Select time</option>
+    <select class="form-select" id="event-time">
+      <option selected value="">Select time</option>
       
-        <option value="Mon">10:00</option>
+        <option>10:00</option>
       
-        <option value="Mon">11:00</option>
+        <option>11:00</option>
       
-        <option value="Mon">12:00</option>
+        <option>12:00</option>
       
-        <option value="Mon">13:00</option>
+        <option>13:00</option>
       
-        <option value="Mon">14:00</option>
+        <option>14:00</option>
       
-        <option value="Mon">15:00</option>
+        <option>15:00</option>
       
-        <option value="Mon">16:00</option>
+        <option>16:00</option>
       
-        <option value="Mon">17:00</option>
+        <option>17:00</option>
       
-        <option value="Mon">18:00</option>
+        <option>18:00</option>
       
     </select>
   </div>
 </div>
+<div class="mb-3 row">
+  <label for="event-participants" class="col-sm-3 col-form-label">Participants:</label>
+  <div class="col-sm-9">
+    <div class="w-100 d-flex flex-wrap participants__wrapp">
+    </div>
+  </div>
+</div>
     </div>
     <div class="col-4">
-      <label class="col-sm-3 col-form-label">Participants:</label>
-      <div class="participants__wrapp">
-        <div class="card participant p-3 mb-3">
-          <div class="row">
-            <div class="col-3">
-              <img src="/img/boy_1.png" alt="" class="participant__avatar border rounded-circle w-100">
-            </div>
-            <div class="col-7 d-flex flex-column justify-content-center">
-              <span class="participant__name">Mary</span>
-            </div>
-            <div class="col-2 d-flex flex-column justify-content-center">
-              <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="Mary">
-            </div>
-          </div>
-        </div>
+      <h3>Users</h3>
+      <div class="users__cover">
+        <div class="users__wrapp"></div>
       </div>
     </div>
   </div>
@@ -106,11 +102,11 @@
     <a href="index.html" class="btn btn-outline-secondary w-100">Cancel</i></a>
   </div>
   <div class="col-3">
-    <button class="btn btn-success w-100">Submit Event</button>
+    <button class="btn btn-success w-100" disabled>Submit Event</button>
   </div>
 </div>
        </div>
       </div>
     </div>
-  <script src="js/createPage-bundle.js?62e882610cfdbdac8a65"></script></body>
+  <script src="js/createPage-bundle.js?f847a911e904c9d5e2ee"></script></body>
 </html>
