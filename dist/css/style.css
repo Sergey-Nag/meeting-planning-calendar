@@ -5473,7 +5473,7 @@ textarea.form-control-lg {
 .text-warning {
   color: #ffc107 !important; }
 
-.text-danger {
+.text-danger, .participants.is-invalid h5, .participants.is-invalid .h5 {
   color: #dc3545 !important; }
 
 .text-light {
@@ -7480,6 +7480,8 @@ body {
   .participant__name {
     font-weight: bold;
     font-size: .8em; }
+  .participants.is-invalid h5, .participants.is-invalid .h5 {
+    text-decoration: underline; }
 
 .alert.card {
   margin: 0 auto; }
