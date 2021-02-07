@@ -68,6 +68,11 @@ function showAlertConfirm(text, callbackTrue, callbackFalse) {
 
   document.getElementById('event-delete-yes').addEventListener('click', callbackTrue);
   document.getElementById('event-delete-no').addEventListener('click', callbackFalse);
+  document.querySelector('.alert__wrapp').addEventListener('click', (e) => {
+    if (e.target.className !== 'alert__wrapp') return;
+
+    removeAlert();
+  }, true);
 }
 
 export {
