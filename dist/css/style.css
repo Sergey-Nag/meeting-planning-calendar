@@ -7483,13 +7483,25 @@ body {
   .participants.is-invalid h5, .participants.is-invalid .h5 {
     text-decoration: underline; }
 
-.alert.card {
-  margin: 0 auto; }
-
 .alert__wrapp {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 999; }
+  .alert__wrapp.top {
+    height: 20%;
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.3)); }
+    .alert__wrapp.top .alert {
+      width: 90%;
+      border-radius: 0;
+      top: 0; }
+
+.alert {
+  margin: 0 auto;
+  font-size: 1.2em; }
+  .alert .col-1 {
+    text-align: right; }
+  .alert.top {
+    border-radius: 0; }
 

@@ -1,3 +1,9 @@
+let currentAlertWrapp = null;
+
+function removeAlert() {
+  currentAlertWrapp.remove();
+}
+
 function createAlertHTML(text) {
   return `<div class="card alert bg-success text-white">${text}</div>`;
 }
@@ -13,33 +19,57 @@ function createAlertDangerTopHTML(text) {
   </div>`;
 }
 
-function createWrappElement(className) {
-  const wrapp = document.createElement('div');
-  wrapp.className = className;
-  return wrapp;
+function createConfirmHTML(text) {
+  return `<div class="alert bg-light">${text}<hr><div class="row">
+    <div class="col-6"><button id="event-delete-no" type="button" class="btn btn-outline-danger w-100">No</button></div>
+    <div class="col-6"><button id="event-delete-yes" type="button" class="btn btn-success w-100">Yes</button></div>
+  </div>
+</div>`;
+}
+
+function placeAlert() {
+  document.body.prepend(currentAlertWrapp);
+}
+
+function createWrappElement(className = 'alert__wrapp') {
+  currentAlertWrapp = document.createElement('div');
+  currentAlertWrapp.className = className;
+  return currentAlertWrapp;
 }
 
 function showAlertFull(text, timeToClose, callback) {
-  const wrapp = createWrappElement('alert__wrapp');
-  wrapp.innerHTML = createAlertHTML(text);
+  currentAlertWrapp = createWrappElement();
+  currentAlertWrapp.innerHTML = createAlertHTML(text);
 
-  document.body.prepend(wrapp);
+  placeAlert();
 
   setTimeout(() => {
-    wrapp.remove();
+    removeAlert();
     callback();
   }, timeToClose);
 }
 
 function showAlertAtTop(text) {
-  const wrapp = createWrappElement('alert top bg-danger text-white');
-  wrapp.innerHTML = createAlertDangerTopHTML(text);
+  currentAlertWrapp = createWrappElement('alert top bg-danger text-white');
+  currentAlertWrapp.innerHTML = createAlertDangerTopHTML(text);
 
-  document.body.prepend(wrapp);
+  placeAlert();
 
   document.getElementById('danger-alert-close').addEventListener('click', () => {
-    wrapp.remove();
+    removeAlert();
   });
 }
 
-export { showAlertFull, showAlertAtTop };
+function showAlertConfirm(text, callbackTrue, callbackFalse) {
+  currentAlertWrapp = createWrappElement();
+  currentAlertWrapp.innerHTML = createConfirmHTML(text);
+
+  placeAlert();
+
+  document.getElementById('event-delete-yes').addEventListener('click', callbackTrue);
+  document.getElementById('event-delete-no').addEventListener('click', callbackFalse);
+}
+
+export {
+  showAlertFull, showAlertAtTop, showAlertConfirm, removeAlert,
+};

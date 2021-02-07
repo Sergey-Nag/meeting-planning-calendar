@@ -15,17 +15,26 @@ function createEventCard({ title, participants }) {
   </div>`;
 }
 
-const events = store.getAllEvents();
+function removeAllCards() {
+  document.querySelectorAll('.calendar__card').forEach((card) => card.remove());
+}
 
-events.forEach((event) => {
-  const card = createEventCard(event);
+function placeAllWEvents() {
+  removeAllCards();
 
-  const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
-  const ceil = document.querySelector(ceilSelector);
+  store.getAllEvents()
+    .forEach((event) => {
+      const card = createEventCard(event);
 
-  ceil.innerHTML = card;
-});
+      const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
+      const ceil = document.querySelector(ceilSelector);
+
+      ceil.innerHTML = card;
+    });
+}
+
+placeAllWEvents();
 
 document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 
-export default store;
+export default placeAllWEvents;

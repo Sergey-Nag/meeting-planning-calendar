@@ -1,4 +1,4 @@
-import store from './calendar';
+import store from './localStorageApi';
 
 function createOptionHTML(name) {
   return `<option>${name}</option>`;
@@ -11,4 +11,3 @@ const optionUsersInput = document.getElementById('filterUsers');
 const usersOptionsItems = users.map((user) => createOptionHTML(user.name)).join('');
 
 optionUsersInput.innerHTML += usersOptionsItems;
-// const dropdownBtn = document.getElementById('dropdownFilterButton');
