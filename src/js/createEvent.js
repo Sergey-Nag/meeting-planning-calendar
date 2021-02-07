@@ -117,7 +117,7 @@ function submitForm() {
   showAlertFull(
     `Event "${data.title}" has been created`, 2000,
     () => {
-      window.location = '/index.html';
+      window.location = 'index.html';
     },
   );
 }
