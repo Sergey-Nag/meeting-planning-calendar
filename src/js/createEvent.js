@@ -1,5 +1,5 @@
 import store from './localStorageApi';
-import showAlert from './alerts';
+import { showAlertFull, showAlertAtTop } from './alerts';
 
 const createForm = document.getElementById('create-event-form');
 const submitCreateEventBtn = document.getElementById('create-event-submit');
@@ -106,16 +106,20 @@ function submitForm() {
 
   showTips(validatedValues);
 
-  if (isAllValuesAreValid(validatedValues)) {
-    store.addEvent(data);
-    showAlert(
-      'success',
-      `Event "${data.title}" has been created`, 1000,
-      () => {
-        window.location = '/index.html';
-      },
-    );
+  if (!isAllValuesAreValid(validatedValues)) return;
+
+  if (store.getEventByDayTime(data.day, data.time)) {
+    showAlertAtTop(`Failed to create an event. Time slot at ${data.day} ${data.time} is already booked.`);
+    return;
   }
+
+  store.addEvent(data);
+  showAlertFull(
+    `Event "${data.title}" has been created`, 2000,
+    () => {
+      window.location = '/index.html';
+    },
+  );
 }
 
 submitCreateEventBtn.addEventListener('click', submitForm);

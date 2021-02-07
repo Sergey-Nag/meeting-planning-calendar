@@ -1,16 +1,32 @@
-.alert {
+.alert__wrapp {
+  @extend .d-flex, .justify-content-center, .flex-column;
 
-  &.card {
-    margin: 0 auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $alert-wrapp-color;
+  z-index: 999;
+
+  &.top {
+    height: 20%;
+    background: linear-gradient(to top, transparent, $alert-wrapp-color);
+
+    .alert {
+      width: 90%;
+      border-radius: 0;
+      top: 0;
+    }
+  }
+}
+
+.alert {
+  margin: 0 auto;
+
+  .col-1 {
+    text-align: right;
   }
 
-  &__wrapp {
-    @extend .d-flex, .justify-content-center, .flex-column;
-
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: $alert-wrapp-color;
-    z-index: 999;
+  &.top {
+    border-radius: 0;
   }
 }

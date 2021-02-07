@@ -28,6 +28,11 @@ class Storage {
   getUserInfo(name) {
     return this.getAllUsers().find((user) => user.name === name);
   }
+
+  getEventByDayTime(day, time) {
+    return this.getAllEvents()
+      .some((event) => event.day === day && event.time === time);
+  }
 }
 
 function createStartData(store) {
