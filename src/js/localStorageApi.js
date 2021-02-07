@@ -9,6 +9,14 @@ class Storage {
     this.store.setItem(key, value);
   }
 
+  setEvent(eventObj) {
+    const events = this.getAllEvents();
+
+    events.push(eventObj);
+
+    this.save('events', JSON.stringify(events));
+  }
+
   getAllEvents() {
     return JSON.parse(this.store.getItem('events'));
   }

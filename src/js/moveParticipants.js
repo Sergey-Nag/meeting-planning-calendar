@@ -9,7 +9,7 @@ function createParticipantHTML({ name, avatar }) {
   return `<div class="participant">
   <img src="./img/${avatar}" class="participant__avatar" alt="${name}">
   <span class="participant__name">${name}</span>
-  <input type="hidden" value="${name}" id="event-participants">
+  <input type="hidden" value="${name}" name="participants">
 </div>`;
 }
 
