@@ -1,10 +1,11 @@
 import store from './localStorageApi';
+import showAlert from './alerts';
 
 const createForm = document.getElementById('create-event-form');
 const submitCreateEventBtn = document.getElementById('create-event-submit');
 
 const inputFields = ['title', 'day', 'time', 'participants'];
-const inputFieldElements = inputFields.map((field) => document.querySelector(`form [name=${field}]`));
+const inputFieldElements = inputFields.map((field) => document.querySelector(`form [name=${field}]`) ?? document.querySelector(`form .${field}`));
 
 function changeInputValidClass(isValid, index) {
   const input = inputFieldElements[index];
@@ -107,7 +108,13 @@ function submitForm() {
 
   if (isAllValuesAreValid(validatedValues)) {
     store.addEvent(data);
-    // showAlert('success', 'Event created');
+    showAlert(
+      'success',
+      `Event "${data.title}" has been created`, 1000,
+      () => {
+        window.location = '/index.html';
+      },
+    );
   }
 }
 

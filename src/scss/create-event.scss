@@ -40,4 +40,9 @@
     font-weight: bold;
     font-size: .8em;
   }
+
+  &s.is-invalid h5 {
+    @extend .text-danger;
+    text-decoration: underline;
+  }
 }
