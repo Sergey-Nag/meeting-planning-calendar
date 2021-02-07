@@ -1,7 +1,7 @@
 <table class="table table-bordered calendar" id="calendar">
   <thead class="calendar__head">
     <tr class="text-center">
-      <th scope="col">Name</th>
+      <th scope="col">Time</th>
       <% for (let title of CALENDAR.days) { %>
         <th scope="col" class="calendar__col"><%= title.slice(0, 3) %></th>
       <% } %>
@@ -12,23 +12,7 @@
       <tr>
         <th scope="row"><%= time %></th>
         <% for (let title of CALENDAR.days) { %>
-          <td data-day="<%= title.slice(0, 3) %>" data-time="<%= time %>">
-
-<!--
-            <div class="card calendar__card">
-              <div class="card__title"><span>Hello world</span></div>
-              <div class="card__avatars">
-                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
-                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
-                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
-                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
-                <img src="https://icon-icons.com/icons2/2630/PNG/64/avatar_boy_black_race_african_people_icon_159126.png" alt="George" class="card__avatar">
-              </div>
-              <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
-            </div>
--->
-
-          </td>
+          <td data-day="<%= title.slice(0, 3) %>" data-time="<%= time %>"></td>
         <% } %> 
       </tr>
     <% } %>

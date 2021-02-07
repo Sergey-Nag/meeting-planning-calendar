@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create event</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link href="css/style.css?f847a911e904c9d5e2ee" rel="stylesheet"></head>
+  <link href="css/style.css?281fdfd2a4684de530f4" rel="stylesheet"></head>
   <body>
+    <div class="alert__wrapp">
+      <div class="card alert bg-success text-white">
+        created
+      </div>
+    </div>
     <div class="container p-5">
       <div class="row">
         <div class="col-6">
@@ -28,65 +33,71 @@
   <div class="row">
     <div class="col-8">
       <h3>Form</h3>
-      <div class="mb-3 row">
-  <label for="event-name" class="col-sm-3 col-form-label">Name of the event:</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" id="event-name" placeholder="Type the name of the event...">
-  </div>
-</div>
-<div class="mb-3 row">
-  <label for="event-day" class="col-sm-3 col-form-label">Day:</label>
-  <div class="col-sm-9">
-    <select class="form-select" id="event-day">
-      <option selected value="">Select weekday</option>
-      
-        <option value="Mon">Monday</option>
-      
-        <option value="Mon">Tuesday</option>
-      
-        <option value="Mon">Wednesday</option>
-      
-        <option value="Mon">Thursday</option>
-      
-        <option value="Mon">Friday</option>
-      
-    </select>
-  </div>
-</div>
-<div class="mb-3 row">
-  <label for="event-time" class="col-sm-3 col-form-label">Time:</label>
-  <div class="col-sm-9">
-    <select class="form-select" id="event-time">
-      <option selected value="">Select time</option>
-      
-        <option>10:00</option>
-      
-        <option>11:00</option>
-      
-        <option>12:00</option>
-      
-        <option>13:00</option>
-      
-        <option>14:00</option>
-      
-        <option>15:00</option>
-      
-        <option>16:00</option>
-      
-        <option>17:00</option>
-      
-        <option>18:00</option>
-      
-    </select>
-  </div>
-</div>
-<div class="mb-3 row">
-  <label for="event-participants" class="col-sm-3 col-form-label">Participants:</label>
-  <div class="col-sm-9">
-    <div class="w-100 d-flex flex-wrap participants__wrapp">
+      <form id="create-event-form" novalidate>
+
+  <div class="mb-3 row">
+    <label for="event-name" class="col-sm-3 col-form-label">Name of the event:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="event-name" name="title" placeholder="Type the name of the event...">
+      <div></div>
     </div>
   </div>
-</div>
+  <div class="mb-3 row">
+    <label for="event-day" class="col-sm-3 col-form-label">Day:</label>
+    <div class="col-sm-9">
+      <select class="form-select" id="event-day" name="day">
+        <option selected value="">Select weekday</option>
+        
+          <option value="Mon">Monday</option>
+          
+          <option value="Tue">Tuesday</option>
+          
+          <option value="Wed">Wednesday</option>
+          
+          <option value="Thu">Thursday</option>
+          
+          <option value="Fri">Friday</option>
+          
+        </select>
+        <div></div>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="event-time" class="col-sm-3 col-form-label">Time:</label>
+      <div class="col-sm-9">
+        <select class="form-select" id="event-time" name="time">
+          <option selected value="">Select time</option>
+          
+            <option>10:00</option>
+            
+            <option>11:00</option>
+            
+            <option>12:00</option>
+            
+            <option>13:00</option>
+            
+            <option>14:00</option>
+            
+            <option>15:00</option>
+            
+            <option>16:00</option>
+            
+            <option>17:00</option>
+            
+            <option>18:00</option>
+            
+          </select>
+          <div></div>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="event-participants" class="col-sm-3 col-form-label">Participants:</label>
+        <div class="col-sm-9">
+          <div class="w-100 d-flex flex-wrap participants">
+          </div>
+        </div>
+      </div>
+    </form>
     </div>
     <div class="col-4">
       <h3>Users</h3>
@@ -102,11 +113,11 @@
     <a href="index.html" class="btn btn-outline-secondary w-100">Cancel</i></a>
   </div>
   <div class="col-3">
-    <button class="btn btn-success w-100" disabled>Submit Event</button>
+    <button id="create-event-submit" class="btn btn-success w-100" >Submit Event</button>
   </div>
 </div>
        </div>
       </div>
     </div>
-  <script src="js/createPage-bundle.js?f847a911e904c9d5e2ee"></script></body>
+  <script src="js/createPage-bundle.js?281fdfd2a4684de530f4"></script></body>
 </html>

@@ -1,9 +1,10 @@
-<form id="create-event-form">
+<form id="create-event-form" novalidate>
 
   <div class="mb-3 row">
     <label for="event-name" class="col-sm-3 col-form-label">Name of the event:</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="event-name" name="title" placeholder="Type the name of the event...">
+      <div></div>
     </div>
   </div>
   <div class="mb-3 row">
@@ -12,9 +13,10 @@
       <select class="form-select" id="event-day" name="day">
         <option selected value="">Select weekday</option>
         <% for (let title of CALENDAR.days) { %>
-          <option value="Mon"><%= title %></option>
+          <option value="<%= title.slice(0, 3) %>"><%= title %></option>
           <% } %>
         </select>
+        <div></div>
       </div>
     </div>
     <div class="mb-3 row">
@@ -26,12 +28,13 @@
             <option><%= time %></option>
             <% } %>
           </select>
+          <div></div>
         </div>
       </div>
       <div class="mb-3 row">
         <label for="event-participants" class="col-sm-3 col-form-label">Participants:</label>
         <div class="col-sm-9">
-          <div class="w-100 d-flex flex-wrap participants__wrapp">
+          <div class="w-100 d-flex flex-wrap participants">
           </div>
         </div>
       </div>

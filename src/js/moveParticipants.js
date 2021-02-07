@@ -88,7 +88,7 @@ function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
 }
 
 const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
-const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants__wrapp');
+const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
 
 usersReplaceHTML(returnUsersHTML());
 participantsReplaceHTML(returnParticipantsHTML());

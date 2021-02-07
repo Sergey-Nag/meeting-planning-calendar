@@ -9,7 +9,7 @@ class Storage {
     this.store.setItem(key, value);
   }
 
-  setEvent(eventObj) {
+  addEvent(eventObj) {
     const events = this.getAllEvents();
 
     events.push(eventObj);
