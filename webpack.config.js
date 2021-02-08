@@ -72,7 +72,7 @@ module.exports = {
       hash: true,
       minify: false,
       template: path.resolve(__dirname, 'src', 'template.ejs'),
-      filename: path.resolve(__dirname, 'dist', 'create.html'),
+      filename: path.resolve(__dirname, 'dist', 'create-event.html'),
     }),
   ],
   devServer: {

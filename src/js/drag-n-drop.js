@@ -56,9 +56,11 @@ function hideAllPutCells(elem) {
     if (borderedCell !== elem) borderedCell.className = '';
   });
 }
+
 function isEventBooked({ day, time }) {
   return !!store.getEventByDayTime(day, time);
 }
+
 function showCellForPut(elem) {
   hideAllPutCells(elem);
 
@@ -96,10 +98,6 @@ function dragStart(card) {
 }
 
 function dragMove(e) {
-  if (!dragData.element || !dragData.isDragAllow) return;
-
-  saveMousePosition(e);
-
   setDragElementPosition();
 
   const elemBelow = findDoppableContainer(e);
@@ -151,7 +149,12 @@ calendar.addEventListener('mousedown', (e) => {
   dragStart(card);
 });
 
-document.addEventListener('mousemove', dragMove);
+document.addEventListener('mousemove', (e) => {
+  if (!dragData.element || !dragData.isDragAllow) return;
+
+  saveMousePosition(e);
+  dragMove(e);
+});
 
 document.addEventListener('mouseup', (e) => {
   if (!dragData.element) return;

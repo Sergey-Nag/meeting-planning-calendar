@@ -13,10 +13,7 @@ function changeInputValidClass(isValid, index) {
   if (!input) return;
 
   if (isValid) input.classList.remove('is-invalid');
-  else {
-    console.log(input);
-    input.classList.add('is-invalid');
-  }
+  else input.classList.add('is-invalid');
 }
 
 function changeInputsClass(arr) {
@@ -78,7 +75,6 @@ function validateValues(data) {
 }
 
 function getDataFromInputs(form) {
-  console.dir(form);
   return [...form].reduce((obj, input) => {
     if (input.classList.contains('btn-close')) return obj;
 
