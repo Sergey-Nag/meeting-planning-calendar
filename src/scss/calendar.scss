@@ -2,7 +2,7 @@
 
 .calendar {
   background-color: #fff;
-  
+
   &__head {
     background: $light;
   }
@@ -11,7 +11,7 @@
     td {
       height: 80px;
     }
-    
+
     th:first-child {
       text-align: center;
       padding-top: 14px;
@@ -38,7 +38,7 @@
     }
 
     &.dragged {
-      opacity: .5;
+      opacity: 0.5;
     }
 
     &.floating {
@@ -60,21 +60,23 @@
       height: 15px;
     }
   }
-  
+
   &__filter {
     @extend %appearance;
   }
 }
 
-td.bordered {
-  outline: 4px dashed $card-color;
+td.put {
+  &.allow {
+    outline: 4px dashed $card-color;
+  }
 
-  &.deny {
-    outline: none;
+  &.disallow {
+    outline-color: none;
     background-color: lighten($danger, 35%);
 
     .card {
-      opacity: .3;
+      opacity: 0.3;
     }
   }
 }

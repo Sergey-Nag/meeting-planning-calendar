@@ -50,25 +50,29 @@ function findDoppableContainer({ clientX, clientY }) {
 }
 
 function hideAllPutCells(elem) {
-  document.querySelectorAll('.bordered').forEach((el) => {
+  document.querySelectorAll('.put').forEach((el) => {
     const borderedCell = el;
 
     if (borderedCell !== elem) borderedCell.className = '';
   });
 }
-
+function isEventBooked({ day, time }) {
+  return !!store.getEventByDayTime(day, time);
+}
 function showCellForPut(elem) {
   hideAllPutCells(elem);
 
   const putCell = elem;
-  const borderedClass = (elem.firstChild === dragData.originalElement
-    || !putCell.firstChild) ? 'bordered' : 'bordered deny';
+  let cellClass = 'put';
 
-  if (!elem.classList.contains('bordered')) putCell.className = borderedClass;
+  if (elem.firstChild === dragData.originalElement) cellClass += ' allow';
+  else if (putCell.firstChild || isEventBooked(putCell.dataset)) cellClass += ' disallow';
+  else cellClass += ' allow';
+
+  if (!elem.classList.contains('put')) putCell.className = cellClass;
 }
 
-function changeEventTime(elem) {
-  const { day, time } = elem.dataset;
+function changeEventTime(day, time) {
   const { day: oldDay, time: oldTime } = dragData.originalElement.parentNode.dataset;
 
   store.updateEvent({
@@ -103,27 +107,31 @@ function dragMove(e) {
   if (elemBelow) showCellForPut(elemBelow);
 }
 
+function confirmChangeEvent({ day, time }) {
+  const title = dragData.originalElement.querySelector('.card__title span').textContent;
+
+  dragData.isDragAllow = false;
+
+  const closeAlert = removeAlert(() => {
+    dragData.isDragAllow = true;
+  });
+
+  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
+    changeEventTime(day, time);
+    closeAlert();
+  },
+  closeAlert,
+  () => { dragData.isDragAllow = true; });
+}
+
 function dragEnd(e) {
   if (!dragData.isDragAllow) return;
 
   const elemBelow = findDoppableContainer(e);
+  const isBooked = elemBelow ? isEventBooked(elemBelow.dataset) : true;
 
-  if (elemBelow) {
-    const { day, time } = elemBelow.dataset;
-    const title = dragData.originalElement.querySelector('.card__title span').textContent;
-
-    dragData.isDragAllow = false;
-
-    const closeAlert = removeAlert(() => {
-      dragData.isDragAllow = true;
-    });
-
-    showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
-      changeEventTime(elemBelow);
-      closeAlert();
-    },
-    closeAlert,
-    () => { dragData.isDragAllow = true; });
+  if (!isBooked) {
+    confirmChangeEvent(elemBelow.dataset);
   }
 
   dragData.element.remove();
