@@ -40,6 +40,19 @@ class Storage {
       .find((event) => event.day === day && event.time === time);
   }
 
+  updateEvent({ find, changeData }) {
+    const eventToUpdIndex = this.getAllEvents().findIndex(find);
+
+    const copyEvents = [...this.getAllEvents()];
+    const eventToUpd = copyEvents[eventToUpdIndex];
+
+    Object.keys(changeData).forEach((key) => {
+      eventToUpd[key] = changeData[key];
+    });
+
+    this.save('events', JSON.stringify(copyEvents));
+  }
+
   filterEvents(callback) {
     return this.getAllEvents()
       .filter((el) => callback(el));

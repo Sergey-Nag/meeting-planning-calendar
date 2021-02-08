@@ -1,7 +1,16 @@
 let currentAlertWrapp = null;
 
-function removeAlert() {
-  currentAlertWrapp.remove();
+function removeAlert(callback) {
+  if (!callback) {
+    currentAlertWrapp.remove();
+    return;
+  }
+
+  // eslint-disable-next-line consistent-return
+  return () => {
+    currentAlertWrapp.remove();
+    callback();
+  };
 }
 
 function createAlertHTML(text) {
@@ -63,7 +72,7 @@ function showAlertAtTop(text) {
   });
 }
 
-function showAlertConfirm(text, callbackTrue, callbackFalse) {
+function showAlertConfirm(text, callbackTrue, callbackFalse, callbackClose = null) {
   currentAlertWrapp = createWrappElement();
   currentAlertWrapp.innerHTML = createConfirmHTML(text);
 
@@ -74,7 +83,8 @@ function showAlertConfirm(text, callbackTrue, callbackFalse) {
   document.querySelector('.alert__wrapp').addEventListener('click', (e) => {
     if (e.target.className !== 'alert__wrapp') return;
 
-    removeAlert();
+    if (callbackClose) removeAlert(callbackClose)();
+    else removeAlert();
   }, true);
 }
 

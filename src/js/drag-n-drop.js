@@ -1,6 +1,11 @@
+import store from './localStorageApi';
+import placeAllEvents from './calendar';
+import { showAlertConfirm, removeAlert } from './alerts';
+
 const calendar = document.getElementById('calendar');
 
 const dragData = {
+  isDragAllow: true,
   element: null,
   originalElement: null,
   top: 0,
@@ -25,7 +30,6 @@ function createFloatingCard(originalCard) {
 
   const originalSizes = originalCard.getBoundingClientRect();
 
-  //  console.log(originalSizes);
   floatingCard.classList.add('floating');
 
   floatingCard.style.width = `${originalSizes.width}px`;
@@ -37,43 +41,96 @@ function createFloatingCard(originalCard) {
   return floatingCard;
 }
 
-function dragStart(card) {
-  dragData.element = createFloatingCard(card);
-
-  card.classList.add('dragged');
-
-  document.body.prepend(dragData.element);
-  setDragElementPosition();
-
-  dragData.element.onmousedown = () => false;
-}
-
 function findDoppableContainer({ clientX, clientY }) {
   dragData.element.style.visibility = 'hidden';
   const elemBelow = document.elementFromPoint(clientX, clientY);
   dragData.element.style.visibility = 'visible';
 
-  return elemBelow.localName === 'td' && elemBelow;
+  return elemBelow?.localName === 'td' && elemBelow;
 }
 
-function dragMove() {
-  setDragElementPosition();
-}
-
-function hideAllPutCeils(elem) {
+function hideAllPutCells(elem) {
   document.querySelectorAll('.bordered').forEach((el) => {
-    const borderedCeil = el;
+    const borderedCell = el;
 
-    if (borderedCeil !== elem) borderedCeil.className = '';
+    if (borderedCell !== elem) borderedCell.className = '';
   });
 }
 
-function dragEnd() {
+function showCellForPut(elem) {
+  hideAllPutCells(elem);
+
+  const putCell = elem;
+  const borderedClass = (elem.firstChild === dragData.originalElement
+    || !putCell.firstChild) ? 'bordered' : 'bordered deny';
+
+  if (!elem.classList.contains('bordered')) putCell.className = borderedClass;
+}
+
+function changeEventTime(elem) {
+  const { day, time } = elem.dataset;
+  const { day: oldDay, time: oldTime } = dragData.originalElement.parentNode.dataset;
+
+  store.updateEvent({
+    find: (el) => el.day === oldDay && el.time === oldTime,
+    changeData: { day, time },
+  });
+
+  placeAllEvents();
+}
+
+function dragStart(card) {
+  if (!dragData.isDragAllow) return;
+
+  dragData.element = createFloatingCard(card);
+
+  card.classList.add('dragged');
+
+  document.body.prepend(dragData.element);
+
+  setDragElementPosition();
+}
+
+function dragMove(e) {
+  if (!dragData.element || !dragData.isDragAllow) return;
+
+  saveMousePosition(e);
+
+  setDragElementPosition();
+
+  const elemBelow = findDoppableContainer(e);
+
+  if (elemBelow) showCellForPut(elemBelow);
+}
+
+function dragEnd(e) {
+  if (!dragData.isDragAllow) return;
+
+  const elemBelow = findDoppableContainer(e);
+
+  if (elemBelow) {
+    const { day, time } = elemBelow.dataset;
+    const title = dragData.originalElement.querySelector('.card__title span').textContent;
+
+    dragData.isDragAllow = false;
+
+    const closeAlert = removeAlert(() => {
+      dragData.isDragAllow = true;
+    });
+
+    showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
+      changeEventTime(elemBelow);
+      closeAlert();
+    },
+    closeAlert,
+    () => { dragData.isDragAllow = true; });
+  }
+
   dragData.element.remove();
   dragData.element = null;
   dragData.originalElement.classList.remove('dragged');
-  hideAllPutCeils(false);
-//  console.log(dragData.element);
+
+  hideAllPutCells(false);
 }
 
 calendar.addEventListener('mousedown', (e) => {
@@ -86,28 +143,11 @@ calendar.addEventListener('mousedown', (e) => {
   dragStart(card);
 });
 
-function showPutCeil(elem) {
-  hideAllPutCeils(elem);
-  const putCeil = elem;
-  const borderedClass = (elem.firstChild === dragData.originalElement
-    || !putCeil.firstChild) ? 'bordered' : 'bordered deny';
-
-  if (!elem.classList.contains('bordered')) putCeil.className = borderedClass;
-}
-
-document.addEventListener('mousemove', (e) => {
-  if (!dragData.element) return;
-
-  saveMousePosition(e);
-  dragMove();
-  const elemBelow = findDoppableContainer(e);
-
-  if (elemBelow) showPutCeil(elemBelow);
-});
+document.addEventListener('mousemove', dragMove);
 
 document.addEventListener('mouseup', (e) => {
   if (!dragData.element) return;
 
   saveMousePosition(e);
-  dragEnd();
+  dragEnd(e);
 });
