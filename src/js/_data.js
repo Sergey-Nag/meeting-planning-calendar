@@ -4,7 +4,7 @@ const DATA = {
       title: 'Hello world',
       day: 'Mon',
       time: '12:00',
-      participants: ['Ann', 'Alex', 'George'],
+      participants: ['Ann', 'Alex', 'Steve'],
     },
     {
       title: 'Plaining session',
@@ -23,7 +23,7 @@ const DATA = {
       avatar: 'girl_1.png',
     },
     {
-      name: 'George',
+      name: 'Steve',
       avatar: 'boy_2.png',
     },
     {

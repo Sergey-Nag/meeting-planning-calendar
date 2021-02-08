@@ -11,7 +11,7 @@ function createEventCard({ title, participants }) {
   return `<div class="card calendar__card d-flex justify-content-between">
     <div class="card__title"><span>${title}</span></div>
     <div class="card__avatars">${avatarImgs}</div>
-    <button type="button" class="btn-close calendar__btn_close" aria-label="Close"></button>
+    <button type="button" class="btn-close calendar__btn_close" data-></button>
   </div>`;
 }
 

@@ -10,6 +10,7 @@ function createParticipantHTML({ name, avatar }) {
   <img src="./img/${avatar}" class="participant__avatar" alt="${name}">
   <span class="participant__name">${name}</span>
   <input type="hidden" value="${name}" name="participants">
+  <button class="btn-close participant__btn-remove" data-name="${name}"></button>
 </div>`;
 }
 
@@ -37,6 +38,14 @@ function createUserHTML({ name, avatar, isChecked }) {
       </div>
     </div>
   </div>`;
+}
+
+function removeParticipant(nameToRemove) {
+  const removeIndex = participantsList.findIndex(({ name }) => name === nameToRemove);
+  const inUsersListIndex = usersList.findIndex(({ name }) => name === nameToRemove);
+
+  participantsList.splice(removeIndex, 1);
+  usersList[inUsersListIndex].isChecked = false;
 }
 
 function createReplaceHtmlInWrapp(wrappClassName) {
@@ -94,3 +103,14 @@ usersReplaceHTML(returnUsersHTML());
 participantsReplaceHTML(returnParticipantsHTML());
 
 document.querySelector('.users__wrapp').addEventListener('click', usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML));
+document.querySelector('.participants').addEventListener('click', (e) => {
+  e.preventDefault();
+  const target = e.target.closest('.participant__btn-remove');
+  if (!target) return;
+
+  const nameToRemove = target.dataset.name;
+  removeParticipant(nameToRemove);
+
+  usersReplaceHTML(returnUsersHTML());
+  participantsReplaceHTML(returnParticipantsHTML());
+});

@@ -2,6 +2,7 @@ const calendar = document.getElementById('calendar');
 
 const dragData = {
   element: null,
+  originalElement: null,
   top: 0,
   left: 0,
   mouseX: 0,
@@ -20,10 +21,11 @@ function saveMousePosition({ clientX, clientY }) {
 
 function createFloatingCard(originalCard) {
   const floatingCard = originalCard.cloneNode(true);
+  dragData.originalElement = originalCard;
 
   const originalSizes = originalCard.getBoundingClientRect();
 
-  console.log(originalSizes);
+  //  console.log(originalSizes);
   floatingCard.classList.add('floating');
 
   floatingCard.style.width = `${originalSizes.width}px`;
@@ -61,13 +63,16 @@ function dragMove() {
 function dragEnd() {
   dragData.element.remove();
   dragData.element = null;
-  console.log(dragData.element);
+  dragData.originalElement.classList.remove('dragged');
+//  console.log(dragData.element);
 }
 
 calendar.addEventListener('mousedown', (e) => {
   const card = e.target.closest('.calendar__card');
+  const isDeleteButton = e.target.classList.contains('btn-close');
 
-  if (!card || e.button !== 0) return;
+  if (isDeleteButton || !card || e.button !== 0) return;
+
   saveMousePosition(e);
   dragStart(card);
 });
@@ -77,8 +82,8 @@ document.addEventListener('mousemove', (e) => {
 
   saveMousePosition(e);
   dragMove();
-  const tdBelow = findDoppableContainer(e);
-  console.log(tdBelow);
+  findDoppableContainer(e);
+//  console.log(tdBelow);
 });
 
 document.addEventListener('mouseup', (e) => {

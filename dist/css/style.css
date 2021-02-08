@@ -7389,6 +7389,11 @@ textarea.form-control-lg {
 .calendar__btn_close, .card__avatar {
   transition: all .3s ease; }
 
+.calendar__filter, .form-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
 * {
   margin: 0;
   padding: 0; }
@@ -7402,6 +7407,11 @@ body {
 
 .calendar__btn_close, .card__avatar {
   transition: all .3s ease; }
+
+.calendar__filter, .form-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 .calendar {
   background-color: #fff; }
@@ -7422,6 +7432,12 @@ body {
       opacity: 0.5; }
     .calendar__card:hover .card__avatar {
       margin-right: -5px; }
+    .calendar__card.dragged {
+      opacity: .5; }
+    .calendar__card.floating {
+      cursor: grabbing;
+      position: absolute;
+      z-index: 990; }
   .calendar__btn_close {
     opacity: 0;
     position: absolute;
@@ -7430,14 +7446,11 @@ body {
     box-sizing: border-box;
     width: 15px;
     height: 15px; }
-  .calendar__filter {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; }
 
 .card__title {
   color: #05505f;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 1em; }
 
 .card__avatar {
   position: relative;
@@ -7472,9 +7485,11 @@ body {
     margin-bottom: 0; }
 
 .participant {
+  position: relative;
   margin-right: -10px; }
   .participant__avatar {
     width: 65px;
+    max-height: 65px;
     border: 3px solid #0d6efd;
     background: #fff; }
   .participant__name {
@@ -7482,6 +7497,22 @@ body {
     font-size: .8em; }
   .participants.is-invalid h5, .participants.is-invalid .h5 {
     text-decoration: underline; }
+  .participant__btn-remove {
+    opacity: 0;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    background-size: 90%;
+    border-radius: 50%; }
+  .participant:hover {
+    z-index: 100; }
+    .participant:hover .participant__btn-remove {
+      opacity: .5; }
+      .participant:hover .participant__btn-remove:active {
+        opacity: 1; }
 
 .alert__wrapp {
   position: absolute;

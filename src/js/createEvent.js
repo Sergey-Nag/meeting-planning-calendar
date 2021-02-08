@@ -78,7 +78,10 @@ function validateValues(data) {
 }
 
 function getDataFromInputs(form) {
+  console.dir(form);
   return [...form].reduce((obj, input) => {
+    if (input.classList.contains('btn-close')) return obj;
+
     const { name, value } = input;
     const result = { ...obj };
 
