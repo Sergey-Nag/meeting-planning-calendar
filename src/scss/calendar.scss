@@ -36,6 +36,16 @@
         margin-right: -5px;
       }
     }
+
+    &.dragged {
+      opacity: .5;
+    }
+
+    &.floating {
+      cursor: grabbing;
+      position: absolute;
+      z-index: 990;
+    }
   }
 
   &__btn {
