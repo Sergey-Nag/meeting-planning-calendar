@@ -1,13 +1,23 @@
 import store from './localStorageApi';
-
-function createOptionHTML(name) {
-  return `<option>${name}</option>`;
-}
+import placeAllEvents from './calendar';
 
 const users = store.getAllUsers();
 
 const optionUsersInput = document.getElementById('filterUsers');
 
-const usersOptionsItems = users.map((user) => createOptionHTML(user.name)).join('');
+const usersOptionsItems = users.map(({ name }) => `<option>${name}</option>`).join('');
 
 optionUsersInput.innerHTML += usersOptionsItems;
+
+function changeHandle() {
+  const { value } = this;
+  let events = null;
+
+  if (value !== '') {
+    events = store.filterEvents(({ participants }) => participants.includes(value));
+  }
+
+  placeAllEvents(events);
+}
+
+optionUsersInput.addEventListener('change', changeHandle);

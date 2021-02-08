@@ -19,22 +19,27 @@ function removeAllCards() {
   document.querySelectorAll('.calendar__card').forEach((card) => card.remove());
 }
 
-function placeAllWEvents() {
+function activeUsersTooltips() {
+  document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
+}
+
+function placeAllWEvents(anotherEventArr) {
+  const eventsArr = anotherEventArr ?? store.getAllEvents();
+
   removeAllCards();
 
-  store.getAllEvents()
-    .forEach((event) => {
-      const card = createEventCard(event);
+  eventsArr.forEach((event) => {
+    const card = createEventCard(event);
 
-      const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
-      const ceil = document.querySelector(ceilSelector);
+    const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
+    const ceil = document.querySelector(ceilSelector);
 
-      ceil.innerHTML = card;
-    });
+    ceil.innerHTML = card;
+  });
+
+  activeUsersTooltips();
 }
 
 placeAllWEvents();
-
-document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 
 export default placeAllWEvents;

@@ -34,6 +34,11 @@ class Storage {
       .find((event) => event.day === day && event.time === time);
   }
 
+  filterEvents(callback) {
+    return this.getAllEvents()
+      .filter((el) => callback(el));
+  }
+
   removeEvent(callback) {
     const events = this.getAllEvents();
     const removeIndex = events.findIndex((el) => callback(el));

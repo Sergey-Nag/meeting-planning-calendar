@@ -1,6 +1,6 @@
 import store from './localStorageApi';
 import { showAlertConfirm, removeAlert } from './alerts';
-import placeAllWEvents from './calendar';
+import placeAllEvents from './calendar';
 
 function removeEvent({ day, time }) {
   store.removeEvent((el) => el.day === day && el.time === time);
@@ -17,7 +17,7 @@ document.getElementById('calendar').addEventListener('click', (e) => {
   showAlertConfirm(`Are you sure you want to delete "${eventTitle}" event?`,
     () => {
       removeEvent(eventContainer.dataset);
-      placeAllWEvents();
+      placeAllEvents();
       removeAlert();
     }, () => {
       removeAlert();
