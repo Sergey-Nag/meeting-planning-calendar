@@ -5,19 +5,22 @@ const users = store.getAllUsers();
 
 const optionUsersInput = document.getElementById('filterUsers');
 
-const usersOptionsItems = users.map(({ name }) => `<option>${name}</option>`).join('');
+function placeNamesIntoSelect() {
+  const usersOptionsItemsHTML = users.map(({ name }) => `<option>${name}</option>`).join('');
 
-optionUsersInput.innerHTML += usersOptionsItems;
+  optionUsersInput.innerHTML = `<option value selected>All members</option>${usersOptionsItemsHTML}`;
+}
 
 function changeHandle() {
   const { value } = this;
-  let events = null;
 
-  if (value !== '') {
-    events = store.filterEvents(({ participants }) => participants.includes(value));
-  }
+  if (value !== '') store.preFilter = ({ participants }) => participants.includes(value);
+  else store.preFilter = null;
 
-  placeAllEvents(events);
+  placeAllEvents();
 }
 
 optionUsersInput.addEventListener('change', changeHandle);
+placeNamesIntoSelect();
+
+export default placeNamesIntoSelect;

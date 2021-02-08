@@ -23,8 +23,8 @@ function activeUsersTooltips() {
   document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 }
 
-function placeAllWEvents(anotherEventArr) {
-  const eventsArr = anotherEventArr ?? store.getAllEvents();
+function placeAllWEvents() {
+  const eventsArr = store.getPreFilteredEvents();
 
   removeAllCards();
 

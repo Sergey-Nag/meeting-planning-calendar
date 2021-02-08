@@ -3,6 +3,7 @@ import DATA from './_data';
 class Storage {
   constructor() {
     this.store = window.localStorage;
+    this.preFilter = null;
   }
 
   save(key, value) {
@@ -19,6 +20,11 @@ class Storage {
 
   getAllEvents() {
     return JSON.parse(this.store.getItem('events'));
+  }
+
+  getPreFilteredEvents() {
+    if (!this.preFilter) return this.getAllEvents();
+    return this.getAllEvents().filter((el) => this.preFilter(el));
   }
 
   getAllUsers() {

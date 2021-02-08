@@ -50,6 +50,9 @@ function showAlertFull(text, timeToClose, callback) {
 }
 
 function showAlertAtTop(text) {
+  const oldAlert = document.querySelector('.alert');
+  if (oldAlert) oldAlert.remove();
+
   currentAlertWrapp = createWrappElement('alert top bg-danger text-white');
   currentAlertWrapp.innerHTML = createAlertDangerTopHTML(text);
 
