@@ -66,6 +66,19 @@
   }
 }
 
+td.bordered {
+  outline: 4px dashed $card-color;
+
+  &.deny {
+    outline: none;
+    background-color: lighten($danger, 35%);
+
+    .card {
+      opacity: .3;
+    }
+  }
+}
+
 .card {
   &__title {
     color: $card-color--darken;

@@ -49,21 +49,30 @@ function dragStart(card) {
 }
 
 function findDoppableContainer({ clientX, clientY }) {
-  dragData.element.hidden = true;
+  dragData.element.style.visibility = 'hidden';
   const elemBelow = document.elementFromPoint(clientX, clientY);
-  dragData.element.hidden = false;
+  dragData.element.style.visibility = 'visible';
 
-  return elemBelow;
+  return elemBelow.localName === 'td' && elemBelow;
 }
 
 function dragMove() {
   setDragElementPosition();
 }
 
+function hideAllPutCeils(elem) {
+  document.querySelectorAll('.bordered').forEach((el) => {
+    const borderedCeil = el;
+
+    if (borderedCeil !== elem) borderedCeil.className = '';
+  });
+}
+
 function dragEnd() {
   dragData.element.remove();
   dragData.element = null;
   dragData.originalElement.classList.remove('dragged');
+  hideAllPutCeils(false);
 //  console.log(dragData.element);
 }
 
@@ -77,13 +86,23 @@ calendar.addEventListener('mousedown', (e) => {
   dragStart(card);
 });
 
+function showPutCeil(elem) {
+  hideAllPutCeils(elem);
+  const putCeil = elem;
+  const borderedClass = (elem.firstChild === dragData.originalElement
+    || !putCeil.firstChild) ? 'bordered' : 'bordered deny';
+
+  if (!elem.classList.contains('bordered')) putCeil.className = borderedClass;
+}
+
 document.addEventListener('mousemove', (e) => {
   if (!dragData.element) return;
 
   saveMousePosition(e);
   dragMove();
-  findDoppableContainer(e);
-//  console.log(tdBelow);
+  const elemBelow = findDoppableContainer(e);
+
+  if (elemBelow) showPutCeil(elemBelow);
 });
 
 document.addEventListener('mouseup', (e) => {
