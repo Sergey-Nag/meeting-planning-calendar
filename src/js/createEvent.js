@@ -29,6 +29,9 @@ function validateTextValue(value) {
   if (value.length < 3) {
     res.isValid = false;
     res.tip = 'Length of title must be longer than 2 symbols\n';
+  } else if (value.length > 40) {
+    res.isValid = false;
+    res.tip = 'Length of title mustn\'t be longer than 40 symbols\n';
   }
 
   if (/\*|`|%|\$|;|:|\/|\\/.test(value)) {
