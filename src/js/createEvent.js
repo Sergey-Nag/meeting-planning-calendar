@@ -122,6 +122,7 @@ function submitForm() {
       window.location = 'index.html';
     },
   );
+  submitCreateEventBtn.disabled = true;
 }
 
 submitCreateEventBtn.addEventListener('click', submitForm);

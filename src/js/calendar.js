@@ -1,5 +1,6 @@
 import { Tooltip } from 'bootstrap';
 import store from './localStorageApi';
+import { createEventCardHTML } from './_htmlElements';
 
 function createEventCard({ title, participants }) {
   const avatarImgs = participants
@@ -8,11 +9,7 @@ function createEventCard({ title, participants }) {
       return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
-  return `<div class="card calendar__card d-flex justify-content-between">
-    <div class="card__title"><span>${title}</span></div>
-    <div class="card__avatars">${avatarImgs}</div>
-    <button type="button" class="btn-close calendar__btn_close" data-></button>
-  </div>`;
+  return createEventCardHTML(title, avatarImgs);
 }
 
 function removeAllCards() {

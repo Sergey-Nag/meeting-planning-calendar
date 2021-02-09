@@ -109,17 +109,17 @@ function confirmChangeEvent({ day, time }) {
   const title = dragData.originalElement.querySelector('.card__title span').textContent;
 
   dragData.isDragAllow = false;
-
-  const closeAlert = removeAlert(() => {
-    dragData.isDragAllow = true;
-  });
+  const allowDragCallback = () => { dragData.isDragAllow = true; };
 
   showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
     changeEventTime(day, time);
-    closeAlert();
+
+    removeAlert(allowDragCallback);
   },
-  closeAlert,
-  () => { dragData.isDragAllow = true; });
+  () => {
+    removeAlert(allowDragCallback);
+  },
+  allowDragCallback);
 }
 
 function dragEnd(e) {

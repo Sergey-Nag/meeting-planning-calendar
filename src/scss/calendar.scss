@@ -82,6 +82,8 @@ td.put {
 }
 
 .card {
+  cursor: grab;
+
   &__title {
     color: $card-color--darken;
     font-weight: bold;
@@ -89,6 +91,7 @@ td.put {
   }
 
   &__avatar {
+    cursor: default;
     @extend %transition;
     position: relative;
     width: 25px;

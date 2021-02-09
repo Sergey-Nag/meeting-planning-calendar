@@ -23,12 +23,14 @@
 .alert {
   margin: 0 auto;
   font-size: 1.2em;
+  max-width: 400px;
 
   .col-1 {
     text-align: right;
   }
 
   &.top {
+    max-width: 100%;
     border-radius: 0;
   }
 }
