@@ -5,6 +5,7 @@
     - [Event card](#event-card)
     - [Remove event](#remove-event)
     - [Move event](#move-event)
+    - [Filter events](#filter-events)
  - [Create event](#create-event)
     - [Title](#title)
     - [Day](#day)
@@ -16,6 +17,7 @@
 ## Event card
 ## Remove event
 ## Move event
+## Filter events
 ## Create event
 ## Title
 ## Day
