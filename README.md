@@ -1,4 +1,4 @@
-# meeting-planning-calendar
+# [meeting-planning-calendar](https://sergey-nag.github.io/meeting-planning-calendar/dist/)
 
 
  - [Calendar](#calendar)
