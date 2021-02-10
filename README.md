@@ -71,7 +71,7 @@ At the bottom there are "Cancel" and "Submit" buttons.
 
 ![calendar page](/doc-img/12-new-event-button.png)
 
-You'll moved to create event page where need to fill out the data:
+You'll move on to the create event page where need to fill out the data:
 
 ![calendar page](/doc-img/13-new-event-page.png)
 
@@ -81,6 +81,8 @@ The name of the event must be written into first text field:
 ![calendar page](/doc-img/14-title-field.png)
 
 The length of name must be from 3 to 40 symbols and value can't consist illegal characters.
+
+![calendar page](/doc-img/14.1-title-field-invalid.png)
 
 ## Day
 For choose needed weekday for event choose the right variant from dropdown at the day field:
