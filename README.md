@@ -35,7 +35,7 @@ Over the hovered participan displayed his name:
 ![calendar page](/doc-img/4-event-card-participant-hover.png)
 
 ## Remove event
-Clicking by the cross button on the event card pops up the alert in witch you must confirm or cancel deleting event:
+Clicking by the cross button on the event card pops up the alert in which you must confirm or cancel deleting event:
 
 ![calendar page](/doc-img/5-event-card-remove-btnpng.png)
 
