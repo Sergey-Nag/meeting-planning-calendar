@@ -52,7 +52,19 @@ That would to change event day and time you can drag the card to another free ce
 | img 7
 | img 8
 
+After dropped the card to the new cell you'll see alert with confirmation of change event date and time.
+
+| img 9
+
 ## Filter events
+By the input with dropdown users list you can choose by which user the event cards will be filtered.
+
+| img 10
+
+After change value on the calendar will be left event cards of which contains chosen participant.
+
+| img 11
+
 ## Create event
 ## Title
 ## Day
