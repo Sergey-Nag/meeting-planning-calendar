@@ -22,24 +22,24 @@ Below, contains the calendar with 6 columns and 10 row where on the titles displ
 ![calendar page](/doc-img/1-calendar.png)
 
 ## Event card
-The displayed data on the event card is event name and images list as participants.
+The displayed data on the event card is event name and images list as participants:
 
 ![calendar page](/doc-img/2-event-card.png)
 
-The hovered card view
+The hovered card view:
 
 ![calendar page](/doc-img/3-event-card-hover.png)
 
-Over the hovered participan displayed his name
+Over the hovered participan displayed his name:
 
 ![calendar page](/doc-img/4-event-card-participant-hover.png)
 
 ## Remove event
-Clicking by the cross button on the event card pops up the alert in witch you must confirm or cancel deleting event
+Clicking by the cross button on the event card pops up the alert in witch you must confirm or cancel deleting event:
 
 ![calendar page](/doc-img/5-event-card-remove-btnpng.png)
 
-After confirm, event will delete. For close alert or cancel you need to click the appropriate button or click around of alert.
+After confirm, event will delete. For close alert or cancel you need to click the appropriate button or click around of alert:
 
 ![calendar page](/doc-img/6-confirm-alert-deleting-event.png)
 
@@ -51,16 +51,16 @@ That would to change event day and time you can drag the card to another free ce
 ![calendar page](/doc-img/7-dragging-card-allow-cell.png)
 ![calendar page](/doc-img/8-dragging-card-disallow-cell.png)
 
-After dropped the card to the new cell you'll see alert with confirmation of change event date and time.
+After dropped the card to the new cell you'll see alert with confirmation of change event date and time:
 
 ![calendar page](/doc-img/9-dragging-card-allert.png)
 
 ## Filter events
-By the input with dropdown users list you can choose by which user the event cards will be filtered.
+By the input with dropdown users list you can choose by which user the event cards will be filtered:
 
 ![calendar page](/doc-img/10-dropdown-filter-users.png)
 
-After change value on the calendar will be left event cards of which contains chosen participant.
+After change value on the calendar will be left event cards of which contains chosen participant:
 
 ![calendar page](/doc-img/11-filtered-users.png)
 
@@ -71,54 +71,54 @@ At the bottom there are "Cancel" and "Submit" buttons.
 
 ![calendar page](/doc-img/12-new-event-button.png)
 
-You'll moved to create event page where need to fill out the data.
+You'll moved to create event page where need to fill out the data:
 
 ![calendar page](/doc-img/13-new-event-page.png)
 
 ## Title
-The name of the event must be written into first text field.
+The name of the event must be written into first text field:
 
 ![calendar page](/doc-img/14-title-field.png)
 
 The length of name must be from 3 to 40 symbols and value can't consist illegal characters.
 
 ## Day
-For choose needed weekday for event choose the right variant from dropdown at the day field.
+For choose needed weekday for event choose the right variant from dropdown at the day field:
 
 ![calendar page](/doc-img/15-date-field.png)
 
 ## Time
-For choose needed time for event choose the right variant from dropdown at the time field.
+For choose needed time for event choose the right variant from dropdown at the time field:
 
 ![calendar page](/doc-img/16-time-field.png)
 
 ## Participants
-For choose a participants you need to click on the user from the list at right side.
+For choose a participants you need to click on the user from the list at right side:
 
 ![calendar page](/doc-img/17-participants-choosen.png)
 
-When user chosen, his avatar and name add to participants field. You have multiple choise to add a several participants.
+When user chosen, his avatar and name add to participants field. You have multiple choise to add a several participants:
 
 ![calendar page](/doc-img/18-several-participants.png)
 
-For removing some participant, you can click again to him in the users list or click to cross button which showed when cursor hovered to image across from participants field. 
+For removing some participant, you can click again to him in the users list or click to cross button which showed when cursor hovered to image across from participants field: 
 
 ![calendar page](/doc-img/19-participant-hover.png)
 
 ## Submit creating event
-When you click submit button but not all data is filled in, you can see validation errors on the incorrect fields.
+When you click submit button but not all data is filled in, you can see validation errors on the incorrect fields:
 
 ![calendar page](/doc-img/20-incorect-validation.png)
 
-When event name field is filled worng you could seen validation notification below the input.
+When event name field is filled worng you could seen validation notification below the input:
 
 ![calendar page](/doc-img/21-text-validation-failed.png)
 
-If event on this date and time is already exist, you'll seen the error message at top of the page, which you can close clicking by the cross button.
+If event on this date and time is already exist, you'll seen the error message at top of the page, which you can close clicking by the cross button:
 
 ![calendar page](/doc-img/22-booking-date-error.png)
 
-If no errors detected, after submitting form you'll seen successful message and be redirected to calendar page with updated events.
+If no errors detected, after submitting form you'll seen successful message and be redirected to calendar page with updated events:
 
 ![calendar page](/doc-img/23-new-event-created-alert.png)
 
