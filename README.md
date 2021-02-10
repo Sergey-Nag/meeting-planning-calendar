@@ -1,4 +1,4 @@
-# meeting-planning-calendar
+# Meeting planning calendar
 
 [Go to the app](https://sergey-nag.github.io/meeting-planning-calendar/dist/)
 
