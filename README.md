@@ -66,9 +66,58 @@ After change value on the calendar will be left event cards of which contains ch
 | img 11
 
 ## Create event
+To start create event click the "New Event" button.
+Page consist 3 inputs at the left side and a scrolling list of all users on the right side. **All fields are required.**
+At the bottom there are "Cancel" and "Submit" buttons.
+
+| img 12
+
+You'll moved to create event page where need to fill out the data.
+
+| img 13
+
 ## Title
+The name of the event must be written into first text field.
+
+| img 14
+
+The length of name must be from 3 to 40 symbols and value can't consist illegal characters.
+
 ## Day
+For choose needed weekday for event choose the right variant from dropdown at the day field.
+
+| img 15
+
 ## Time
+For choose needed time for event choose the right variant from dropdown at the time field.
+
+| img 16
+
 ## Participants
+For choose a participants you need to click on the user from the list at right side.
+
+| img 17
+
+When user chosen, his avatar and name add to participants field. You have multiple choise to add a several participants.
+
+| img 18
+
+For removing some participant, you can click again to him in the users list or click to cross button which showed when cursor hovered to image across from participants field. 
+
+| img 19
+
 ## Submit creating event
+When you click submit button but not all data is filled in, you can see validation errors on the incorrect fields.
+
+| img 20
+
+When event name field is filled worng you could seen validation notification below the input.
+
+| img 21
+
+If event on this date and time is already exist, you'll seen the error message at top of the page, which you can close clicking by the cross button.
+
+| img 22
+
+
 ## Cancel creating event
