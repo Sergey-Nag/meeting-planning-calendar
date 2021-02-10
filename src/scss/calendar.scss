@@ -23,6 +23,7 @@
   }
 
   &__card {
+    cursor: grab;
     padding: 5px;
     height: 100%;
     background: $card-color;
@@ -82,8 +83,6 @@ td.put {
 }
 
 .card {
-  cursor: grab;
-
   &__title {
     color: $card-color--darken;
     font-weight: bold;

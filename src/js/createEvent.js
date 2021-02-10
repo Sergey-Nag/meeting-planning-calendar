@@ -117,7 +117,7 @@ function submitForm() {
 
   store.addEvent(data);
   showAlertFull(
-    `Event "${data.title}" has been created`, 2000,
+    `Event "${data.title}" was successfully created`, 2000,
     () => {
       window.location = 'index.html';
     },

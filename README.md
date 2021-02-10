@@ -20,7 +20,7 @@ The main view of the calendar page.
 At the top of the page located page title, select input for filter and button to create new event.
 Below, contains the calendar with 6 columns and 10 row where on the titles displayed weekdays and on the rows displayed working hours.
 
-| 1-calendar
+[calendar page](/doc-img/1-calendar.png)
 
 ## Event card
 The displayed data on the event card is event name and images list as participants.
@@ -119,5 +119,8 @@ If event on this date and time is already exist, you'll seen the error message a
 
 | img 22
 
+If no errors detected, after submitting form you'll seen successful message and be redirected to calendar page with updated events.
 
 ## Cancel creating event
+
+Clicking the cancel button just took you to the calendar page.
