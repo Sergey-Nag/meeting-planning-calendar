@@ -17,8 +17,9 @@
 
 ## Calendar
 The main view of the calendar page.
-At the top of the page located page title, select input for filter and button to create new event.
-Below, contains the calendar with 6 columns and 10 row where on the titles displayed weekdays and on the rows displayed working hours.
+
+At the top of the page located page title, dropdouwn input for filter and button to create new event.
+Below is the calendar with 6 columns and 10 row where on the titles displayed weekdays and on the rows displayed working hours.
 ![calendar page](/doc-img/1-calendar.png)
 
 ## Event card
@@ -30,7 +31,7 @@ The hovered card view:
 
 ![event-card-hover](/doc-img/3-event-card-hover.png)
 
-Over the hovered participan displayed his name:
+Over the hovered participant image displayed his name:
 
 ![event-card-participant-hover](/doc-img/4-event-card-participant-hover.png)
 
