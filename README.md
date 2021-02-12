@@ -5,7 +5,7 @@
  - [Calendar](#calendar)
     - [Event card](#event-card)
     - [Remove event](#remove-event)
-    - [Move event](#move-event)
+    - [Move events](#move-event)
     - [Filter events](#filter-events)
  - [Create event](#create-event)
     - [Title](#title)
@@ -43,7 +43,7 @@ Clicking by the cross button on the event card pops up the alert in which you mu
 After confirm, event will delete. For close alert or cancel you need to click the appropriate button or click around of alert:
 After that you'll seen result of your actions.
 
-## Move event
+## Move events
 That would to change event day and time you can drag the card to another free cell. At the start of dragging you'll seen blue dashed border on the free cell or red filled already booked cells, on which you won't puted the dragging card.
 
 ![dragging-card-allow-cell](/doc-img/7-dragging-card-allow-cell.png)
