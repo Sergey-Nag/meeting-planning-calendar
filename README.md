@@ -2,6 +2,7 @@
 
 [Go to the app](https://sergey-nag.github.io/meeting-planning-calendar/dist/)
 
+How to use:
  - [Calendar](#calendar)
     - [Event card](#event-card)
     - [Remove event](#remove-event)
@@ -14,6 +15,12 @@
     - [Participants](#participants)
     - [Submit creating event](#submit-creating-event)
     - [Cancel creating event](#cancel-creating-event)
+
+How to run locally:
+ - [Clone project](#clone-project)
+ - [Install dependencies](#install-dependencies)
+ - [Build ready app](#build-ready-app)
+ - [Run for development](#run-for-development)
 
 ## Calendar
 The main view of the calendar page.
@@ -125,3 +132,24 @@ If no errors detected, after submitting form you'll seen successful message and 
 ## Cancel creating event
 
 Clicking the cancel button just took you to the calendar page.
+
+
+### Clone project
+
+Clone project to local folder with this command
+```
+git clone https://github.com/Sergey-Nag/meeting-planning-calendar.git
+```
+
+### Install dependencies
+
+Inside the downloaded folder run command ``` npm install ``` and wait until all dependencies are loaded.
+
+### Build ready app
+
+
+
+### Run for development
+
+
+
