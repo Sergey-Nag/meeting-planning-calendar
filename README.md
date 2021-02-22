@@ -51,7 +51,7 @@ After confirm, event will delete. For close alert or cancel you need to click th
 After that you'll seen result of your actions.
 
 ## Move events
-That would to change event day and time you can drag the card to another free cell. At the start of dragging you'll seen blue dashed border on the free cell or red filled already booked cells, on which you won't puted the dragging card.
+That would to change event day and time you can drag the card to another free cell. At the start of dragging you'll seen blue dashed border on the free cell or red filled already booked cells, on which you won't put the dragging card.
 
 ![dragging-card-allow-cell](/doc-img/7-dragging-card-allow-cell.png)
 ![dragging-card-disallow-cell](/doc-img/8-dragging-card-disallow-cell.png)
@@ -137,19 +137,19 @@ Clicking the cancel button just took you to the calendar page.
 ### Clone project
 
 Clone project to local folder with this command
-```
+```shell
 git clone https://github.com/Sergey-Nag/meeting-planning-calendar.git
 ```
 
 ### Install dependencies
 
-Inside the downloaded folder run command ``` npm install ``` and wait until all dependencies are loaded.
+Inside the downloaded folder run the command ``` npm install ``` and wait until all dependencies are loaded.
 
 ### Build ready app
 
-
+For generate full compiled project use the command ``` npm run build ``` and wait until compilling is finished. After that full project will be placed in the **/dist** folder.
 
 ### Run for development
 
-
-
+For development run the command ``` npm run dev ```, then, after saving any file in this folder project will be recompiled. 
+Also, you can run command ``` npm run dev:serve ``` to run local server on 9000 port, and after saving any files page will be reloaded automatically with all changes.
