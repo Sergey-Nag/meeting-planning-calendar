@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.13.0",
     "babel-eslint": "^10.1.0",
     "ejs-loader": "^0.5.0",
     "eslint": "^7.2.0",
