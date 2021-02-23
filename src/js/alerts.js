@@ -1,4 +1,6 @@
-import { createAlertHTML, createAlertDangerTopHTML, createConfirmHTML } from './_htmlElements';
+import {
+  createAlertHTML, createAlertDangerTopHTML, createConfirmHTML, createAuthoriseConfirmHTML,
+} from './_htmlElements';
 
 let currentAlertWrapp = null;
 
@@ -58,6 +60,18 @@ function showAlertConfirm(text, callbackTrue, callbackFalse, callbackClose = nul
   }, true);
 }
 
+function showAuthoriseConfirm(optionsWithNames, callbackTrue) {
+  currentAlertWrapp = createWrappElement();
+  currentAlertWrapp.innerHTML = createAuthoriseConfirmHTML(optionsWithNames);
+
+  placeAlert();
+
+  document.getElementById('authorise-btn').addEventListener('click', () => {
+    const chosenUser = document.getElementById('auth-names').value;
+    callbackTrue(chosenUser);
+  });
+}
+
 export {
-  showAlertFull, showAlertAtTop, showAlertConfirm, removeAlert,
+  showAlertFull, showAlertAtTop, showAlertConfirm, showAuthoriseConfirm, removeAlert,
 };

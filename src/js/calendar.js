@@ -2,6 +2,7 @@ import { Tooltip } from 'bootstrap';
 import store from './localStorageApi';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './_data';
+import isUserAdmin from './userAccess';
 
 function createEventCard({ title, participants }) {
   const avatarImgs = participants
@@ -10,7 +11,7 @@ function createEventCard({ title, participants }) {
       return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
-  return createEventCardHTML(title, avatarImgs);
+  return createEventCardHTML(title, avatarImgs, isUserAdmin('Bob'));
 }
 
 function removeAllCards() {

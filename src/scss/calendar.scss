@@ -53,6 +53,11 @@
     }
   }
 
+  &.drag-disabled .calendar__card {
+    cursor: default;
+  }
+  
+
   &__btn {
     &_close {
       @extend %transition;
