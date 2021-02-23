@@ -41,4 +41,8 @@ const DATA = {
   ],
 };
 
+export function getUserInfo(name) {
+  return DATA.users.find((user) => user.name === name);
+}
+
 export default DATA;

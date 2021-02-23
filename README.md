@@ -16,7 +16,7 @@ How to use:
     - [Submit creating event](#submit-creating-event)
     - [Cancel creating event](#cancel-creating-event)
 
-How to run locally:
+How to launch project locally:
  - [Clone project](#clone-project)
  - [Install dependencies](#install-dependencies)
  - [Build ready app](#build-ready-app)

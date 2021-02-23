@@ -1,7 +1,8 @@
 import store from './localStorageApi';
 import placeAllEvents from './calendar';
+import DATA from './_data';
 
-const users = store.getAllUsers();
+const { users } = DATA;
 
 const optionUsersInput = document.getElementById('filterUsers');
 
