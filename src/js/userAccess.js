@@ -1,10 +1,12 @@
 import DATA, { getUserInfo } from './_data';
 import Admin from './Admin';
 import { showAuthoriseConfirm, removeAlert } from './alerts';
-import { getAuthorisedUser, authoriseUser } from './authByCookies';
-// const authorizedUsername = 'Alex';
 
-export default function isUserAdmin(name) {
+export const authUser = {
+  name: null,
+};
+
+export default function isUserAdmin(name = authUser.name) {
   return getUserInfo(name) instanceof Admin;
 }
 
@@ -14,13 +16,9 @@ function returnOptionsWidthNamesHTML() {
 
 showAuthoriseConfirm(returnOptionsWidthNamesHTML(), (chosenUser) => {
   if (isUserAdmin(chosenUser)) {
-    const createEventBtnWrapp = document.getElementById('create-event-btn-wrapp');
-
-    if (createEventBtnWrapp) createEventBtnWrapp.style.display = 'block';
+    document.body.classList.add('admin');
   }
-  console.log(getAuthorisedUser());
-  authoriseUser(chosenUser);
-  console.log(getAuthorisedUser());
 
+  authUser.name = chosenUser;
   removeAlert();
 });

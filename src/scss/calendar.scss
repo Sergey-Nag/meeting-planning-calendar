@@ -27,7 +27,6 @@
   }
 
   &__card {
-    cursor: grab;
     padding: 5px;
     height: 100%;
     background: $card-color;
@@ -53,14 +52,10 @@
     }
   }
 
-  &.drag-disabled .calendar__card {
-    cursor: default;
-  }
-  
-
   &__btn {
     &_close {
       @extend %transition;
+      display: none;
       opacity: 0;
       position: absolute;
       right: 5px;

@@ -140,30 +140,28 @@ function dragEnd(e) {
   hideAllPutCells(false);
 }
 
-if (isUserAdmin('Bob')) {
-  calendar.addEventListener('mousedown', (e) => {
-    const card = e.target.closest('.calendar__card');
-    const isDeleteButton = e.target.classList.contains('btn-close');
+calendar.addEventListener('mousedown', (e) => {
+  if (!isUserAdmin()) return;
 
-    if (isDeleteButton || !card || e.button !== 0) return;
+  const card = e.target.closest('.calendar__card');
+  const isDeleteButton = e.target.classList.contains('btn-close');
 
-    saveMousePosition(e);
-    dragStart(card);
-  });
+  if (isDeleteButton || !card || e.button !== 0) return;
 
-  document.addEventListener('mousemove', (e) => {
-    if (!dragData.element || !dragData.isDragAllow) return;
+  saveMousePosition(e);
+  dragStart(card);
+});
 
-    saveMousePosition(e);
-    dragMove(e);
-  });
+document.addEventListener('mousemove', (e) => {
+  if (!isUserAdmin() || !dragData.element || !dragData.isDragAllow) return;
 
-  document.addEventListener('mouseup', (e) => {
-    if (!dragData.element) return;
+  saveMousePosition(e);
+  dragMove(e);
+});
 
-    saveMousePosition(e);
-    dragEnd(e);
-  });
-} else {
-  calendar.classList.add('drag-disabled');
-}
+document.addEventListener('mouseup', (e) => {
+  if (!isUserAdmin() || !dragData.element) return;
+
+  saveMousePosition(e);
+  dragEnd(e);
+});
