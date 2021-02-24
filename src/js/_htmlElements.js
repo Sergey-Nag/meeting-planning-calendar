@@ -59,7 +59,7 @@ export function createUserHTML({ name, avatar, isChecked }) {
 }
 
 export function createAuthoriseConfirmHTML(optionsWithNames) {
-  return `<div class="alert bg-light">Please authorise <br>
+  return `<div class="alert bg-light" style="width: 300px">Please authorise <br>
     <select class="form-select mt-2" id="auth-names">${optionsWithNames}</select>
     <hr>
     <div class="row">
