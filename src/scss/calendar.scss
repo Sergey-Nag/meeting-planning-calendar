@@ -1,5 +1,9 @@
 @import "./variables";
 
+#create-event-btn-wrapp {
+  display: none;
+}
+
 .calendar {
   background-color: #fff;
 
@@ -23,7 +27,6 @@
   }
 
   &__card {
-    cursor: grab;
     padding: 5px;
     height: 100%;
     background: $card-color;
@@ -52,6 +55,7 @@
   &__btn {
     &_close {
       @extend %transition;
+      display: none;
       opacity: 0;
       position: absolute;
       right: 5px;

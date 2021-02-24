@@ -1,6 +1,7 @@
 import store from './localStorageApi';
 import placeAllEvents from './calendar';
 import { showAlertConfirm, removeAlert } from './alerts';
+import isUserAdmin from './userAccess';
 
 const calendar = document.getElementById('calendar');
 
@@ -140,6 +141,8 @@ function dragEnd(e) {
 }
 
 calendar.addEventListener('mousedown', (e) => {
+  if (!isUserAdmin()) return;
+
   const card = e.target.closest('.calendar__card');
   const isDeleteButton = e.target.classList.contains('btn-close');
 
@@ -150,14 +153,14 @@ calendar.addEventListener('mousedown', (e) => {
 });
 
 document.addEventListener('mousemove', (e) => {
-  if (!dragData.element || !dragData.isDragAllow) return;
+  if (!isUserAdmin() || !dragData.element || !dragData.isDragAllow) return;
 
   saveMousePosition(e);
   dragMove(e);
 });
 
 document.addEventListener('mouseup', (e) => {
-  if (!dragData.element) return;
+  if (!isUserAdmin() || !dragData.element) return;
 
   saveMousePosition(e);
   dragEnd(e);

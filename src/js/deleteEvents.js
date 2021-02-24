@@ -19,5 +19,5 @@ document.getElementById('calendar').addEventListener('click', (e) => {
       removeEvent(eventContainer.dataset);
       placeAllEvents();
       removeAlert();
-    }, removeAlert);
+    }, () => removeAlert());
 });

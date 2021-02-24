@@ -25,7 +25,7 @@ export function createEventCardHTML(title, avatarImgs) {
   return `<div class="card calendar__card d-flex justify-content-between">
   <div class="card__title"><span>${title}</span></div>
   <div class="card__avatars">${avatarImgs}</div>
-  <button type="button" class="btn-close calendar__btn_close" data-></button>
+  <button type="button" class="btn-close calendar__btn_close"></button>
 </div>`;
 }
 
@@ -54,6 +54,16 @@ export function createUserHTML({ name, avatar, isChecked }) {
       <div class="col-2 d-flex flex-column justify-content-center">
         <input class="form-check-input" type="checkbox" value="${name}" ${isChecked ? 'checked' : ''}>
       </div>
+    </div>
+  </div>`;
+}
+
+export function createAuthoriseConfirmHTML(optionsWithNames) {
+  return `<div class="alert bg-light" style="width: 300px">Please authorise <br>
+    <select class="form-select mt-2" id="auth-names">${optionsWithNames}</select>
+    <hr>
+    <div class="row">
+      <div class="col"><button id="authorise-btn" type="button" class="btn btn-success w-100">Confirm</button></div>
     </div>
   </div>`;
 }

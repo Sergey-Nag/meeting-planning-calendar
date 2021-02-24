@@ -1,3 +1,6 @@
+import User from './User';
+import Admin from './Admin';
+
 const DATA = {
   events: [
     {
@@ -14,31 +17,17 @@ const DATA = {
     },
   ],
   users: [
-    {
-      name: 'Alex',
-      avatar: 'boy_1.png',
-    },
-    {
-      name: 'Elizabeth',
-      avatar: 'girl_1.png',
-    },
-    {
-      name: 'Steve',
-      avatar: 'boy_2.png',
-    },
-    {
-      name: 'Ann',
-      avatar: 'girl_2.png',
-    },
-    {
-      name: 'Maria',
-      avatar: 'girl_3.png',
-    },
-    {
-      name: 'Bob',
-      avatar: 'boy_3.png',
-    },
+    new Admin('Alex', 'boy_1.png'),
+    new Admin('Elizabeth', 'girl_1.png'),
+    new User('Steve', 'boy_2.png'),
+    new User('Ann', 'girl_2.png'),
+    new User('Maria', 'girl_3.png'),
+    new User('Bob', 'boy_3.png'),
   ],
 };
+
+export function getUserInfo(name) {
+  return DATA.users.find((user) => user.name === name);
+}
 
 export default DATA;

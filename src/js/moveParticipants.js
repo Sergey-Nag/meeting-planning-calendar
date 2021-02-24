@@ -1,11 +1,11 @@
-import store from './localStorageApi';
+import DATA from './_data';
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
   createUserHTML,
 } from './_htmlElements';
 
-const usersList = store.getAllUsers()
+const usersList = DATA.users
   .map((user) => ({ ...user, ...{ isChecked: false } }));
 
 const participantsList = [];

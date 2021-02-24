@@ -27,14 +27,6 @@ class Storage {
     return this.getAllEvents().filter((el) => this.preFilter(el));
   }
 
-  getAllUsers() {
-    return JSON.parse(this.store.getItem('users'));
-  }
-
-  getUserInfo(name) {
-    return this.getAllUsers().find((user) => user.name === name);
-  }
-
   getEventByDayTime(day, time) {
     return this.getAllEvents()
       .find((event) => event.day === day && event.time === time);
@@ -71,7 +63,7 @@ class Storage {
 }
 
 function createStartData(store) {
-  if (!store.store.users) store.save('users', JSON.stringify(DATA.users));
+  if (store.store.users) store.store.removeItem('users');
 
   if (!store.store.events) store.save('events', JSON.stringify(DATA.events));
 }
