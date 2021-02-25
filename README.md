@@ -31,7 +31,7 @@ Below is the calendar with 6 columns and 10 row where on the titles displayed we
 ![calendar page](/doc-img/1-calendar.png)
 
 ## Authorise
-At first You need to authorise in app by choosing some persone in dropdown select. After, click to "Confirm" button to continue using the app.
+At first You need to authorise in app by choosing some persone in dropdown. After, click to "Confirm" button to continue using the app.
 
 ![authorise](/doc-img/1.1-authorise.png)
 
