@@ -133,6 +133,7 @@ If no errors detected, after submitting form you'll seen successful message and 
 
 Clicking the cancel button just took you to the calendar page.
 
+___
 
 ### Clone project
 
