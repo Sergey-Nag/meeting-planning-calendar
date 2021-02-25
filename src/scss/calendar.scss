@@ -1,5 +1,9 @@
 @import "./variables";
 
+select.form-select {
+  @extend %appearance;
+}
+
 #create-event-btn-wrapp {
   display: none;
 }
@@ -66,9 +70,6 @@
     }
   }
 
-  &__filter {
-    @extend %appearance;
-  }
 }
 
 td.put {
