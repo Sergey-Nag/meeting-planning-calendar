@@ -4,6 +4,7 @@
 
 How to use:
  - [Calendar](#calendar)
+    - [Authorise](#authorise)
     - [Event card](#event-card)
     - [Remove event](#remove-event)
     - [Move events](#move-event)
@@ -28,6 +29,14 @@ The main view of the calendar page.
 At the top of the page located page title, dropdouwn input for filter and button to create new event.
 Below is the calendar with 6 columns and 10 row where on the titles displayed weekdays and on the rows displayed working hours.
 ![calendar page](/doc-img/1-calendar.png)
+
+## Authorise
+At first You need to authorise in app by choosing some persone in dropdown select. After, click to "Confirm" button to continue using the app.
+
+![authorise](/doc-img/1.1-authorise.png)
+
+If You choose user width admin privelegies, You able to create, delete and edit event time by dragging. Ordinary users can only look and filter events by persons.
+P.S. Users, who have admin privelegies is first two in list: Alex and Elizabeth.
 
 ## Event card
 The displayed data on the event card is event name and images list as participants:
