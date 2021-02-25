@@ -36,6 +36,7 @@ At first You need to authorise in app by choosing some persone in dropdown selec
 ![authorise](/doc-img/1.1-authorise.png)
 
 If You choose user width admin privelegies, You able to create, delete and edit event time by dragging. Ordinary users can only look and filter events by persons.
+
 P.S. Users, who have admin privelegies is first two in list: Alex and Elizabeth.
 
 ## Event card
