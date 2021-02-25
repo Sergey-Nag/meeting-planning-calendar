@@ -37,9 +37,8 @@ At first You need to authorise in app by choosing some persone in dropdown. Afte
 
 If You choose user with admin privelegies, You able to create, delete and edit event time by dragging. Ordinary users can only look and filter events by persons.
 
-P.S. Users, who have admin privelegies is first two in list: Alex and Elizabeth.
-
-P.P.S. After creating an event You'll be redirected to calendar page where You need to athorise again. But in future it will be fixed.
+P.S. Users, who have admin privelegies is first two in list: Alex and Elizabeth.<br>
+<sup>P.P.S. After creating an event You'll be redirected to calendar page where You need to athorise again. But in future it will be fixed.</sup>
 
 ## Event card
 The displayed data on the event card is event name and images list as participants:
