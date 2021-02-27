@@ -1,6 +1,6 @@
 import store from './DatabaseApi';
 import placeAllEvents from './calendar';
-import { showAlertConfirm, removeAlert } from './alerts';
+import { showAlertConfirm, showPopup, removeAlert } from './alerts';
 import isUserAdmin from './userAccess';
 
 const calendar = document.getElementById('calendar');
@@ -77,8 +77,6 @@ function showCellForPut(elem) {
 
 async function changeEventTime(eventId, day, time) {
   const isUpdated = await store.updateEvent(eventId, day, time);
-
-  placeAllEvents();
   return isUpdated;
 }
 
@@ -108,15 +106,24 @@ function confirmChangeEvent({ day, time }) {
   dragData.isDragAllow = false;
   const allowDragCallback = () => { dragData.isDragAllow = true; };
 
-  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
-    changeEventTime(dragData.originalElement.dataset.id, day, time);
+  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`,
+    async () => {
+      const isUpdated = await changeEventTime(dragData.originalElement.dataset.id, day, time);
+      console.log(isUpdated);
+      if (!isUpdated) {
+        showPopup('danger', 'Event was successfully updated');
+        return;
+      }
 
-    removeAlert(allowDragCallback);
-  },
-  () => {
-    removeAlert(allowDragCallback);
-  },
-  allowDragCallback);
+      showPopup('success', 'Event was successfully updated');
+      placeAllEvents();
+
+      removeAlert(allowDragCallback);
+    },
+    () => {
+      removeAlert(allowDragCallback);
+    },
+    allowDragCallback);
 }
 
 function dragEnd(e) {

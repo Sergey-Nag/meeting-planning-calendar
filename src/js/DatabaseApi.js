@@ -71,10 +71,7 @@ class Storage {
     };
 
     const reqUpdate = await this.query('PUT', `/events/${eventId}`, JSON.stringify(data));
-
-    if (!reqUpdate.ok) return false;
-    console.log(reqUpdate);
-    return reqUpdate.data;
+    return reqUpdate.ok;
   }
 
   filterEvents(callback) {
