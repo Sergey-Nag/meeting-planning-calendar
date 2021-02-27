@@ -1,5 +1,7 @@
 import store from './DatabaseApi';
-import { showAlertConfirm, showAlertAtTop, removeAlert } from './alerts';
+import {
+  showAlertConfirm, showPopup, removeAlert,
+} from './alerts';
 import placeAllEvents from './calendar';
 
 async function removeEvent(id) {
@@ -21,9 +23,10 @@ document.getElementById('calendar').addEventListener('click', (e) => {
       removeAlert();
 
       if (!isEventRemoved) {
-        showAlertAtTop('Something wrong, <b>event wasn\'t deleted</b>, please try again');
+        showPopup('danger', '<i class="bi font-icon bi-trash-fill"></i> <b>Deleting Events error</b>, please try again');
       } else {
         placeAllEvents();
+        showPopup('success', '<i class="bi font-icon bi-trash"></i> Event successfully deleted');
       }
     }, () => removeAlert());
 });

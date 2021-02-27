@@ -2,7 +2,6 @@ import { Tooltip } from 'bootstrap';
 import store from './DatabaseApi';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './_data';
-import { showPopup } from './alerts';
 
 function createEventCard(id, { title, participants }) {
   const avatarImgs = participants
@@ -25,12 +24,7 @@ function activeUsersTooltips() {
 async function placeAllEvents() {
   const eventsArr = await store.getPreFilteredEvents();
 
-  if (!eventsArr) {
-    showPopup('danger', '<b>Loading Events error</b>, please try again');
-    return;
-  }
-
-  showPopup('success', 'Events successfully loaded');
+  if (!eventsArr) return false;
 
   removeAllCards();
 
@@ -44,6 +38,7 @@ async function placeAllEvents() {
   });
 
   activeUsersTooltips();
+  return true;
 }
 
 export default placeAllEvents;

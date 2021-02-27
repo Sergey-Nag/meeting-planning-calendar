@@ -109,13 +109,13 @@ function confirmChangeEvent({ day, time }) {
   showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`,
     async () => {
       const isUpdated = await changeEventTime(dragData.originalElement.dataset.id, day, time);
-      console.log(isUpdated);
+
       if (!isUpdated) {
-        showPopup('danger', 'Event was successfully updated');
+        showPopup('danger', '<i class="bi bi-cloud-slash-fill"></i> <b>Event wasn\'t updated</b>, try again');
         return;
       }
 
-      showPopup('success', 'Event was successfully updated');
+      showPopup('success', '<i class="bi bi-cloud-check"></i> Event was successfully updated');
       placeAllEvents();
 
       removeAlert(allowDragCallback);
