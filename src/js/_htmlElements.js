@@ -22,10 +22,10 @@ export function createConfirmHTML(text) {
 }
 
 export function createEventCardHTML(id, title, avatarImgs) {
-  return `<div class="card calendar__card d-flex justify-content-between">
+  return `<div class="card calendar__card d-flex justify-content-between" data-id="${id}">
   <div class="card__title"><span>${title}</span></div>
   <div class="card__avatars">${avatarImgs}</div>
-  <button type="button" class="btn-close calendar__btn_close" data-id="${id}"></button>
+  <button type="button" class="btn-close calendar__btn_close"></button>
 </div>`;
 }
 

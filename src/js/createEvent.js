@@ -128,4 +128,5 @@ async function submitForm() {
   submitCreateEventBtn.disabled = true;
 }
 
+store.getAllEvents();
 submitCreateEventBtn.addEventListener('click', submitForm);

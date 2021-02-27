@@ -1,11 +1,6 @@
-function dataStringToJSON(dataString) {
-  const replacedQuotes = dataString.replace(/'/g, '"');
-  return JSON.parse(replacedQuotes);
-}
-
 function formatData(dataArr) {
   return dataArr?.map(({ id, data }) => ({
-    id, data: dataStringToJSON(data),
+    id, data: JSON.parse(data),
   }));
 }
 
@@ -36,13 +31,12 @@ class Storage {
     } catch (e) {
       response = { ok: false, error: e };
     }
-
+    console.count('Query');
     return response;
   }
 
   async setEvent(eventObj) {
-    const stringifyEvent = JSON.stringify(eventObj).replace(/"/g, '\'');
-    const data = { data: stringifyEvent };
+    const data = { data: JSON.stringify(eventObj) };
 
     const reqSaveEvent = await this.query('POST', '/events', JSON.stringify(data));
     if (!reqSaveEvent.ok) return false;
@@ -63,22 +57,24 @@ class Storage {
     return this.events.filter(({ data }) => this.preFilter(data));
   }
 
-  async getEventByDayTime(day, time) {
-    const dataArr = await this.getAllEvents();
-    return dataArr?.find(({ data }) => data.day === day && data.time === time);
+  getEventByDayTime(day, time) {
+    return this.events.some(({ data }) => data.day === day && data.time === time);
   }
 
-  updateEvent({ find, changeData }) {
-    const eventToUpdIndex = this.getAllEvents().findIndex(find);
+  async updateEvent(eventId, day, time) {
+    const eventToUpdate = this.events.find(({ id }) => id === eventId).data;
+    eventToUpdate.day = day;
+    eventToUpdate.time = time;
 
-    const copyEvents = [...this.getAllEvents()];
-    const eventToUpd = copyEvents[eventToUpdIndex];
+    const data = {
+      data: JSON.stringify(eventToUpdate),
+    };
 
-    Object.keys(changeData).forEach((key) => {
-      eventToUpd[key] = changeData[key];
-    });
+    const reqUpdate = await this.query('PUT', `/events/${eventId}`, JSON.stringify(data));
 
-    this.save('events', JSON.stringify(copyEvents));
+    if (!reqUpdate.ok) return false;
+    console.log(reqUpdate);
+    return reqUpdate.data;
   }
 
   filterEvents(callback) {

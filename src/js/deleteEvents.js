@@ -12,11 +12,12 @@ document.getElementById('calendar').addEventListener('click', (e) => {
 
   if (!btn) return;
 
-  const eventTitle = btn.closest('.card').querySelector('.card__title').textContent;
+  const eventCard = btn.closest('.card');
+  const eventTitle = eventCard.querySelector('.card__title').textContent;
 
   showAlertConfirm(`Are you sure you want to delete "${eventTitle}" event?`,
     async () => {
-      const isEventRemoved = await removeEvent(btn.dataset.id);
+      const isEventRemoved = await removeEvent(eventCard.dataset.id);
       removeAlert();
 
       if (!isEventRemoved) {
