@@ -45,7 +45,7 @@ module.exports = {
       },
     ],
   },
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
