@@ -1,4 +1,4 @@
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import { showAlertFull, showAlertAtTop } from './alerts';
 
 const createForm = document.getElementById('create-event-form');
@@ -99,7 +99,7 @@ function isAllValuesAreValid(arr) {
   });
 }
 
-function submitForm() {
+async function submitForm() {
   const data = getDataFromInputs(createForm);
 
   const validatedValues = validateValues(data);
@@ -110,12 +110,15 @@ function submitForm() {
 
   if (!isAllValuesAreValid(validatedValues)) return;
 
-  if (store.getEventByDayTime(data.day, data.time)) {
+  if (await store.getEventByDayTime(data.day, data.time)) {
     showAlertAtTop(`Failed to create an event. Time slot at ${data.day} ${data.time} is already booked.`);
     return;
   }
 
-  store.addEvent(data);
+  const addEventResponse = await store.setEvent(data);
+
+  if (!addEventResponse) return;
+
   showAlertFull(
     `Event "${data.title}" was successfully created`, 2000,
     () => {
@@ -125,4 +128,5 @@ function submitForm() {
   submitCreateEventBtn.disabled = true;
 }
 
+store.getAllEvents();
 submitCreateEventBtn.addEventListener('click', submitForm);

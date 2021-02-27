@@ -1,12 +1,19 @@
-import DATA from './_data';
+import { showPopup } from './alerts';
+import loadUsers from './allUsers';
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
   createUserHTML,
 } from './_htmlElements';
 
-const usersList = DATA.users
-  .map((user) => ({ ...user, ...{ isChecked: false } }));
+let usersList = null;
+
+async function prepareUserslist() {
+  const users = await loadUsers();
+  if (!users) return false;
+
+  return users.map((user) => ({ ...user, ...{ isChecked: false } }));
+}
 
 const participantsList = [];
 
@@ -72,21 +79,33 @@ function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
   };
 }
 
-const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
-const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
+async function start() {
+  const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
+  const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
 
-usersReplaceHTML(returnUsersHTML());
-participantsReplaceHTML(returnParticipantsHTML());
+  usersList = await prepareUserslist();
 
-document.querySelector('.users__wrapp').addEventListener('click', usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML));
-document.querySelector('.participants').addEventListener('click', (e) => {
-  e.preventDefault();
-  const target = e.target.closest('.participant__btn-remove');
-  if (!target) return;
-
-  const nameToRemove = target.dataset.name;
-  removeParticipant(nameToRemove);
+  if (usersList) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Users successfully loaded');
+  else {
+    showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Users error</b>, please, try again');
+    return;
+  }
 
   usersReplaceHTML(returnUsersHTML());
   participantsReplaceHTML(returnParticipantsHTML());
-});
+
+  document.querySelector('.users__wrapp').addEventListener('click', usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML));
+  document.querySelector('.participants').addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = e.target.closest('.participant__btn-remove');
+    if (!target) return;
+
+    const nameToRemove = target.dataset.name;
+    removeParticipant(nameToRemove);
+
+    usersReplaceHTML(returnUsersHTML());
+    participantsReplaceHTML(returnParticipantsHTML());
+  });
+}
+
+start();

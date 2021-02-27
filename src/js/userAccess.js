@@ -1,24 +1,33 @@
-import DATA, { getUserInfo } from './_data';
 import Admin from './Admin';
-import { showAuthoriseConfirm, removeAlert } from './alerts';
+import { showPopup } from './alerts';
+// import store from './DatabaseApi';
+import loadUsers, { getUserInfo } from './allUsers';
 
+let users = null;
 export const authUser = {
   name: null,
 };
+
+async function getUsers() {
+  users = await loadUsers();
+
+  if (users) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Users successfully loaded');
+  else showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Users error</b>, please, try again');
+
+  return users;
+}
 
 export default function isUserAdmin(name = authUser.name) {
   return getUserInfo(name) instanceof Admin;
 }
 
-function returnOptionsWidthNamesHTML() {
-  return DATA.users.map(({ name }) => `<option>${name}</option>`).join('');
+export async function returnOptionsWidthNamesHTML() {
+  users = await getUsers();
+  if (!users) return false;
+
+  return users.map(({ name }) => `<option>${name}</option>`).join('');
 }
 
-showAuthoriseConfirm(returnOptionsWidthNamesHTML(), (chosenUser) => {
-  if (isUserAdmin(chosenUser)) {
-    document.body.classList.add('admin');
-  }
-
-  authUser.name = chosenUser;
-  removeAlert();
-});
+export function setNewUser(name) {
+  authUser.name = name;
+}

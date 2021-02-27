@@ -7,7 +7,7 @@ export function createAlertDangerTopHTML(text) {
     <div class="row">
       <div class="col-11">${text}</div>
       <div class="col-1">
-        <butto id="danger-alert-close" type="button" class="btn-close btn-close-white float-right" aria-label="Close"></button>
+        <button id="danger-alert-close" type="button" class="btn-close btn-close-white float-right" aria-label="Close"></button>
       </div>
     </div>
   </div>`;
@@ -21,8 +21,8 @@ export function createConfirmHTML(text) {
 </div>`;
 }
 
-export function createEventCardHTML(title, avatarImgs) {
-  return `<div class="card calendar__card d-flex justify-content-between">
+export function createEventCardHTML(id, title, avatarImgs) {
+  return `<div class="card calendar__card d-flex justify-content-between" data-id="${id}">
   <div class="card__title"><span>${title}</span></div>
   <div class="card__avatars">${avatarImgs}</div>
   <button type="button" class="btn-close calendar__btn_close"></button>
@@ -65,5 +65,11 @@ export function createAuthoriseConfirmHTML(optionsWithNames) {
     <div class="row">
       <div class="col"><button id="authorise-btn" type="button" class="btn btn-success w-100">Confirm</button></div>
     </div>
+  </div>`;
+}
+
+export function createPopUpHTML(theme, title) {
+  return `<div class="popup row alert alert-${theme} mb-3">
+      <span class="popup__title">${title}</span>
   </div>`;
 }

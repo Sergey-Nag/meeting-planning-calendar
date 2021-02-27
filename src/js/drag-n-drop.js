@@ -1,6 +1,6 @@
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import placeAllEvents from './calendar';
-import { showAlertConfirm, removeAlert } from './alerts';
+import { showAlertConfirm, showPopup, removeAlert } from './alerts';
 import isUserAdmin from './userAccess';
 
 const calendar = document.getElementById('calendar');
@@ -59,7 +59,7 @@ function hideAllPutCells(elem) {
 }
 
 function isEventBooked({ day, time }) {
-  return !!store.getEventByDayTime(day, time);
+  return store.getEventByDayTime(day, time);
 }
 
 function showCellForPut(elem) {
@@ -75,15 +75,9 @@ function showCellForPut(elem) {
   if (!elem.classList.contains('put')) putCell.className = cellClass;
 }
 
-function changeEventTime(day, time) {
-  const { day: oldDay, time: oldTime } = dragData.originalElement.parentNode.dataset;
-
-  store.updateEvent({
-    find: (el) => el.day === oldDay && el.time === oldTime,
-    changeData: { day, time },
-  });
-
-  placeAllEvents();
+async function changeEventTime(eventId, day, time) {
+  const isUpdated = await store.updateEvent(eventId, day, time);
+  return isUpdated;
 }
 
 function dragStart(card) {
@@ -112,15 +106,24 @@ function confirmChangeEvent({ day, time }) {
   dragData.isDragAllow = false;
   const allowDragCallback = () => { dragData.isDragAllow = true; };
 
-  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`, () => {
-    changeEventTime(day, time);
+  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`,
+    async () => {
+      const isUpdated = await changeEventTime(dragData.originalElement.dataset.id, day, time);
 
-    removeAlert(allowDragCallback);
-  },
-  () => {
-    removeAlert(allowDragCallback);
-  },
-  allowDragCallback);
+      if (!isUpdated) {
+        showPopup('danger', '<i class="bi bi-cloud-slash-fill"></i> <b>Event wasn\'t updated</b>, try again');
+        return;
+      }
+
+      showPopup('success', '<i class="bi bi-cloud-check"></i> Event was successfully updated');
+      placeAllEvents();
+
+      removeAlert(allowDragCallback);
+    },
+    () => {
+      removeAlert(allowDragCallback);
+    },
+    allowDragCallback);
 }
 
 function dragEnd(e) {

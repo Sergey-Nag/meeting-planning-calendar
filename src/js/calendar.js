@@ -1,17 +1,16 @@
 import { Tooltip } from 'bootstrap';
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import { createEventCardHTML } from './_htmlElements';
-import { getUserInfo } from './_data';
-// import isUserAdmin from './userAccess';
+import { getUserInfo } from './allUsers';
 
-function createEventCard({ title, participants }) {
+function createEventCard(id, { title, participants }) {
   const avatarImgs = participants
     .map((name) => {
       const { avatar } = getUserInfo(name);
       return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
-  return createEventCardHTML(title, avatarImgs);
+  return createEventCardHTML(id, title, avatarImgs);
 }
 
 function removeAllCards() {
@@ -22,23 +21,24 @@ function activeUsersTooltips() {
   document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 }
 
-function placeAllWEvents() {
-  const eventsArr = store.getPreFilteredEvents();
+async function placeAllEvents() {
+  const eventsArr = await store.getPreFilteredEvents();
+
+  if (!eventsArr) return false;
 
   removeAllCards();
 
-  eventsArr.forEach((event) => {
-    const card = createEventCard(event);
+  eventsArr.forEach(({ id, data }) => {
+    const card = createEventCard(id, data);
 
-    const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
-    const ceil = document.querySelector(ceilSelector);
+    const cellSelector = `td[data-day="${data.day}"][data-time="${data.time}"]`;
+    const cell = document.querySelector(cellSelector);
 
-    ceil.innerHTML = card;
+    cell.innerHTML = card;
   });
 
   activeUsersTooltips();
+  return true;
 }
 
-placeAllWEvents();
-
-export default placeAllWEvents;
+export default placeAllEvents;
