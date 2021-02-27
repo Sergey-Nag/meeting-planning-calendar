@@ -4,14 +4,14 @@ import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './_data';
 import { showAlertAtTop } from './alerts';
 
-function createEventCard({ title, participants }) {
+function createEventCard(id, { title, participants }) {
   const avatarImgs = participants
     .map((name) => {
       const { avatar } = getUserInfo(name);
       return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
     }).join('');
 
-  return createEventCardHTML(title, avatarImgs);
+  return createEventCardHTML(id, title, avatarImgs);
 }
 
 function removeAllCards() {
@@ -32,10 +32,10 @@ async function placeAllEvents() {
 
   removeAllCards();
 
-  eventsArr.forEach(({ data: event }) => {
-    const card = createEventCard(event);
+  eventsArr.forEach(({ id, data }) => {
+    const card = createEventCard(id, data);
 
-    const cellSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
+    const cellSelector = `td[data-day="${data.day}"][data-time="${data.time}"]`;
     const cell = document.querySelector(cellSelector);
 
     cell.innerHTML = card;

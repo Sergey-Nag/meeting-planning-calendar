@@ -20,13 +20,22 @@ class Storage {
   }
 
   async query(method, path, body = null) {
-    const response = await fetch(this.URL + path, {
-      method,
-      body,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    let response = null;
+
+    try {
+      const request = await fetch(this.URL + path, {
+        method,
+        body,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = method === 'DELETE' ? null : await request.json();
+      response = { ok: request.ok, data };
+    } catch (e) {
+      response = { ok: false, error: e };
+    }
 
     return response;
   }
@@ -35,30 +44,17 @@ class Storage {
     const stringifyEvent = JSON.stringify(eventObj).replace(/"/g, '\'');
     const data = { data: stringifyEvent };
 
-    let response = null;
-    try {
-      const reqSaveEvent = await this.query('POST', '/events', JSON.stringify(data));
-      if (!reqSaveEvent.ok) throw new Error();
+    const reqSaveEvent = await this.query('POST', '/events', JSON.stringify(data));
+    if (!reqSaveEvent.ok) return false;
 
-      response = await reqSaveEvent;
-    } catch (error) {
-      return false;
-    }
-    return response;
+    return reqSaveEvent.data;
   }
 
   async getAllEvents() {
-    let response = null;
-    try {
-      const reqUsers = await this.query('GET', '/events');
-      if (!reqUsers.ok) throw new Error();
+    const reqEvents = await this.query('GET', '/events');
+    if (!reqEvents.ok) return false;
 
-      response = await reqUsers.json();
-    } catch (error) {
-      return false;
-    }
-
-    this.events = await formatData(response);
+    this.events = reqEvents.data === null ? [] : await formatData(reqEvents.data);
     return this.events;
   }
 
@@ -69,7 +65,7 @@ class Storage {
 
   async getEventByDayTime(day, time) {
     const dataArr = await this.getAllEvents();
-    return dataArr.find(({ data }) => data.day === day && data.time === time);
+    return dataArr?.find(({ data }) => data.day === day && data.time === time);
   }
 
   updateEvent({ find, changeData }) {
@@ -90,15 +86,9 @@ class Storage {
       .filter((el) => callback(el));
   }
 
-  removeEvent(callback) {
-    const events = this.getAllEvents();
-    const removeIndex = events.findIndex((el) => callback(el));
-
-    if (removeIndex === -1) return;
-
-    events.splice(removeIndex, 1);
-
-    this.save('events', JSON.stringify(events));
+  async removeEvent(eventId) {
+    const reqRemove = await this.query('DELETE', `/events/${eventId}`);
+    return reqRemove.ok;
   }
 }
 

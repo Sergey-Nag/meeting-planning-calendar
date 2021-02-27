@@ -117,7 +117,7 @@ async function submitForm() {
 
   const addEventResponse = await store.setEvent(data);
 
-  if (!addEventResponse.ok) return;
+  if (!addEventResponse) return;
 
   showAlertFull(
     `Event "${data.title}" was successfully created`, 2000,

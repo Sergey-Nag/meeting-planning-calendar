@@ -21,11 +21,11 @@ export function createConfirmHTML(text) {
 </div>`;
 }
 
-export function createEventCardHTML(title, avatarImgs) {
+export function createEventCardHTML(id, title, avatarImgs) {
   return `<div class="card calendar__card d-flex justify-content-between">
   <div class="card__title"><span>${title}</span></div>
   <div class="card__avatars">${avatarImgs}</div>
-  <button type="button" class="btn-close calendar__btn_close"></button>
+  <button type="button" class="btn-close calendar__btn_close" data-id="${id}"></button>
 </div>`;
 }
 
