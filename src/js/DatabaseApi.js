@@ -31,7 +31,7 @@ class Storage {
     return response;
   }
 
-  async addEvent(eventObj) {
+  async setEvent(eventObj) {
     const stringifyEvent = JSON.stringify(eventObj).replace(/"/g, '\'');
     const data = { data: stringifyEvent };
 
@@ -57,13 +57,14 @@ class Storage {
     } catch (error) {
       return false;
     }
-    this.events = formatData(response);
+
+    this.events = await formatData(response);
     return this.events;
   }
 
   async getPreFilteredEvents() {
     if (!this.preFilter) return this.getAllEvents();
-    return this.getAllEvents().filter((el) => this.preFilter(el));
+    return this.events.filter(({ data }) => this.preFilter(data));
   }
 
   async getEventByDayTime(day, time) {

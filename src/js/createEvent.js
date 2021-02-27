@@ -115,7 +115,7 @@ async function submitForm() {
     return;
   }
 
-  const addEventResponse = await store.addEvent(data);
+  const addEventResponse = await store.setEvent(data);
 
   if (!addEventResponse.ok) return;
 
