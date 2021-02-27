@@ -1,8 +1,8 @@
 import { Tooltip } from 'bootstrap';
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './_data';
-// import isUserAdmin from './userAccess';
+import { showAlertAtTop } from './alerts';
 
 function createEventCard({ title, participants }) {
   const avatarImgs = participants
@@ -22,23 +22,26 @@ function activeUsersTooltips() {
   document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
 }
 
-function placeAllWEvents() {
-  const eventsArr = store.getPreFilteredEvents();
+async function placeAllEvents() {
+  const eventsArr = await store.getPreFilteredEvents();
+
+  if (!eventsArr) {
+    showAlertAtTop('Loading error, please try again');
+    return;
+  }
 
   removeAllCards();
 
-  eventsArr.forEach((event) => {
+  eventsArr.forEach(({ data: event }) => {
     const card = createEventCard(event);
 
-    const ceilSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
-    const ceil = document.querySelector(ceilSelector);
+    const cellSelector = `td[data-day="${event.day}"][data-time="${event.time}"]`;
+    const cell = document.querySelector(cellSelector);
 
-    ceil.innerHTML = card;
+    cell.innerHTML = card;
   });
 
   activeUsersTooltips();
 }
 
-placeAllWEvents();
-
-export default placeAllWEvents;
+export default placeAllEvents;

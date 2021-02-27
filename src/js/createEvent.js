@@ -1,4 +1,4 @@
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import { showAlertFull, showAlertAtTop } from './alerts';
 
 const createForm = document.getElementById('create-event-form');

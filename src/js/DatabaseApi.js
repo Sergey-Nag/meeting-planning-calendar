@@ -1,13 +1,31 @@
-import DATA from './_data';
+function dataStringToJSON(dataString) {
+  const replacedQuotes = dataString.replace(/'/g, '"');
+  return JSON.parse(replacedQuotes);
+}
+
+function formatData(dataArr) {
+  return dataArr?.map(({ id, data }) => ({
+    id, data: dataStringToJSON(data),
+  }));
+}
 
 class Storage {
+  SYSTEM = 'sergey_nagorniy';
+
+  URL = `http://158.101.166.74:8080/api/data/${this.SYSTEM}`;
+
   constructor() {
     this.store = window.localStorage;
     this.preFilter = null;
   }
 
-  save(key, value) {
-    this.store.setItem(key, value);
+  async query(method, path, body = null) {
+    const response = await fetch(this.URL + path, {
+      method,
+      body,
+    });
+
+    return response;
   }
 
   addEvent(eventObj) {
@@ -18,11 +36,20 @@ class Storage {
     this.save('events', JSON.stringify(events));
   }
 
-  getAllEvents() {
-    return JSON.parse(this.store.getItem('events'));
+  async getAllEvents() {
+    let response = null;
+    try {
+      const reqUsers = await this.query('GET', '/events');
+      if (!reqUsers.ok) throw new Error();
+
+      response = await reqUsers.json();
+    } catch (error) {
+      return false;
+    }
+    return formatData(response);
   }
 
-  getPreFilteredEvents() {
+  async getPreFilteredEvents() {
     if (!this.preFilter) return this.getAllEvents();
     return this.getAllEvents().filter((el) => this.preFilter(el));
   }
@@ -62,13 +89,6 @@ class Storage {
   }
 }
 
-function createStartData(store) {
-  if (store.store.users) store.store.removeItem('users');
-
-  if (!store.store.events) store.save('events', JSON.stringify(DATA.events));
-}
-
 const store = new Storage();
-createStartData(store);
 
 export default store;

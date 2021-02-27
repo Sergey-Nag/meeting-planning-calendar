@@ -1,4 +1,4 @@
-import store from './localStorageApi';
+import store from './DatabaseApi';
 import { showAlertConfirm, removeAlert } from './alerts';
 import placeAllEvents from './calendar';
 
