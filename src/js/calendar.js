@@ -1,7 +1,7 @@
 import { Tooltip } from 'bootstrap';
 import store from './DatabaseApi';
 import { createEventCardHTML } from './_htmlElements';
-import { getUserInfo } from './_data';
+import { getUserInfo } from './allUsers';
 
 function createEventCard(id, { title, participants }) {
   const avatarImgs = participants

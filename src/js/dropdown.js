@@ -1,17 +1,18 @@
 import store from './DatabaseApi';
 import placeAllEvents from './calendar';
-import DATA from './_data';
-
-const { users } = DATA;
+import loadUsers from './allUsers';
 
 const optionUsersInput = document.getElementById('filterUsers');
 
-export function createOptionsWithNamesHTML() {
-  return users.map(({ name }) => `<option>${name}</option>`).join('');
+export async function createOptionsWithNamesHTML() {
+  const usrs = await loadUsers();
+  if (!usrs) return false;
+
+  return usrs.map(({ name }) => `<option>${name}</option>`).join('');
 }
 
-export default function placeNamesIntoSelect() {
-  const usersOptionsItemsHTML = createOptionsWithNamesHTML();
+export default async function placeNamesIntoSelect() {
+  const usersOptionsItemsHTML = await createOptionsWithNamesHTML();
 
   optionUsersInput.innerHTML = `<option value selected>All members</option>${usersOptionsItemsHTML}`;
 }

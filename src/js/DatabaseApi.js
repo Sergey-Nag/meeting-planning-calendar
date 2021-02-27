@@ -31,7 +31,7 @@ class Storage {
     } catch (e) {
       response = { ok: false, error: e };
     }
-    console.count('Query');
+
     return response;
   }
 
@@ -50,6 +50,13 @@ class Storage {
 
     this.events = reqEvents.data === null ? [] : await formatData(reqEvents.data);
     return this.events;
+  }
+
+  async getAllUsers() {
+    const reqUsers = await this.query('GET', '/users');
+    if (!reqUsers.ok) return false;
+
+    return reqUsers.data;
   }
 
   async getPreFilteredEvents() {

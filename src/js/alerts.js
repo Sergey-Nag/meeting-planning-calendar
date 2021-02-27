@@ -67,9 +67,9 @@ function showAlertConfirm(text, callbackTrue, callbackFalse, callbackClose = nul
   }, true);
 }
 
-function showAuthoriseConfirm(optionsWithNames, callbackTrue) {
+async function showAuthoriseConfirm(optionsWithNames, callbackTrue) {
   currentAlertWrapp = createWrappElement();
-  currentAlertWrapp.innerHTML = createAuthoriseConfirmHTML(optionsWithNames);
+  currentAlertWrapp.innerHTML = createAuthoriseConfirmHTML(await optionsWithNames);
 
   placeAlert(currentAlertWrapp);
 
@@ -97,10 +97,8 @@ function stopRemovingPopups() {
 }
 
 function removeItems() {
-  console.log(removePopupsInterval);
   if (removePopupsInterval !== null) return;
 
-  let c = 0;
   removePopupsInterval = setInterval(() => {
     const index = popupsArr.findIndex(({ created }) => created < Date.now() - 3000);
 
@@ -110,7 +108,6 @@ function removeItems() {
     }
 
     if (popupsArr.length === 0) stopRemovingPopups();
-    console.log(c += 1);
   }, 3000);
 }
 
