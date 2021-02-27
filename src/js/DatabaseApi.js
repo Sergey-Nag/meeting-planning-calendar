@@ -31,7 +31,7 @@ class Storage {
     } catch (e) {
       response = { ok: false, error: e };
     }
-
+    console.log(response);
     return response;
   }
 

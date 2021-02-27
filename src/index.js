@@ -8,14 +8,14 @@ import isUserAdmin, { returnOptionsWidthNamesHTML, setNewUser } from './js/userA
 import { showAuthoriseConfirm, showPopup, removeAlert } from './js/alerts';
 import placeAllEvents from './js/calendar';
 
-showAuthoriseConfirm(returnOptionsWidthNamesHTML(), (chosenUser) => {
+showAuthoriseConfirm(returnOptionsWidthNamesHTML(), async (chosenUser) => {
   if (isUserAdmin(chosenUser)) {
     document.body.classList.add('admin');
   }
 
   setNewUser(chosenUser);
   removeAlert();
-  const isPlaced = placeAllEvents();
+  const isPlaced = await placeAllEvents();
 
   if (isPlaced) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Events successfully loaded');
   else showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Events error</b>, please, try again');
