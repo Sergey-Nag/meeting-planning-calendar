@@ -13,6 +13,9 @@ function returnCreatedUsers(id, { name, avatar, isAdmin }) {
 export default async function loadUsers() {
   if (data.users.length === 0) {
     const users = await store.getAllUsers();
+
+    if (!users) return false;
+
     data.users = users
       .map(({ id, data: D }) => returnCreatedUsers(id, JSON.parse(D)));
   }
