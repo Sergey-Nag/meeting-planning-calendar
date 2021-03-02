@@ -1,5 +1,7 @@
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
 import { showAlertFull, showAlertAtTop } from './alerts';
+
+const store = Storage.getInstance();
 
 const createForm = document.getElementById('create-event-form');
 const submitCreateEventBtn = document.getElementById('create-event-submit');

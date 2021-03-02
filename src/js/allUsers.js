@@ -1,6 +1,8 @@
 import User from './User';
 import Admin from './Admin';
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
+
+const store = Storage.getInstance();
 
 export const data = {
   users: [],

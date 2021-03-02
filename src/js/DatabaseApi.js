@@ -9,6 +9,14 @@ class Storage {
 
   URL = `http://158.101.166.74:8080/api/data/${this.SYSTEM}`;
 
+  static instance = null;
+
+  static getInstance() {
+    Storage.instance = Storage.instance ?? new Storage();
+
+    return Storage.instance;
+  }
+
   constructor() {
     this.events = null;
     this.preFilter = null;
@@ -92,6 +100,4 @@ class Storage {
   }
 }
 
-const store = new Storage();
-
-export default store;
+export default Storage;

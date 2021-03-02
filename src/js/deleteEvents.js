@@ -1,8 +1,12 @@
-import store from './DatabaseApi';
-import {
-  showAlertConfirm, showPopup, removeAlert,
-} from './alerts';
+import Storage from './DatabaseApi';
 import placeAllEvents from './calendar';
+import {
+  showAlertConfirm,
+  showPopup,
+  removeAlert,
+} from './alerts';
+
+const store = Storage.getInstance();
 
 async function removeEvent(id) {
   const isDone = await store.removeEvent(id);

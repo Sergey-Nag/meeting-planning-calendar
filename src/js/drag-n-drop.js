@@ -1,7 +1,9 @@
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
 import placeAllEvents from './calendar';
 import { showAlertConfirm, showPopup, removeAlert } from './alerts';
 import isUserAdmin from './userAccess';
+
+const store = Storage.getInstance();
 
 const calendar = document.getElementById('calendar');
 

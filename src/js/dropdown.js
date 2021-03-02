@@ -1,6 +1,8 @@
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
 import placeAllEvents from './calendar';
 import loadUsers from './allUsers';
+
+const store = Storage.getInstance();
 
 const optionUsersInput = document.getElementById('filterUsers');
 

@@ -1,6 +1,5 @@
 import Admin from './Admin';
 import { showPopup } from './alerts';
-// import store from './DatabaseApi';
 import loadUsers, { getUserInfo } from './allUsers';
 
 let users = null;
