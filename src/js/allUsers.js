@@ -8,7 +8,7 @@ export const data = {
   users: [],
 };
 
-function returnCreatedUsers(id, { name, avatar, isAdmin }) {
+function returnCreatedUser(id, { name, avatar, isAdmin }) {
   return isAdmin ? new Admin(id, name, avatar) : new User(id, name, avatar);
 }
 
@@ -19,7 +19,7 @@ export default async function loadUsers() {
     if (!users) return false;
 
     data.users = users
-      .map(({ id, data: D }) => returnCreatedUsers(id, JSON.parse(D)));
+      .map(({ id, data: D }) => returnCreatedUser(id, JSON.parse(D)));
   }
 
   return Promise.resolve(data.users);
