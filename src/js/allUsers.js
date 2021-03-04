@@ -1,8 +1,10 @@
 import User from './User';
 import Admin from './Admin';
 import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
 
-const store = Storage.getInstance();
+const storageInstance = Storage.getInstance();
+const store = new NotifyResponse(storageInstance);
 
 export const data = {
   users: [],
@@ -22,7 +24,7 @@ export default async function loadUsers() {
       .map(({ id, data: D }) => returnCreatedUser(id, JSON.parse(D)));
   }
 
-  return Promise.resolve(data.users);
+  return data.users;
 }
 
 export function getUserInfo(name) {

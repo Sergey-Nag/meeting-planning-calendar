@@ -3,11 +3,13 @@
   "extends": ["airbnb/base"],
   "rules": {
     "no-console":0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "max-classes-per-file": ["error", 3]
   },
   "globals": {
     "document": true,
     "window": true,
     "fetch": true
-  }
+  },
+
 }

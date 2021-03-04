@@ -1,9 +1,11 @@
 import { Tooltip } from 'bootstrap';
 import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './allUsers';
 
-const store = Storage.getInstance();
+const storageInstance = Storage.getInstance();
+const store = new NotifyResponse(storageInstance);
 
 function createEventCard(id, { title, participants }) {
   const avatarImgs = participants

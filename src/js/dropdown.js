@@ -19,6 +19,7 @@ export default async function placeNamesIntoSelect() {
   optionUsersInput.innerHTML = `<option value selected>All members</option>${usersOptionsItemsHTML}`;
 }
 
+// eslint-disable-next-line no-unused-vars
 function changeHandle() {
   const { value } = this;
 
@@ -29,4 +30,4 @@ function changeHandle() {
 }
 
 optionUsersInput.addEventListener('change', changeHandle);
-placeNamesIntoSelect();
+// placeNamesIntoSelect();

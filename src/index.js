@@ -1,12 +1,12 @@
 import '@babel/polyfill';
 import './base-import';
-import './js/dropdown';
 import './js/deleteEvents';
 import './js/drag-n-drop';
 
 import isUserAdmin, { returnOptionsWidthNamesHTML, setNewUser } from './js/userAccess';
-import { showAuthoriseConfirm, showPopup, removeAlert } from './js/alerts';
+import { showAuthoriseConfirm, removeAlert } from './js/alerts';
 import placeAllEvents from './js/calendar';
+import placeNamesIntoSelect from './js/dropdown';
 
 showAuthoriseConfirm(returnOptionsWidthNamesHTML(), async (chosenUser) => {
   if (isUserAdmin(chosenUser)) {
@@ -15,8 +15,6 @@ showAuthoriseConfirm(returnOptionsWidthNamesHTML(), async (chosenUser) => {
 
   setNewUser(chosenUser);
   removeAlert();
-  const isPlaced = await placeAllEvents();
-
-  if (isPlaced) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Events successfully loaded');
-  else showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Events error</b>, please, try again');
+  await placeAllEvents();
+  placeNamesIntoSelect();
 });
