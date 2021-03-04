@@ -66,7 +66,6 @@ class Storage {
   }
 
   getEventByDayTime(day, time) {
-    console.log(this.events);
     return this.events.some(({ data }) => data.day === day && data.time === time);
   }
 

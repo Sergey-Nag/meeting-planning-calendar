@@ -37,9 +37,10 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
   async getPreFilteredEvents() {
     let events = null;
-
     try {
       events = await super.getAllEvents();
+
+      if (typeof this.storage.preFilter === 'function') return events;
 
       if (events.length === 0) showPopup('warning', '<i class="bi font-icon bi-cloud-check"></i> Not enough events to display');
       else if (events) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Events successfully loaded');
