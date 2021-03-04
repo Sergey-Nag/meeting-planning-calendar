@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { showPopup } from './alerts';
 import loadUsers from './allUsers';
 import {
@@ -85,11 +86,7 @@ async function start() {
 
   usersList = await prepareUserslist();
 
-  if (usersList) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Users successfully loaded');
-  else {
-    showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Users error</b>, please, try again');
-    return;
-  }
+  if (!usersList) return;
 
   usersReplaceHTML(returnUsersHTML());
   participantsReplaceHTML(returnParticipantsHTML());

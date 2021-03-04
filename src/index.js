@@ -13,8 +13,8 @@ showAuthoriseConfirm(returnOptionsWidthNamesHTML(), async (chosenUser) => {
     document.body.classList.add('admin');
   }
 
+  placeNamesIntoSelect();
   setNewUser(chosenUser);
   removeAlert();
   await placeAllEvents();
-  placeNamesIntoSelect();
 });
