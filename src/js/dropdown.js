@@ -1,5 +1,4 @@
 import Storage from './DatabaseApi';
-import placeAllEvents from './calendar';
 import EventEmmiter from './EventEmitter';
 
 const events = EventEmmiter.getInstance();
@@ -24,7 +23,7 @@ function changeHandle() {
   if (value !== '') store.preFilter = ({ participants }) => participants.includes(value);
   else store.preFilter = null;
 
-  placeAllEvents();
+  events.emit('update-events');
 }
 
 optionUsersInput.addEventListener('change', changeHandle);

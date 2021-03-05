@@ -1,5 +1,6 @@
 import '@babel/polyfill';
 import './base-import';
+import './js/calendar';
 import './js/deleteEvents';
 import './js/drag-n-drop';
 import './js/dropdown';
@@ -17,7 +18,6 @@ function openAuthorization(users) {
       document.body.classList.add('admin');
     }
 
-    // placeNamesIntoSelect();
     setNewUser(chosenUser);
     removeAlert();
 

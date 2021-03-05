@@ -69,4 +69,18 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
     return true;
   }
+
+  async removeEvent(id) {
+    try {
+      const deleteQuery = await this.storage.removeEvent(id);
+
+      if (deleteQuery) showPopup('success', '<i class="bi font-icon bi-trash"></i> Event successfully deleted');
+      else throw new Error();
+    } catch (e) {
+      showPopup('danger', '<i class="bi font-icon bi-trash-fill"></i> <b>Deleting Events error</b>, please try again');
+      return false;
+    }
+
+    return true;
+  }
 }
