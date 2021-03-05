@@ -7,16 +7,6 @@ class NotifierQueryStorage extends Storage {
 
     this.storage = storage;
   }
-
-  async getAllUsers() {
-    const users = await this.storage.getAllUsers();
-    return users;
-  }
-
-  async getPreFilteredEvents() {
-    const events = await this.storage.getAllEvents();
-    return events;
-  }
 }
 
 export default class NotifyResponse extends NotifierQueryStorage {
@@ -24,7 +14,7 @@ export default class NotifyResponse extends NotifierQueryStorage {
     let users = null;
 
     try {
-      users = await super.getAllUsers();
+      users = await this.storage.getAllUsers();
 
       if (users) showPopup('success', '<i class="bi font-icon bi-cloud-check"></i> Users successfully loaded');
       else throw new Error();
@@ -37,8 +27,9 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
   async getPreFilteredEvents() {
     let events = null;
+
     try {
-      events = await super.getAllEvents();
+      events = await this.storage.getAllEvents();
 
       if (typeof this.storage.preFilter === 'function') return events;
 
@@ -50,5 +41,32 @@ export default class NotifyResponse extends NotifierQueryStorage {
     }
 
     return events;
+  }
+
+  async setEvent(data) {
+    try {
+      const setQuery = await this.storage.setEvent(data);
+      if (setQuery) showPopup('success', `Event "${data.title}" was successfully created`);
+      else throw new Error();
+    } catch (e) {
+      showPopup('danger', '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Create Event error</b>, please, try again');
+      return false;
+    }
+
+    return true;
+  }
+
+  async updateEvent(...args) {
+    try {
+      const updQuery = await this.storage.updateEvent(...args);
+
+      if (updQuery) showPopup('success', '<i class="bi bi-cloud-check"></i> Event was successfully updated');
+      else throw new Error();
+    } catch (e) {
+      showPopup('danger', '<i class="bi bi-cloud-slash-fill"></i> <b>Event wasn\'t updated</b>, please, try again');
+      return false;
+    }
+
+    return true;
   }
 }

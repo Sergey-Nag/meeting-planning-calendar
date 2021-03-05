@@ -33,7 +33,7 @@ class Storage {
 
     const data = method === 'DELETE' ? null : await request.json();
 
-    return Promise.resolve({ ok: request.ok, data });
+    return { ok: request.ok, data };
   }
 
   async setEvent(eventObj) {
@@ -66,7 +66,6 @@ class Storage {
   }
 
   getEventByDayTime(day, time) {
-    console.log(this);
     return this.events.some(({ data }) => data.day === day && data.time === time);
   }
 
