@@ -1,6 +1,6 @@
 # Meeting planning calendar
 
-[Go to the app](https://sergey-nag.github.io/meeting-planning-calendar/dist/)
+[Go to the app](https://sergey-nag.github.io/meeting-planning-calendar/)
 
 How to use:
  - [Calendar](#calendar)
