@@ -3,6 +3,9 @@ import Storage from './DatabaseApi';
 import NotifyResponse from './DatabaseDecorator';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './allUsers';
+import EventEmmiter from './EventEmitter';
+
+const events = EventEmmiter.getInstance();
 
 const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
@@ -44,5 +47,7 @@ async function placeAllEvents() {
   activeUsersTooltips();
   return true;
 }
+
+events.on('authorized', placeAllEvents);
 
 export default placeAllEvents;

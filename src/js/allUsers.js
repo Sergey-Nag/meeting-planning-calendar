@@ -2,6 +2,9 @@ import User from './User';
 import Admin from './Admin';
 import Storage from './DatabaseApi';
 import NotifyResponse from './DatabaseDecorator';
+import EventEmmiter from './EventEmitter';
+
+const events = EventEmmiter.getInstance();
 
 const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
@@ -22,6 +25,8 @@ export default async function loadUsers() {
 
     data.users = users
       .map(({ id, data: D }) => returnCreatedUser(id, JSON.parse(D)));
+
+    events.emit('users-loaded', data.users);
   }
 
   return data.users;

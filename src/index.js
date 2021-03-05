@@ -2,19 +2,28 @@ import '@babel/polyfill';
 import './base-import';
 import './js/deleteEvents';
 import './js/drag-n-drop';
+import './js/dropdown';
 
 import isUserAdmin, { returnOptionsWidthNamesHTML, setNewUser } from './js/userAccess';
 import { showAuthoriseConfirm, removeAlert } from './js/alerts';
-import placeAllEvents from './js/calendar';
-import placeNamesIntoSelect from './js/dropdown';
+import EventEmmiter from './js/EventEmitter';
+import loadUsers from './js/allUsers';
 
-showAuthoriseConfirm(returnOptionsWidthNamesHTML(), async (chosenUser) => {
-  if (isUserAdmin(chosenUser)) {
-    document.body.classList.add('admin');
-  }
+const events = EventEmmiter.getInstance();
 
-  placeNamesIntoSelect();
-  setNewUser(chosenUser);
-  removeAlert();
-  await placeAllEvents();
-});
+function openAuthorization(users) {
+  showAuthoriseConfirm(returnOptionsWidthNamesHTML(users), (chosenUser) => {
+    if (isUserAdmin(chosenUser)) {
+      document.body.classList.add('admin');
+    }
+
+    // placeNamesIntoSelect();
+    setNewUser(chosenUser);
+    removeAlert();
+
+    events.emit('authorized');
+  });
+}
+
+loadUsers();
+events.on('users-loaded', openAuthorization);

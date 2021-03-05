@@ -1,20 +1,19 @@
 import Storage from './DatabaseApi';
 import placeAllEvents from './calendar';
-import loadUsers from './allUsers';
+import EventEmmiter from './EventEmitter';
+
+const events = EventEmmiter.getInstance();
 
 const store = Storage.getInstance();
 
 const optionUsersInput = document.getElementById('filterUsers');
 
-export async function createOptionsWithNamesHTML() {
-  const usrs = await loadUsers();
-  if (!usrs) return false;
-
-  return usrs.map(({ name }) => `<option>${name}</option>`).join('');
+export function createOptionsWithNamesHTML(users) {
+  return users.map(({ name }) => `<option>${name}</option>`).join('');
 }
 
-export default async function placeNamesIntoSelect() {
-  const usersOptionsItemsHTML = await createOptionsWithNamesHTML();
+export default function placeNamesIntoSelect(users) {
+  const usersOptionsItemsHTML = createOptionsWithNamesHTML(users);
 
   optionUsersInput.innerHTML = `<option value selected>All members</option>${usersOptionsItemsHTML}`;
 }
@@ -29,4 +28,4 @@ function changeHandle() {
 }
 
 optionUsersInput.addEventListener('change', changeHandle);
-// placeNamesIntoSelect();
+events.on('users-loaded', placeNamesIntoSelect);

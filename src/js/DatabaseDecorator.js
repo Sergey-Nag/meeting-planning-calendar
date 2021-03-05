@@ -29,7 +29,7 @@ export default class NotifyResponse extends NotifierQueryStorage {
     let events = null;
 
     try {
-      events = await this.storage.getAllEvents();
+      events = await this.storage.getPreFilteredEvents();
 
       if (typeof this.storage.preFilter === 'function') return events;
 
