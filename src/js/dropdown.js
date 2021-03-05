@@ -1,15 +1,12 @@
 import Storage from './DatabaseApi';
 import EventEmmiter from './EventEmitter';
+import { createOptionsWithNamesHTML } from './_htmlElements';
 
 const events = EventEmmiter.getInstance();
 
 const store = Storage.getInstance();
 
 const optionUsersInput = document.getElementById('filterUsers');
-
-export function createOptionsWithNamesHTML(users) {
-  return users.map(({ name }) => `<option>${name}</option>`).join('');
-}
 
 export default function placeNamesIntoSelect(users) {
   const usersOptionsItemsHTML = createOptionsWithNamesHTML(users);
