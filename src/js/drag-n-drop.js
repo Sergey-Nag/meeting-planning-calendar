@@ -1,11 +1,13 @@
 import Storage from './DatabaseApi';
-import placeAllEvents from './calendar';
 import NotifyResponse from './DatabaseDecorator';
 import { showAlertConfirm, removeAlert } from './alerts';
 import isUserAdmin from './userAccess';
+import EventEmmiter from './EventEmitter';
 
 const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
+
+const events = EventEmmiter.getInstance();
 
 const calendar = document.getElementById('calendar');
 
@@ -116,7 +118,7 @@ function confirmChangeEvent({ day, time }) {
 
       if (!isUpdated) return;
 
-      placeAllEvents();
+      events.emit('update-events');
 
       removeAlert(allowDragCallback);
     },

@@ -25,5 +25,5 @@ function openAuthorization(users) {
   });
 }
 
-loadUsers();
 events.on('users-loaded', openAuthorization);
+loadUsers();

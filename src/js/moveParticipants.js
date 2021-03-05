@@ -1,18 +1,16 @@
-// eslint-disable-next-line no-unused-vars
-import { showPopup } from './alerts';
-import loadUsers from './allUsers';
+// import loadUsers from './allUsers';
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
   createUserHTML,
 } from './_htmlElements';
+import EventEmmiter from './EventEmitter';
+
+const events = EventEmmiter.getInstance();
 
 let usersList = null;
 
-async function prepareUserslist() {
-  const users = await loadUsers();
-  if (!users) return false;
-
+function prepareUserslist(users) {
   return users.map((user) => ({ ...user, ...{ isChecked: false } }));
 }
 
@@ -80,11 +78,11 @@ function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
   };
 }
 
-async function start() {
+function start(users) {
   const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
   const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
 
-  usersList = await prepareUserslist();
+  usersList = prepareUserslist(users);
 
   if (!usersList) return;
 
@@ -104,5 +102,5 @@ async function start() {
     participantsReplaceHTML(returnParticipantsHTML());
   });
 }
-
-start();
+events.on('users-loaded', start);
+// start();

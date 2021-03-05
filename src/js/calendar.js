@@ -49,5 +49,6 @@ async function placeAllEvents() {
 }
 
 events.on('authorized', placeAllEvents);
+events.on('update-events', placeAllEvents);
 
 export default placeAllEvents;
