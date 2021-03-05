@@ -73,3 +73,7 @@ export function createPopUpHTML(theme, title) {
       <span class="popup__title">${title}</span>
   </div>`;
 }
+
+export function createOptionsWithNamesHTML(users) {
+  return users.map(({ name }) => `<option>${name}</option>`).join('');
+}

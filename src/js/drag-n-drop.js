@@ -1,7 +1,13 @@
-import store from './DatabaseApi';
-import placeAllEvents from './calendar';
-import { showAlertConfirm, showPopup, removeAlert } from './alerts';
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
+import { showAlertConfirm, removeAlert } from './alerts';
 import isUserAdmin from './userAccess';
+import EventEmmiter from './EventEmitter';
+
+const storageInstance = Storage.getInstance();
+const store = new NotifyResponse(storageInstance);
+
+const events = EventEmmiter.getInstance();
 
 const calendar = document.getElementById('calendar');
 
@@ -59,7 +65,7 @@ function hideAllPutCells(elem) {
 }
 
 function isEventBooked({ day, time }) {
-  return store.getEventByDayTime(day, time);
+  return storageInstance.getEventByDayTime(day, time);
 }
 
 function showCellForPut(elem) {
@@ -110,13 +116,9 @@ function confirmChangeEvent({ day, time }) {
     async () => {
       const isUpdated = await changeEventTime(dragData.originalElement.dataset.id, day, time);
 
-      if (!isUpdated) {
-        showPopup('danger', '<i class="bi bi-cloud-slash-fill"></i> <b>Event wasn\'t updated</b>, try again');
-        return;
-      }
+      if (!isUpdated) return;
 
-      showPopup('success', '<i class="bi bi-cloud-check"></i> Event was successfully updated');
-      placeAllEvents();
+      events.emit('update-events');
 
       removeAlert(allowDragCallback);
     },

@@ -9,30 +9,31 @@ class Storage {
 
   URL = `http://158.101.166.74:8080/api/data/${this.SYSTEM}`;
 
+  static instance = null;
+
+  static getInstance() {
+    Storage.instance = Storage.instance ?? new Storage();
+
+    return Storage.instance;
+  }
+
   constructor() {
     this.events = null;
     this.preFilter = null;
   }
 
   async query(method, path, body = null) {
-    let response = null;
+    const request = await fetch(this.URL + path, {
+      method,
+      body,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    try {
-      const request = await fetch(this.URL + path, {
-        method,
-        body,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    const data = method === 'DELETE' ? null : await request.json();
 
-      const data = method === 'DELETE' ? null : await request.json();
-      response = { ok: request.ok, data };
-    } catch (e) {
-      response = { ok: false, error: e };
-    }
-
-    return response;
+    return { ok: request.ok, data };
   }
 
   async setEvent(eventObj) {
@@ -45,18 +46,18 @@ class Storage {
   }
 
   async getAllEvents() {
-    const reqEvents = await this.query('GET', '/events');
-    if (!reqEvents.ok) return false;
+    const { ok, data } = await this.query('GET', '/events');
+    if (!ok) return false;
 
-    this.events = reqEvents.data === null ? [] : await formatData(reqEvents.data);
+    this.events = data === null ? [] : await formatData(data);
     return this.events;
   }
 
   async getAllUsers() {
-    const reqUsers = await this.query('GET', '/users');
-    if (!reqUsers.ok) return false;
+    const { ok, data } = await this.query('GET', '/users');
+    if (!ok || !data) throw new Error();
 
-    return reqUsers.data;
+    return data;
   }
 
   async getPreFilteredEvents() {
@@ -92,6 +93,4 @@ class Storage {
   }
 }
 
-const store = new Storage();
-
-export default store;
+export default Storage;

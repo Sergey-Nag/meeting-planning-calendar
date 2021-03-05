@@ -1,5 +1,9 @@
-import store from './DatabaseApi';
-import { showAlertFull, showAlertAtTop } from './alerts';
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
+import { showAlertAtTop } from './alerts';
+
+const storageInstance = Storage.getInstance();
+const store = new NotifyResponse(storageInstance);
 
 const createForm = document.getElementById('create-event-form');
 const submitCreateEventBtn = document.getElementById('create-event-submit');
@@ -110,7 +114,7 @@ async function submitForm() {
 
   if (!isAllValuesAreValid(validatedValues)) return;
 
-  if (await store.getEventByDayTime(data.day, data.time)) {
+  if (storageInstance.getEventByDayTime(data.day, data.time)) {
     showAlertAtTop(`Failed to create an event. Time slot at ${data.day} ${data.time} is already booked.`);
     return;
   }
@@ -119,14 +123,12 @@ async function submitForm() {
 
   if (!addEventResponse) return;
 
-  showAlertFull(
-    `Event "${data.title}" was successfully created`, 2000,
-    () => {
-      window.location = 'index.html';
-    },
-  );
   submitCreateEventBtn.disabled = true;
+
+  setTimeout(() => {
+    window.location = 'index.html';
+  }, 3000);
 }
 
-store.getAllEvents();
+storageInstance.getAllEvents();
 submitCreateEventBtn.addEventListener('click', submitForm);

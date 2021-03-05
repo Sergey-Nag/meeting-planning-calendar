@@ -1,13 +1,15 @@
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
 import {
-  showAlertConfirm, showPopup, removeAlert,
+  showAlertConfirm,
+  removeAlert,
 } from './alerts';
-import placeAllEvents from './calendar';
+import EventEmmiter from './EventEmitter';
 
-async function removeEvent(id) {
-  const isDone = await store.removeEvent(id);
-  return isDone;
-}
+const events = EventEmmiter.getInstance();
+
+const storeInstance = Storage.getInstance();
+const store = new NotifyResponse(storeInstance);
 
 document.getElementById('calendar').addEventListener('click', (e) => {
   const btn = e.target.closest('.btn-close');
@@ -19,14 +21,11 @@ document.getElementById('calendar').addEventListener('click', (e) => {
 
   showAlertConfirm(`Are you sure you want to delete "${eventTitle}" event?`,
     async () => {
-      const isEventRemoved = await removeEvent(eventCard.dataset.id);
+      const isEventRemoved = await store.removeEvent(eventCard.dataset.id);
       removeAlert();
 
-      if (!isEventRemoved) {
-        showPopup('danger', '<i class="bi font-icon bi-trash-fill"></i> <b>Deleting Events error</b>, please try again');
-      } else {
-        placeAllEvents();
-        showPopup('success', '<i class="bi font-icon bi-trash"></i> Event successfully deleted');
-      }
+      if (!isEventRemoved) return;
+
+      events.emit('update-events');
     }, () => removeAlert());
 });

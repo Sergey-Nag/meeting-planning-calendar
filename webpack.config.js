@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = (env) => ({
   entry: {
     index: './src/index.js',
     createPage: './src/create-page.js',
@@ -45,7 +45,7 @@ module.exports = {
       },
     ],
   },
-  // devtool: 'eval-source-map',
+  devtool: env.production ? undefined : 'eval-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
@@ -80,4 +80,4 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-};
+});

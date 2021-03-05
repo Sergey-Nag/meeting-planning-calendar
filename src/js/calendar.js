@@ -1,7 +1,14 @@
 import { Tooltip } from 'bootstrap';
-import store from './DatabaseApi';
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
 import { createEventCardHTML } from './_htmlElements';
 import { getUserInfo } from './allUsers';
+import EventEmmiter from './EventEmitter';
+
+const events = EventEmmiter.getInstance();
+
+const storageInstance = Storage.getInstance();
+const store = new NotifyResponse(storageInstance);
 
 function createEventCard(id, { title, participants }) {
   const avatarImgs = participants
@@ -41,4 +48,5 @@ async function placeAllEvents() {
   return true;
 }
 
-export default placeAllEvents;
+events.on('authorized', placeAllEvents);
+events.on('update-events', placeAllEvents);
