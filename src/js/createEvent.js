@@ -96,7 +96,7 @@ export function getDataFromInputs(form) {
   }, {});
 }
 
-function isAllValuesAreValid(arr) {
+export function isAllValuesAreValid(arr) {
   return arr.every((el) => {
     if (typeof el === 'object') return el.isValid === true;
     return el === true;

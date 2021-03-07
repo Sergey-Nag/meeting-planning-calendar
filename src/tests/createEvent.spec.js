@@ -1,6 +1,11 @@
-import { getDataFromInputs, validateValues } from '../js/createEvent';
+import { getDataFromInputs, validateValues, isAllValuesAreValid } from '../js/createEvent';
+import toBeArrayAndLengthToBeGreaterThan from './testArray';
 
-describe('Create event form test', () => {
+describe('Create event form tests', () => {
+  expect.extend({
+    toBeArrayAndLengthToBeGreaterThan,
+  });
+
   let form;
 
   beforeAll(() => {
@@ -38,13 +43,62 @@ describe('Create event form test', () => {
     const dataFromInputs = getDataFromInputs(form);
 
     expect(dataFromInputs).toBeInstanceOf(Object);
+    expect(dataFromInputs).toEqual(
+      expect.objectContaining({
+        title: expect.any(String),
+        day: expect.any(String),
+        time: expect.any(String),
+        participants: expect.toBeArrayAndLengthToBeGreaterThan(0),
+      }),
+    );
   });
 
   test('validateValues function return array with booleans and objects based of values', () => {
-    const dataFromInputs = getDataFromInputs(form);
-    const validatedValues = validateValues(dataFromInputs);
+    const testRightData = {
+      title: 'Test',
+      day: 'Mon',
+      time: '10:00',
+      participants: ['Ann', 'Steve'],
+    };
 
-    console.log(validatedValues);
-    expect(validateValues).toHaveLength(Object.keys(dataFromInputs).length);
+    let validatedValues = validateValues(testRightData);
+
+    expect(validatedValues).toHaveLength(Object.keys(testRightData).length);
+
+    expect(validatedValues[0].isValid).toBeTruthy();
+    expect(validatedValues[0].tip).toBe('');
+
+    for (let i = 1; i < 4; i += 1) {
+      expect(validatedValues[i]).toBeTruthy();
+    }
+
+    const testWrongData = {
+      title: 'a',
+      day: null,
+      time: null,
+      participants: [],
+    };
+
+    validatedValues = validateValues(testWrongData);
+
+    expect(validatedValues[0].isValid).toBeFalsy();
+    expect(validatedValues[0].tip).not.toBe('');
+
+    for (let i = 1; i < 4; i += 1) {
+      expect(validatedValues[i]).toBeFalsy();
+    }
+  });
+
+  test('isAllValuesAreValid function return true or false depending on all validated values', () => {
+    const testTrueData = [{ isValid: true, tip: '' }, true, true, true];
+
+    let isAllTrue = isAllValuesAreValid(testTrueData);
+
+    expect(isAllTrue).toBe(true);
+
+    const testFalseData = [{ isValid: false, tip: '' }, false, false, false];
+    isAllTrue = isAllValuesAreValid(testFalseData);
+
+    expect(isAllTrue).toBe(false);
   });
 });
