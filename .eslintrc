@@ -10,5 +10,9 @@
     "document": true,
     "window": true,
     "fetch": true
+  },
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
   }
 }
