@@ -14,7 +14,7 @@ describe('CRUD tests:', () => {
     store = new Storage();
   });
 
-  test('Create: Create new event and return him with new id', async () => {
+  test('Create: setEvent method return object with id and data values as strings', async () => {
     const mockData = await store.setEvent.mockReturnValue({
       id: 'c313ebb5-968c-4d0c-b910-127d0adcfed2',
       data: '{"day":"Tue","participants":["Elizabeth"],"time":"10:00","title":"one more"}',
@@ -31,35 +31,36 @@ describe('CRUD tests:', () => {
     );
   });
 
-  test('Read: Get all events with their id', async () => {
-    const mockData = await store.getAllEvents.mockReturnValue([{
-      data: {
-        day: 'Tue',
-        participants: ['Elizabeth'],
-        time: '10:00',
-        title: 'Test',
-      },
-      id: '9fb6be56-e54d-4db9-b827-a04424985e72',
-    }]);
+  test('Read: getAllEvents method return array with event objects which contains parsed data property and id string',
+    async () => {
+      const mockData = await store.getAllEvents.mockReturnValue([{
+        data: {
+          day: 'Tue',
+          participants: ['Elizabeth'],
+          time: '10:00',
+          title: 'Test',
+        },
+        id: '9fb6be56-e54d-4db9-b827-a04424985e72',
+      }]);
 
-    const gotMockData = mockData();
+      const gotMockData = mockData();
 
-    expect(mockData).toHaveReturned();
+      expect(mockData).toHaveReturned();
 
-    for (let i = 0; i < gotMockData.length; i += 1) {
-      expect(gotMockData[i]).toEqual({
-        id: expect.any(String),
-        data: expect.objectContaining({
-          day: expect.any(String),
-          participants: expect.toBeArrayAndLengthToBeGreaterThan(0),
-          time: expect.any(String),
-          title: expect.any(String),
-        }),
-      });
-    }
-  });
+      for (let i = 0; i < gotMockData.length; i += 1) {
+        expect(gotMockData[i]).toEqual({
+          id: expect.any(String),
+          data: expect.objectContaining({
+            day: expect.any(String),
+            participants: expect.toBeArrayAndLengthToBeGreaterThan(0),
+            time: expect.any(String),
+            title: expect.any(String),
+          }),
+        });
+      }
+    });
 
-  test('Read: Get all users with their id', async () => {
+  test('Read: getAllUsers method return array with user objects which contains data and id strings', async () => {
     const mockData = await store.getAllUsers.mockReturnValue([{
       id: 'c313ebb5-968c-4d0c-b910-127d0adcfed2',
       data: '{"name":"Elizabeth","avatar":"girl_1.png","isAdmin":true}',
@@ -98,7 +99,7 @@ describe('CRUD tests:', () => {
     }
   });
 
-  test('Update: Change event date and time', async () => {
+  test('Update: updateEvent method return boolean value depending on query success', async () => {
     const mockData = await store.updateEvent.mockReturnValue(true);
 
     const gotMockData = mockData();
@@ -107,7 +108,7 @@ describe('CRUD tests:', () => {
     expect(gotMockData).toBeTruthy();
   });
 
-  test('Delete: Delete event', async () => {
+  test('Delete: removeEvent method return boolean value depending on query success', async () => {
     const mockData = await store.removeEvent.mockReturnValue(true);
 
     const gotMockData = mockData();
