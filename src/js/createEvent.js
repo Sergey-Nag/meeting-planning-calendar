@@ -2,11 +2,11 @@ import Storage from './DatabaseApi';
 import NotifyResponse from './DatabaseDecorator';
 import { showAlertAtTop } from './alerts';
 
-const storageInstance = Storage.getInstance();
+export const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
 
 const createForm = document.getElementById('create-event-form');
-const submitCreateEventBtn = document.getElementById('create-event-submit');
+export const submitCreateEventBtn = document.getElementById('create-event-submit');
 
 const inputFields = ['title', 'day', 'time', 'participants'];
 const inputFieldElements = inputFields.map((field) => document.querySelector(`form [name=${field}]`) ?? document.querySelector(`form .${field}`));
@@ -67,7 +67,7 @@ function showTips(arr) {
   });
 }
 
-function validateValues(data) {
+export function validateValues(data) {
   const validatedArr = inputFields.map((field) => {
     const value = data[field];
     if (!value) return false;
@@ -81,7 +81,7 @@ function validateValues(data) {
   return validatedArr;
 }
 
-function getDataFromInputs(form) {
+export function getDataFromInputs(form) {
   return [...form].reduce((obj, input) => {
     if (input.classList.contains('btn-close')) return obj;
 
@@ -103,7 +103,7 @@ function isAllValuesAreValid(arr) {
   });
 }
 
-async function submitForm() {
+export default async function submitForm() {
   const data = getDataFromInputs(createForm);
 
   const validatedValues = validateValues(data);
@@ -129,6 +129,3 @@ async function submitForm() {
     window.location = 'index.html';
   }, 3000);
 }
-
-storageInstance.getAllEvents();
-submitCreateEventBtn.addEventListener('click', submitForm);

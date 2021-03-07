@@ -56,7 +56,6 @@ class Storage {
   async getAllUsers() {
     const { ok, data } = await this.query('GET', '/users');
     if (!ok || !data) throw new Error();
-
     return data;
   }
 
