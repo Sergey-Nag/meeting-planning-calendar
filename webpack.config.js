@@ -1,6 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
+const PrettierPlugin = require('prettier-webpack-plugin');
 
 module.exports = (env) => ({
   entry: {
@@ -32,9 +34,7 @@ module.exports = (env) => ({
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -47,6 +47,15 @@ module.exports = (env) => ({
   },
   devtool: env.production ? undefined : 'eval-source-map',
   plugins: [
+    new StylelintPlugin(),
+    new PrettierPlugin({
+      semi: true,
+      encoding: 'utf-8',
+      singleQuote: true,
+      arrowParens: 'always',
+      bracketSpacing: true,
+      endOfLine: 'crlf'
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),

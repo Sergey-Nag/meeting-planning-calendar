@@ -1,4 +1,4 @@
-@import "./variables";
+@import './variables';
 
 select.form-select {
   @extend %appearance;
@@ -50,7 +50,7 @@ select.form-select {
     }
 
     &.floating {
-      cursor: grabbing;
+      cursor: grabbing !important;
       position: absolute;
       z-index: 990;
     }
@@ -69,7 +69,6 @@ select.form-select {
       height: 15px;
     }
   }
-
 }
 
 td.put {

@@ -18,7 +18,7 @@ const dragData = {
   top: 0,
   left: 0,
   mouseX: 0,
-  mouseY: 0,
+  mouseY: 0
 };
 
 function setDragElementPosition() {
@@ -75,7 +75,8 @@ function showCellForPut(elem) {
   let cellClass = 'put';
 
   if (elem.firstChild === dragData.originalElement) cellClass += ' allow';
-  else if (putCell.firstChild || isEventBooked(putCell.dataset)) cellClass += ' disallow';
+  else if (putCell.firstChild || isEventBooked(putCell.dataset))
+    cellClass += ' disallow';
   else cellClass += ' allow';
 
   if (!elem.classList.contains('put')) putCell.className = cellClass;
@@ -107,14 +108,22 @@ function dragMove(e) {
 }
 
 function confirmChangeEvent({ day, time }) {
-  const title = dragData.originalElement.querySelector('.card__title span').textContent;
+  const title = dragData.originalElement.querySelector('.card__title span')
+    .textContent;
 
   dragData.isDragAllow = false;
-  const allowDragCallback = () => { dragData.isDragAllow = true; };
+  const allowDragCallback = () => {
+    dragData.isDragAllow = true;
+  };
 
-  showAlertConfirm(`Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`,
+  showAlertConfirm(
+    `Do you really want to change an "${title}" event date to <b>${day} ${time}</b>?`,
     async () => {
-      const isUpdated = await changeEventTime(dragData.originalElement.dataset.id, day, time);
+      const isUpdated = await changeEventTime(
+        dragData.originalElement.dataset.id,
+        day,
+        time
+      );
 
       if (!isUpdated) return;
 
@@ -125,7 +134,8 @@ function confirmChangeEvent({ day, time }) {
     () => {
       removeAlert(allowDragCallback);
     },
-    allowDragCallback);
+    allowDragCallback
+  );
 }
 
 function dragEnd(e) {

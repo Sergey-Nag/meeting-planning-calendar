@@ -1,5 +1,5 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "./scss/variables";
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './scss/variables';
 
 * {
   margin: 0;
@@ -11,8 +11,9 @@ body {
 }
 
 .font-icon {
-  font-size: .9em;
+  font-size: 0.9em;
   vertical-align: 2px;
 }
 
-@import './scss/calendar.scss', './scss/create-event.scss', './scss/alerts.scss', './scss/admin.scss';
+@import './scss/calendar.scss', './scss/create-event.scss', './scss/alerts.scss',
+  './scss/admin.scss';

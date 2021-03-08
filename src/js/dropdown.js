@@ -17,7 +17,8 @@ export default function placeNamesIntoSelect(users) {
 function changeHandle() {
   const { value } = this;
 
-  if (value !== '') store.preFilter = ({ participants }) => participants.includes(value);
+  if (value !== '')
+    store.preFilter = ({ participants }) => participants.includes(value);
   else store.preFilter = null;
 
   events.emit('update-events');

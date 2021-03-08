@@ -15,7 +15,8 @@ function createEventCard(id, { title, participants }) {
     .map((name) => {
       const { avatar } = getUserInfo(name);
       return `<img data-bs-toggle="tooltip" title="${name}" src="img/${avatar}" alt="${name}" class="card__avatar">`;
-    }).join('');
+    })
+    .join('');
 
   return createEventCardHTML(id, title, avatarImgs);
 }
@@ -25,7 +26,9 @@ function removeAllCards() {
 }
 
 function activeUsersTooltips() {
-  document.querySelectorAll('.card__avatar').forEach((el) => new Tooltip(el, { delay: 500 }));
+  document
+    .querySelectorAll('.card__avatar')
+    .forEach((el) => new Tooltip(el, { delay: 500 }));
 }
 
 async function placeAllEvents() {

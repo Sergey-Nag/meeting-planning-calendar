@@ -1,6 +1,7 @@
 function formatData(dataArr) {
   return dataArr?.map(({ id, data }) => ({
-    id, data: JSON.parse(data),
+    id,
+    data: JSON.parse(data)
   }));
 }
 
@@ -27,8 +28,8 @@ class Storage {
       method,
       body,
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     });
 
     const data = method === 'DELETE' ? null : await request.json();
@@ -39,7 +40,11 @@ class Storage {
   async setEvent(eventObj) {
     const data = { data: JSON.stringify(eventObj) };
 
-    const reqSaveEvent = await this.query('POST', '/events', JSON.stringify(data));
+    const reqSaveEvent = await this.query(
+      'POST',
+      '/events',
+      JSON.stringify(data)
+    );
     if (!reqSaveEvent.ok) return false;
 
     return reqSaveEvent.data;
@@ -56,7 +61,6 @@ class Storage {
   async getAllUsers() {
     const { ok, data } = await this.query('GET', '/users');
     if (!ok || !data) throw new Error();
-
     return data;
   }
 
@@ -66,7 +70,9 @@ class Storage {
   }
 
   getEventByDayTime(day, time) {
-    return this.events.some(({ data }) => data.day === day && data.time === time);
+    return this.events.some(
+      ({ data }) => data.day === day && data.time === time
+    );
   }
 
   async updateEvent(eventId, day, time) {
@@ -75,16 +81,19 @@ class Storage {
     eventToUpdate.time = time;
 
     const data = {
-      data: JSON.stringify(eventToUpdate),
+      data: JSON.stringify(eventToUpdate)
     };
 
-    const reqUpdate = await this.query('PUT', `/events/${eventId}`, JSON.stringify(data));
+    const reqUpdate = await this.query(
+      'PUT',
+      `/events/${eventId}`,
+      JSON.stringify(data)
+    );
     return reqUpdate.ok;
   }
 
   filterEvents(callback) {
-    return this.getAllEvents()
-      .filter((el) => callback(el));
+    return this.getAllEvents().filter((el) => callback(el));
   }
 
   async removeEvent(eventId) {

@@ -3,7 +3,7 @@ import {
   createAlertDangerTopHTML,
   createConfirmHTML,
   createAuthoriseConfirmHTML,
-  createPopUpHTML,
+  createPopUpHTML
 } from './_htmlElements';
 
 let currentAlertWrapp = null;
@@ -47,29 +47,46 @@ function showAlertAtTop(text) {
 
   placeAlert(currentAlertWrapp);
 
-  document.getElementById('danger-alert-close').addEventListener('click', () => {
-    removeAlert();
-  });
+  document
+    .getElementById('danger-alert-close')
+    .addEventListener('click', () => {
+      removeAlert();
+    });
 }
 
-function showAlertConfirm(text, callbackTrue, callbackFalse, callbackClose = null) {
+function showAlertConfirm(
+  text,
+  callbackTrue,
+  callbackFalse,
+  callbackClose = null
+) {
   currentAlertWrapp = createWrappElement();
   currentAlertWrapp.innerHTML = createConfirmHTML(text);
 
   placeAlert(currentAlertWrapp);
 
-  document.getElementById('event-delete-yes').addEventListener('click', callbackTrue);
-  document.getElementById('event-delete-no').addEventListener('click', callbackFalse);
-  document.querySelector('.alert__wrapp').addEventListener('click', (e) => {
-    if (e.target.className !== 'alert__wrapp') return;
+  document
+    .getElementById('event-delete-yes')
+    .addEventListener('click', callbackTrue);
+  document
+    .getElementById('event-delete-no')
+    .addEventListener('click', callbackFalse);
+  document.querySelector('.alert__wrapp').addEventListener(
+    'click',
+    (e) => {
+      if (e.target.className !== 'alert__wrapp') return;
 
-    removeAlert(callbackClose);
-  }, true);
+      removeAlert(callbackClose);
+    },
+    true
+  );
 }
 
 async function showAuthoriseConfirm(optionsWithNames, callbackTrue) {
   currentAlertWrapp = createWrappElement();
-  currentAlertWrapp.innerHTML = createAuthoriseConfirmHTML(await optionsWithNames);
+  currentAlertWrapp.innerHTML = createAuthoriseConfirmHTML(
+    await optionsWithNames
+  );
 
   placeAlert(currentAlertWrapp);
 
@@ -88,7 +105,8 @@ function placePopupWrapp() {
 
 function drawPopups() {
   currentPopup.innerHTML = popupsArr
-    .map(({ theme, title }) => createPopUpHTML(theme, title)).join('');
+    .map(({ theme, title }) => createPopUpHTML(theme, title))
+    .join('');
 }
 
 function stopRemovingPopups() {
@@ -100,7 +118,9 @@ function removeItems() {
   if (removePopupsInterval !== null) return;
 
   removePopupsInterval = setInterval(() => {
-    const index = popupsArr.findIndex(({ created }) => created < Date.now() - 3000);
+    const index = popupsArr.findIndex(
+      ({ created }) => created < Date.now() - 3000
+    );
 
     if (index !== -1) {
       popupsArr.splice(index, 1);
@@ -121,5 +141,10 @@ function showPopup(theme, title) {
 }
 
 export {
-  showAlertFull, showAlertAtTop, showAlertConfirm, showAuthoriseConfirm, showPopup, removeAlert,
+  showAlertFull,
+  showAlertAtTop,
+  showAlertConfirm,
+  showAuthoriseConfirm,
+  showPopup,
+  removeAlert
 };

@@ -1,8 +1,7 @@
-// import loadUsers from './allUsers';
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
-  createUserHTML,
+  createUserHTML
 } from './_htmlElements';
 import EventEmmiter from './EventEmitter';
 
@@ -23,8 +22,12 @@ function switchUserCheck(name) {
 }
 
 function removeParticipant(nameToRemove) {
-  const removeIndex = participantsList.findIndex(({ name }) => name === nameToRemove);
-  const inUsersListIndex = usersList.findIndex(({ name }) => name === nameToRemove);
+  const removeIndex = participantsList.findIndex(
+    ({ name }) => name === nameToRemove
+  );
+  const inUsersListIndex = usersList.findIndex(
+    ({ name }) => name === nameToRemove
+  );
 
   participantsList.splice(removeIndex, 1);
   usersList[inUsersListIndex].isChecked = false;
@@ -39,16 +42,16 @@ function createReplaceHtmlInWrapp(wrappClassName) {
 }
 
 function returnUsersHTML() {
-  return usersList
-    .map((user) => createUserHTML(user))
-    .join('');
+  return usersList.map((user) => createUserHTML(user)).join('');
 }
 
 function addParticipantsToLisInOrder(user) {
   if (user.isChecked && !participantsList.includes(user)) {
     participantsList.push(user);
   } else if (!user.isChecked && participantsList.includes(user)) {
-    const partsIndex = participantsList.findIndex((part) => part.name === user.name);
+    const partsIndex = participantsList.findIndex(
+      (part) => part.name === user.name
+    );
 
     participantsList.splice(partsIndex, 1);
   }
@@ -57,11 +60,10 @@ function addParticipantsToLisInOrder(user) {
 function returnParticipantsHTML() {
   usersList.forEach(addParticipantsToLisInOrder);
 
-  if (participantsList.length === 0) return createParticipantsWrappPlaceholder();
+  if (participantsList.length === 0)
+    return createParticipantsWrappPlaceholder();
 
-  return participantsList
-    .map((user) => createParticipantHTML(user))
-    .join('');
+  return participantsList.map((user) => createParticipantHTML(user)).join('');
 }
 
 function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
@@ -89,7 +91,12 @@ function start(users) {
   usersReplaceHTML(returnUsersHTML());
   participantsReplaceHTML(returnParticipantsHTML());
 
-  document.querySelector('.users__wrapp').addEventListener('click', usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML));
+  document
+    .querySelector('.users__wrapp')
+    .addEventListener(
+      'click',
+      usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML)
+    );
   document.querySelector('.participants').addEventListener('click', (e) => {
     e.preventDefault();
     const target = e.target.closest('.participant__btn-remove');
@@ -103,4 +110,3 @@ function start(users) {
   });
 }
 events.on('users-loaded', start);
-// start();

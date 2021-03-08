@@ -2,14 +2,20 @@ import Storage from './DatabaseApi';
 import NotifyResponse from './DatabaseDecorator';
 import { showAlertAtTop } from './alerts';
 
-const storageInstance = Storage.getInstance();
+export const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
 
 const createForm = document.getElementById('create-event-form');
-const submitCreateEventBtn = document.getElementById('create-event-submit');
+export const submitCreateEventBtn = document.getElementById(
+  'create-event-submit'
+);
 
 const inputFields = ['title', 'day', 'time', 'participants'];
-const inputFieldElements = inputFields.map((field) => document.querySelector(`form [name=${field}]`) ?? document.querySelector(`form .${field}`));
+const inputFieldElements = inputFields.map(
+  (field) =>
+    document.querySelector(`form [name=${field}]`) ??
+    document.querySelector(`form .${field}`)
+);
 
 function changeInputValidClass(isValid, index) {
   const input = inputFieldElements[index];
@@ -27,7 +33,7 @@ function changeInputsClass(arr) {
 function validateTextValue(value) {
   const res = {
     isValid: true,
-    tip: '',
+    tip: ''
   };
 
   if (value.length < 3) {
@@ -35,7 +41,7 @@ function validateTextValue(value) {
     res.tip = 'Length of title must be longer than 2 symbols\n';
   } else if (value.length > 40) {
     res.isValid = false;
-    res.tip = 'Length of title mustn\'t be longer than 40 symbols\n';
+    res.tip = "Length of title mustn't be longer than 40 symbols\n";
   }
 
   if (/\*|`|%|\$|;|:|\/|\\/.test(value)) {
@@ -67,7 +73,7 @@ function showTips(arr) {
   });
 }
 
-function validateValues(data) {
+export function validateValues(data) {
   const validatedArr = inputFields.map((field) => {
     const value = data[field];
     if (!value) return false;
@@ -81,7 +87,7 @@ function validateValues(data) {
   return validatedArr;
 }
 
-function getDataFromInputs(form) {
+export function getDataFromInputs(form) {
   return [...form].reduce((obj, input) => {
     if (input.classList.contains('btn-close')) return obj;
 
@@ -96,14 +102,14 @@ function getDataFromInputs(form) {
   }, {});
 }
 
-function isAllValuesAreValid(arr) {
+export function isAllValuesAreValid(arr) {
   return arr.every((el) => {
     if (typeof el === 'object') return el.isValid === true;
     return el === true;
   });
 }
 
-async function submitForm() {
+export default async function submitForm() {
   const data = getDataFromInputs(createForm);
 
   const validatedValues = validateValues(data);
@@ -115,7 +121,9 @@ async function submitForm() {
   if (!isAllValuesAreValid(validatedValues)) return;
 
   if (storageInstance.getEventByDayTime(data.day, data.time)) {
-    showAlertAtTop(`Failed to create an event. Time slot at ${data.day} ${data.time} is already booked.`);
+    showAlertAtTop(
+      `Failed to create an event. Time slot at ${data.day} ${data.time} is already booked.`
+    );
     return;
   }
 
@@ -129,6 +137,3 @@ async function submitForm() {
     window.location = 'index.html';
   }, 3000);
 }
-
-storageInstance.getAllEvents();
-submitCreateEventBtn.addEventListener('click', submitForm);

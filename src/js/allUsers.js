@@ -10,7 +10,7 @@ const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
 
 export const data = {
-  users: [],
+  users: []
 };
 
 function returnCreatedUser(id, { name, avatar, isAdmin }) {
@@ -23,8 +23,9 @@ export default async function loadUsers() {
 
     if (!users) return false;
 
-    data.users = users
-      .map(({ id, data: D }) => returnCreatedUser(id, JSON.parse(D)));
+    data.users = users.map(({ id, data: D }) =>
+      returnCreatedUser(id, JSON.parse(D))
+    );
 
     events.emit('users-loaded', data.users);
   }

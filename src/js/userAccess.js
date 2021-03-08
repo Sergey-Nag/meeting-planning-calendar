@@ -2,7 +2,7 @@ import Admin from './Admin';
 import { getUserInfo } from './allUsers';
 
 export const authUser = {
-  name: null,
+  name: null
 };
 
 export default function isUserAdmin(name = authUser.name) {
