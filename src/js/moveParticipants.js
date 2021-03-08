@@ -110,4 +110,3 @@ function start(users) {
   });
 }
 events.on('users-loaded', start);
-// start();
