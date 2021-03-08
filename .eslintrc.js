@@ -16,5 +16,6 @@ module.exports = {
       "import/no-named-as-default": 0,
       "import/no-named-as-default-member": 0,
       "max-classes-per-file": ["error", 3]
-    }
+    },
+    "plugins": ["jest"]
 };
