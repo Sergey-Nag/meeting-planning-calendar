@@ -52,7 +52,9 @@ module.exports = (env) => ({
       semi: true,
       encoding: 'utf-8',
       singleQuote: true,
-      arrowParens: 'always'
+      arrowParens: 'always',
+      bracketSpacing: true,
+      endOfLine: 'crlf'
     }),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',

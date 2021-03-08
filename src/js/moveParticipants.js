@@ -1,4 +1,3 @@
-// import loadUsers from './allUsers';
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
