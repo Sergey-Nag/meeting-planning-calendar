@@ -1,16 +1,16 @@
-import Storage from "./DatabaseApi";
-import NotifyResponse from "./DatabaseDecorator";
-import { showAlertAtTop } from "./alerts";
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
+import { showAlertAtTop } from './alerts';
 
 export const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
 
-const createForm = document.getElementById("create-event-form");
+const createForm = document.getElementById('create-event-form');
 export const submitCreateEventBtn = document.getElementById(
-  "create-event-submit"
+  'create-event-submit'
 );
 
-const inputFields = ["title", "day", "time", "participants"];
+const inputFields = ['title', 'day', 'time', 'participants'];
 const inputFieldElements = inputFields.map(
   (field) =>
     document.querySelector(`form [name=${field}]`) ??
@@ -22,8 +22,8 @@ function changeInputValidClass(isValid, index) {
 
   if (!input) return;
 
-  if (isValid) input.classList.remove("is-invalid");
-  else input.classList.add("is-invalid");
+  if (isValid) input.classList.remove('is-invalid');
+  else input.classList.add('is-invalid');
 }
 
 function changeInputsClass(arr) {
@@ -33,12 +33,12 @@ function changeInputsClass(arr) {
 function validateTextValue(value) {
   const res = {
     isValid: true,
-    tip: "",
+    tip: ''
   };
 
   if (value.length < 3) {
     res.isValid = false;
-    res.tip = "Length of title must be longer than 2 symbols\n";
+    res.tip = 'Length of title must be longer than 2 symbols\n';
   } else if (value.length > 40) {
     res.isValid = false;
     res.tip = "Length of title mustn't be longer than 40 symbols\n";
@@ -57,16 +57,16 @@ function showTip(tip, index) {
 
   tipElement.innerText = tip;
 
-  if (tip === "") {
-    tipElement.classList.remove("invalid-feedback");
+  if (tip === '') {
+    tipElement.classList.remove('invalid-feedback');
   } else {
-    tipElement.classList.add("invalid-feedback");
+    tipElement.classList.add('invalid-feedback');
   }
 }
 
 function showTips(arr) {
   arr.forEach((el, i) => {
-    if (typeof el === "object") {
+    if (typeof el === 'object') {
       changeInputValidClass(el.isValid, i);
       showTip(el.tip, i);
     }
@@ -78,10 +78,10 @@ export function validateValues(data) {
     const value = data[field];
     if (!value) return false;
 
-    if (field === "title") return validateTextValue(value);
-    if (field === "participants") return value.length > 0;
+    if (field === 'title') return validateTextValue(value);
+    if (field === 'participants') return value.length > 0;
 
-    return value !== "";
+    return value !== '';
   });
 
   return validatedArr;
@@ -89,13 +89,13 @@ export function validateValues(data) {
 
 export function getDataFromInputs(form) {
   return [...form].reduce((obj, input) => {
-    if (input.classList.contains("btn-close")) return obj;
+    if (input.classList.contains('btn-close')) return obj;
 
     const { name, value } = input;
     const result = { ...obj };
 
     if (Object.keys(result).includes(name)) result[name].push(value);
-    else if (name === "participants") result[name] = [value];
+    else if (name === 'participants') result[name] = [value];
     else result[name] = value;
 
     return result;
@@ -104,7 +104,7 @@ export function getDataFromInputs(form) {
 
 export function isAllValuesAreValid(arr) {
   return arr.every((el) => {
-    if (typeof el === "object") return el.isValid === true;
+    if (typeof el === 'object') return el.isValid === true;
     return el === true;
   });
 }
@@ -134,6 +134,6 @@ export default async function submitForm() {
   submitCreateEventBtn.disabled = true;
 
   setTimeout(() => {
-    window.location = "index.html";
+    window.location = 'index.html';
   }, 3000);
 }

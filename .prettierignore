@@ -1,3 +1,5 @@
 src/js
 src/tests
 src/views
+./*.js
+./*.json

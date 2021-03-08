@@ -1,20 +1,20 @@
-import Storage from "./DatabaseApi";
-import NotifyResponse from "./DatabaseDecorator";
-import { showAlertConfirm, removeAlert } from "./alerts";
-import EventEmmiter from "./EventEmitter";
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
+import { showAlertConfirm, removeAlert } from './alerts';
+import EventEmmiter from './EventEmitter';
 
 const events = EventEmmiter.getInstance();
 
 const storeInstance = Storage.getInstance();
 const store = new NotifyResponse(storeInstance);
 
-document.getElementById("calendar").addEventListener("click", (e) => {
-  const btn = e.target.closest(".btn-close");
+document.getElementById('calendar').addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-close');
 
   if (!btn) return;
 
-  const eventCard = btn.closest(".card");
-  const eventTitle = eventCard.querySelector(".card__title").textContent;
+  const eventCard = btn.closest('.card');
+  const eventTitle = eventCard.querySelector('.card__title').textContent;
 
   showAlertConfirm(
     `Are you sure you want to delete "${eventTitle}" event?`,
@@ -24,7 +24,7 @@ document.getElementById("calendar").addEventListener("click", (e) => {
 
       if (!isEventRemoved) return;
 
-      events.emit("update-events");
+      events.emit('update-events');
     },
     () => removeAlert()
   );

@@ -1,12 +1,12 @@
 function formatData(dataArr) {
   return dataArr?.map(({ id, data }) => ({
     id,
-    data: JSON.parse(data),
+    data: JSON.parse(data)
   }));
 }
 
 class Storage {
-  SYSTEM = "sergey_nagorniy";
+  SYSTEM = 'sergey_nagorniy';
 
   URL = `http://158.101.166.74:8080/api/data/${this.SYSTEM}`;
 
@@ -28,11 +28,11 @@ class Storage {
       method,
       body,
       headers: {
-        "Content-Type": "application/json",
-      },
+        'Content-Type': 'application/json'
+      }
     });
 
-    const data = method === "DELETE" ? null : await request.json();
+    const data = method === 'DELETE' ? null : await request.json();
 
     return { ok: request.ok, data };
   }
@@ -41,8 +41,8 @@ class Storage {
     const data = { data: JSON.stringify(eventObj) };
 
     const reqSaveEvent = await this.query(
-      "POST",
-      "/events",
+      'POST',
+      '/events',
       JSON.stringify(data)
     );
     if (!reqSaveEvent.ok) return false;
@@ -51,7 +51,7 @@ class Storage {
   }
 
   async getAllEvents() {
-    const { ok, data } = await this.query("GET", "/events");
+    const { ok, data } = await this.query('GET', '/events');
     if (!ok) return false;
 
     this.events = data === null ? [] : await formatData(data);
@@ -59,7 +59,7 @@ class Storage {
   }
 
   async getAllUsers() {
-    const { ok, data } = await this.query("GET", "/users");
+    const { ok, data } = await this.query('GET', '/users');
     if (!ok || !data) throw new Error();
     return data;
   }
@@ -81,11 +81,11 @@ class Storage {
     eventToUpdate.time = time;
 
     const data = {
-      data: JSON.stringify(eventToUpdate),
+      data: JSON.stringify(eventToUpdate)
     };
 
     const reqUpdate = await this.query(
-      "PUT",
+      'PUT',
       `/events/${eventId}`,
       JSON.stringify(data)
     );
@@ -97,7 +97,7 @@ class Storage {
   }
 
   async removeEvent(eventId) {
-    const reqRemove = await this.query("DELETE", `/events/${eventId}`);
+    const reqRemove = await this.query('DELETE', `/events/${eventId}`);
     return reqRemove.ok;
   }
 }

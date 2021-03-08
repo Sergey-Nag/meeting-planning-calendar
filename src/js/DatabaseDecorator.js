@@ -1,5 +1,5 @@
-import { showPopup } from "./alerts";
-import Storage from "./DatabaseApi";
+import { showPopup } from './alerts';
+import Storage from './DatabaseApi';
 
 class NotifierQueryStorage extends Storage {
   constructor(storage) {
@@ -18,13 +18,13 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
       if (users)
         showPopup(
-          "success",
+          'success',
           '<i class="bi font-icon bi-cloud-check"></i> Users successfully loaded'
         );
       else throw new Error();
     } catch (e) {
       showPopup(
-        "danger",
+        'danger',
         '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Users error</b>, please, try again'
       );
     }
@@ -38,22 +38,22 @@ export default class NotifyResponse extends NotifierQueryStorage {
     try {
       events = await this.storage.getPreFilteredEvents();
 
-      if (typeof this.storage.preFilter === "function") return events;
+      if (typeof this.storage.preFilter === 'function') return events;
 
       if (events.length === 0)
         showPopup(
-          "warning",
+          'warning',
           '<i class="bi font-icon bi-cloud-check"></i> Not enough events to display'
         );
       else if (events)
         showPopup(
-          "success",
+          'success',
           '<i class="bi font-icon bi-cloud-check"></i> Events successfully loaded'
         );
       else throw new Error();
     } catch (e) {
       showPopup(
-        "danger",
+        'danger',
         '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Loading Events error</b>, please, try again'
       );
     }
@@ -65,11 +65,11 @@ export default class NotifyResponse extends NotifierQueryStorage {
     try {
       const setQuery = await this.storage.setEvent(data);
       if (setQuery)
-        showPopup("success", `Event "${data.title}" was successfully created`);
+        showPopup('success', `Event "${data.title}" was successfully created`);
       else throw new Error();
     } catch (e) {
       showPopup(
-        "danger",
+        'danger',
         '<i class="bi font-icon bi-cloud-slash-fill"></i> <b>Create Event error</b>, please, try again'
       );
       return false;
@@ -84,13 +84,13 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
       if (updQuery)
         showPopup(
-          "success",
+          'success',
           '<i class="bi bi-cloud-check"></i> Event was successfully updated'
         );
       else throw new Error();
     } catch (e) {
       showPopup(
-        "danger",
+        'danger',
         '<i class="bi bi-cloud-slash-fill"></i> <b>Event wasn\'t updated</b>, please, try again'
       );
       return false;
@@ -105,13 +105,13 @@ export default class NotifyResponse extends NotifierQueryStorage {
 
       if (deleteQuery)
         showPopup(
-          "success",
+          'success',
           '<i class="bi font-icon bi-trash"></i> Event successfully deleted'
         );
       else throw new Error();
     } catch (e) {
       showPopup(
-        "danger",
+        'danger',
         '<i class="bi font-icon bi-trash-fill"></i> <b>Deleting Events error</b>, please try again'
       );
       return false;

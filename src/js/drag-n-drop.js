@@ -1,15 +1,15 @@
-import Storage from "./DatabaseApi";
-import NotifyResponse from "./DatabaseDecorator";
-import { showAlertConfirm, removeAlert } from "./alerts";
-import isUserAdmin from "./userAccess";
-import EventEmmiter from "./EventEmitter";
+import Storage from './DatabaseApi';
+import NotifyResponse from './DatabaseDecorator';
+import { showAlertConfirm, removeAlert } from './alerts';
+import isUserAdmin from './userAccess';
+import EventEmmiter from './EventEmitter';
 
 const storageInstance = Storage.getInstance();
 const store = new NotifyResponse(storageInstance);
 
 const events = EventEmmiter.getInstance();
 
-const calendar = document.getElementById("calendar");
+const calendar = document.getElementById('calendar');
 
 const dragData = {
   isDragAllow: true,
@@ -18,7 +18,7 @@ const dragData = {
   top: 0,
   left: 0,
   mouseX: 0,
-  mouseY: 0,
+  mouseY: 0
 };
 
 function setDragElementPosition() {
@@ -37,7 +37,7 @@ function createFloatingCard(originalCard) {
 
   const originalSizes = originalCard.getBoundingClientRect();
 
-  floatingCard.classList.add("floating");
+  floatingCard.classList.add('floating');
 
   floatingCard.style.width = `${originalSizes.width}px`;
   floatingCard.style.height = `${originalSizes.height}px`;
@@ -49,18 +49,18 @@ function createFloatingCard(originalCard) {
 }
 
 function findDoppableContainer({ clientX, clientY }) {
-  dragData.element.style.visibility = "hidden";
+  dragData.element.style.visibility = 'hidden';
   const elemBelow = document.elementFromPoint(clientX, clientY);
-  dragData.element.style.visibility = "visible";
+  dragData.element.style.visibility = 'visible';
 
-  return elemBelow?.localName === "td" && elemBelow;
+  return elemBelow?.localName === 'td' && elemBelow;
 }
 
 function hideAllPutCells(elem) {
-  document.querySelectorAll(".put").forEach((el) => {
+  document.querySelectorAll('.put').forEach((el) => {
     const borderedCell = el;
 
-    if (borderedCell !== elem) borderedCell.className = "";
+    if (borderedCell !== elem) borderedCell.className = '';
   });
 }
 
@@ -72,14 +72,14 @@ function showCellForPut(elem) {
   hideAllPutCells(elem);
 
   const putCell = elem;
-  let cellClass = "put";
+  let cellClass = 'put';
 
-  if (elem.firstChild === dragData.originalElement) cellClass += " allow";
+  if (elem.firstChild === dragData.originalElement) cellClass += ' allow';
   else if (putCell.firstChild || isEventBooked(putCell.dataset))
-    cellClass += " disallow";
-  else cellClass += " allow";
+    cellClass += ' disallow';
+  else cellClass += ' allow';
 
-  if (!elem.classList.contains("put")) putCell.className = cellClass;
+  if (!elem.classList.contains('put')) putCell.className = cellClass;
 }
 
 async function changeEventTime(eventId, day, time) {
@@ -92,7 +92,7 @@ function dragStart(card) {
 
   dragData.element = createFloatingCard(card);
 
-  card.classList.add("dragged");
+  card.classList.add('dragged');
 
   document.body.prepend(dragData.element);
 
@@ -108,7 +108,7 @@ function dragMove(e) {
 }
 
 function confirmChangeEvent({ day, time }) {
-  const title = dragData.originalElement.querySelector(".card__title span")
+  const title = dragData.originalElement.querySelector('.card__title span')
     .textContent;
 
   dragData.isDragAllow = false;
@@ -127,7 +127,7 @@ function confirmChangeEvent({ day, time }) {
 
       if (!isUpdated) return;
 
-      events.emit("update-events");
+      events.emit('update-events');
 
       removeAlert(allowDragCallback);
     },
@@ -150,16 +150,16 @@ function dragEnd(e) {
 
   dragData.element.remove();
   dragData.element = null;
-  dragData.originalElement.classList.remove("dragged");
+  dragData.originalElement.classList.remove('dragged');
 
   hideAllPutCells(false);
 }
 
-calendar.addEventListener("mousedown", (e) => {
+calendar.addEventListener('mousedown', (e) => {
   if (!isUserAdmin()) return;
 
-  const card = e.target.closest(".calendar__card");
-  const isDeleteButton = e.target.classList.contains("btn-close");
+  const card = e.target.closest('.calendar__card');
+  const isDeleteButton = e.target.classList.contains('btn-close');
 
   if (isDeleteButton || !card || e.button !== 0) return;
 
@@ -167,14 +167,14 @@ calendar.addEventListener("mousedown", (e) => {
   dragStart(card);
 });
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener('mousemove', (e) => {
   if (!isUserAdmin() || !dragData.element || !dragData.isDragAllow) return;
 
   saveMousePosition(e);
   dragMove(e);
 });
 
-document.addEventListener("mouseup", (e) => {
+document.addEventListener('mouseup', (e) => {
   if (!isUserAdmin() || !dragData.element) return;
 
   saveMousePosition(e);

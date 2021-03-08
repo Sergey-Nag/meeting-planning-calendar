@@ -3,8 +3,8 @@ import {
   createAlertDangerTopHTML,
   createConfirmHTML,
   createAuthoriseConfirmHTML,
-  createPopUpHTML,
-} from "./_htmlElements";
+  createPopUpHTML
+} from './_htmlElements';
 
 let currentAlertWrapp = null;
 let currentPopup = null;
@@ -20,8 +20,8 @@ function placeAlert(alert) {
   document.body.prepend(alert);
 }
 
-function createWrappElement(className = "alert__wrapp") {
-  const wrapp = document.createElement("div");
+function createWrappElement(className = 'alert__wrapp') {
+  const wrapp = document.createElement('div');
   wrapp.className = className;
   return wrapp;
 }
@@ -39,17 +39,17 @@ function showAlertFull(text, timeToClose, callback) {
 }
 
 function showAlertAtTop(text) {
-  const oldAlert = document.querySelector(".alert");
+  const oldAlert = document.querySelector('.alert');
   if (oldAlert) oldAlert.remove();
 
-  currentAlertWrapp = createWrappElement("alert top bg-danger text-white");
+  currentAlertWrapp = createWrappElement('alert top bg-danger text-white');
   currentAlertWrapp.innerHTML = createAlertDangerTopHTML(text);
 
   placeAlert(currentAlertWrapp);
 
   document
-    .getElementById("danger-alert-close")
-    .addEventListener("click", () => {
+    .getElementById('danger-alert-close')
+    .addEventListener('click', () => {
       removeAlert();
     });
 }
@@ -66,15 +66,15 @@ function showAlertConfirm(
   placeAlert(currentAlertWrapp);
 
   document
-    .getElementById("event-delete-yes")
-    .addEventListener("click", callbackTrue);
+    .getElementById('event-delete-yes')
+    .addEventListener('click', callbackTrue);
   document
-    .getElementById("event-delete-no")
-    .addEventListener("click", callbackFalse);
-  document.querySelector(".alert__wrapp").addEventListener(
-    "click",
+    .getElementById('event-delete-no')
+    .addEventListener('click', callbackFalse);
+  document.querySelector('.alert__wrapp').addEventListener(
+    'click',
     (e) => {
-      if (e.target.className !== "alert__wrapp") return;
+      if (e.target.className !== 'alert__wrapp') return;
 
       removeAlert(callbackClose);
     },
@@ -90,15 +90,15 @@ async function showAuthoriseConfirm(optionsWithNames, callbackTrue) {
 
   placeAlert(currentAlertWrapp);
 
-  document.getElementById("authorise-btn").addEventListener("click", () => {
-    const chosenUser = document.getElementById("auth-names").value;
+  document.getElementById('authorise-btn').addEventListener('click', () => {
+    const chosenUser = document.getElementById('auth-names').value;
     callbackTrue(chosenUser);
   });
 }
 
 function placePopupWrapp() {
   if (!currentPopup) {
-    currentPopup = createWrappElement("popup__wrapp");
+    currentPopup = createWrappElement('popup__wrapp');
     placeAlert(currentPopup);
   }
 }
@@ -106,7 +106,7 @@ function placePopupWrapp() {
 function drawPopups() {
   currentPopup.innerHTML = popupsArr
     .map(({ theme, title }) => createPopUpHTML(theme, title))
-    .join("");
+    .join('');
 }
 
 function stopRemovingPopups() {
@@ -146,5 +146,5 @@ export {
   showAlertConfirm,
   showAuthoriseConfirm,
   showPopup,
-  removeAlert,
+  removeAlert
 };

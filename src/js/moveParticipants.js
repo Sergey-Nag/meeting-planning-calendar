@@ -2,9 +2,9 @@
 import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
-  createUserHTML,
-} from "./_htmlElements";
-import EventEmmiter from "./EventEmitter";
+  createUserHTML
+} from './_htmlElements';
+import EventEmmiter from './EventEmitter';
 
 const events = EventEmmiter.getInstance();
 
@@ -43,7 +43,7 @@ function createReplaceHtmlInWrapp(wrappClassName) {
 }
 
 function returnUsersHTML() {
-  return usersList.map((user) => createUserHTML(user)).join("");
+  return usersList.map((user) => createUserHTML(user)).join('');
 }
 
 function addParticipantsToLisInOrder(user) {
@@ -64,12 +64,12 @@ function returnParticipantsHTML() {
   if (participantsList.length === 0)
     return createParticipantsWrappPlaceholder();
 
-  return participantsList.map((user) => createParticipantHTML(user)).join("");
+  return participantsList.map((user) => createParticipantHTML(user)).join('');
 }
 
 function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
   return function handle(e) {
-    const target = e.target.closest(".user");
+    const target = e.target.closest('.user');
 
     if (!target) return;
 
@@ -82,8 +82,8 @@ function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
 }
 
 function start(users) {
-  const usersReplaceHTML = createReplaceHtmlInWrapp(".users__wrapp");
-  const participantsReplaceHTML = createReplaceHtmlInWrapp(".participants");
+  const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
+  const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
 
   usersList = prepareUserslist(users);
 
@@ -93,16 +93,16 @@ function start(users) {
   participantsReplaceHTML(returnParticipantsHTML());
 
   document
-    .querySelector(".users__wrapp")
+    .querySelector('.users__wrapp')
     .addEventListener(
-      "click",
+      'click',
       usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML)
     );
-  document.querySelector(".participants").addEventListener("click", (e) => {
+  document.querySelector('.participants').addEventListener('click', (e) => {
     e.preventDefault();
-    const target = e.target.closest(".participant__btn-remove");
+    const target = e.target.closest('.participant__btn-remove');
     if (!target) return;
-  
+
     const nameToRemove = target.dataset.name;
     removeParticipant(nameToRemove);
 
@@ -110,5 +110,5 @@ function start(users) {
     participantsReplaceHTML(returnParticipantsHTML());
   });
 }
-events.on("users-loaded", start);
+events.on('users-loaded', start);
 // start();
