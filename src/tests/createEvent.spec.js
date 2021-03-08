@@ -1,7 +1,11 @@
-import { getDataFromInputs, validateValues, isAllValuesAreValid } from '../js/createEvent';
-import toBeArrayAndLengthToBeGreaterThan from './testArray';
+import {
+  getDataFromInputs,
+  validateValues,
+  isAllValuesAreValid,
+} from "../js/createEvent";
+import toBeArrayAndLengthToBeGreaterThan from "./testArray";
 
-describe('Create event form tests', () => {
+describe("Create event form tests", () => {
   expect.extend({
     toBeArrayAndLengthToBeGreaterThan,
   });
@@ -9,7 +13,7 @@ describe('Create event form tests', () => {
   let form;
 
   beforeAll(() => {
-    form = document.createElement('form');
+    form = document.createElement("form");
     form.innerHTML = `<input type="text" name="title" value="Test">
 
     <select name="day">
@@ -39,7 +43,7 @@ describe('Create event form tests', () => {
     form = form.elements;
   });
 
-  test('getDataFromInputs function return transformed object from HTMLCollection', () => {
+  test("getDataFromInputs function return transformed object from HTMLCollection", () => {
     const dataFromInputs = getDataFromInputs(form);
 
     expect(dataFromInputs).toBeInstanceOf(Object);
@@ -49,16 +53,16 @@ describe('Create event form tests', () => {
         day: expect.any(String),
         time: expect.any(String),
         participants: expect.toBeArrayAndLengthToBeGreaterThan(0),
-      }),
+      })
     );
   });
 
-  test('validateValues function return array with booleans and objects based of values', () => {
+  test("validateValues function return array with booleans and objects based of values", () => {
     const testRightData = {
-      title: 'Test',
-      day: 'Mon',
-      time: '10:00',
-      participants: ['Ann', 'Steve'],
+      title: "Test",
+      day: "Mon",
+      time: "10:00",
+      participants: ["Ann", "Steve"],
     };
 
     let validatedValues = validateValues(testRightData);
@@ -66,14 +70,14 @@ describe('Create event form tests', () => {
     expect(validatedValues).toHaveLength(Object.keys(testRightData).length);
 
     expect(validatedValues[0].isValid).toBeTruthy();
-    expect(validatedValues[0].tip).toBe('');
+    expect(validatedValues[0].tip).toBe("");
 
     for (let i = 1; i < 4; i += 1) {
       expect(validatedValues[i]).toBeTruthy();
     }
 
     const testWrongData = {
-      title: 'a',
+      title: "a",
       day: null,
       time: null,
       participants: [],
@@ -82,21 +86,21 @@ describe('Create event form tests', () => {
     validatedValues = validateValues(testWrongData);
 
     expect(validatedValues[0].isValid).toBeFalsy();
-    expect(validatedValues[0].tip).not.toBe('');
+    expect(validatedValues[0].tip).not.toBe("");
 
     for (let i = 1; i < 4; i += 1) {
       expect(validatedValues[i]).toBeFalsy();
     }
   });
 
-  test('isAllValuesAreValid function return true or false depending on all validated values', () => {
-    const testTrueData = [{ isValid: true, tip: '' }, true, true, true];
+  test("isAllValuesAreValid function return true or false depending on all validated values", () => {
+    const testTrueData = [{ isValid: true, tip: "" }, true, true, true];
 
     let isAllTrue = isAllValuesAreValid(testTrueData);
 
     expect(isAllTrue).toBe(true);
 
-    const testFalseData = [{ isValid: false, tip: '' }, false, false, false];
+    const testFalseData = [{ isValid: false, tip: "" }, false, false, false];
     isAllTrue = isAllValuesAreValid(testFalseData);
 
     expect(isAllTrue).toBe(false);

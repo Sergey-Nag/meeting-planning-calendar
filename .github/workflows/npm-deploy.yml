@@ -1,5 +1,5 @@
 name: Build and Deploy to GH-pages
-on: 
+on:
   push:
     branches:
       - master

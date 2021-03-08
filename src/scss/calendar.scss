@@ -50,7 +50,7 @@ select.form-select {
     }
 
     &.floating {
-      cursor: grabbing!important;
+      cursor: grabbing !important;
       position: absolute;
       z-index: 990;
     }
@@ -69,7 +69,6 @@ select.form-select {
       height: 15px;
     }
   }
-
 }
 
 td.put {

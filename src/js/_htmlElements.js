@@ -52,7 +52,9 @@ export function createUserHTML({ name, avatar, isChecked }) {
         <span>${name}</span>
       </div>
       <div class="col-2 d-flex flex-column justify-content-center">
-        <input class="form-check-input" type="checkbox" value="${name}" ${isChecked ? 'checked' : ''}>
+        <input class="form-check-input" type="checkbox" value="${name}" ${
+    isChecked ? "checked" : ""
+  }>
       </div>
     </div>
   </div>`;
@@ -75,5 +77,5 @@ export function createPopUpHTML(theme, title) {
 }
 
 export function createOptionsWithNamesHTML(users) {
-  return users.map(({ name }) => `<option>${name}</option>`).join('');
+  return users.map(({ name }) => `<option>${name}</option>`).join("");
 }

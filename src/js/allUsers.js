@@ -1,8 +1,8 @@
-import User from './User';
-import Admin from './Admin';
-import Storage from './DatabaseApi';
-import NotifyResponse from './DatabaseDecorator';
-import EventEmmiter from './EventEmitter';
+import User from "./User";
+import Admin from "./Admin";
+import Storage from "./DatabaseApi";
+import NotifyResponse from "./DatabaseDecorator";
+import EventEmmiter from "./EventEmitter";
 
 const events = EventEmmiter.getInstance();
 
@@ -23,10 +23,11 @@ export default async function loadUsers() {
 
     if (!users) return false;
 
-    data.users = users
-      .map(({ id, data: D }) => returnCreatedUser(id, JSON.parse(D)));
+    data.users = users.map(({ id, data: D }) =>
+      returnCreatedUser(id, JSON.parse(D))
+    );
 
-    events.emit('users-loaded', data.users);
+    events.emit("users-loaded", data.users);
   }
 
   return data.users;

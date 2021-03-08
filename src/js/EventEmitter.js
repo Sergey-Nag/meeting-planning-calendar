@@ -12,15 +12,15 @@ export default class EventEmmiter {
   }
 
   on(event, callback) {
-    if (typeof this.events[event] !== 'object') {
+    if (typeof this.events[event] !== "object") {
       this.events[event] = [];
     }
-
+    
     this.events[event].push(callback);
   }
 
   remove(event, callback) {
-    if (typeof this.events[event] !== 'object') return;
+    if (typeof this.events[event] !== "object") return;
 
     const index = this.events[event].indexOf(callback);
 
@@ -28,7 +28,7 @@ export default class EventEmmiter {
   }
 
   emit(event, ...args) {
-    if (typeof this.events[event] !== 'object') return;
+    if (typeof this.events[event] !== "object") return;
 
     this.events[event].forEach((callback) => callback.apply(this, args));
   }

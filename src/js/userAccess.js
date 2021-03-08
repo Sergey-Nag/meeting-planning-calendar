@@ -1,5 +1,5 @@
-import Admin from './Admin';
-import { getUserInfo } from './allUsers';
+import Admin from "./Admin";
+import { getUserInfo } from "./allUsers";
 
 export const authUser = {
   name: null,

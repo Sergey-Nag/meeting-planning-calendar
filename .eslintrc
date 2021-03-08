@@ -1,7 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb/base"],
+  "extends": ["airbnb-base", "prettier", "plugin:prettier/recommended"],
   "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true
+    }],
     "no-console":0,
     "linebreak-style": 0,
     "max-classes-per-file": ["error", 3]
@@ -11,7 +14,7 @@
     "window": true,
     "fetch": true
   },
-  "plugins": ["jest"],
+  "plugins": ["jest", "prettier"],
   "env": {
     "jest/globals": true
   }

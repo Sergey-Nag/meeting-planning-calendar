@@ -6,12 +6,12 @@ $bg-color: #fafafa;
 $alert-wrapp-color: rgba(0, 0, 0, .3);
 
 %transition {
-  transition: all .3s ease;
+	transition: all .3s ease;
 }
 
 %appearance {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 

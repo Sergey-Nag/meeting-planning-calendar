@@ -3,8 +3,8 @@ import {
   createParticipantHTML,
   createParticipantsWrappPlaceholder,
   createUserHTML,
-} from './_htmlElements';
-import EventEmmiter from './EventEmitter';
+} from "./_htmlElements";
+import EventEmmiter from "./EventEmitter";
 
 const events = EventEmmiter.getInstance();
 
@@ -23,8 +23,12 @@ function switchUserCheck(name) {
 }
 
 function removeParticipant(nameToRemove) {
-  const removeIndex = participantsList.findIndex(({ name }) => name === nameToRemove);
-  const inUsersListIndex = usersList.findIndex(({ name }) => name === nameToRemove);
+  const removeIndex = participantsList.findIndex(
+    ({ name }) => name === nameToRemove
+  );
+  const inUsersListIndex = usersList.findIndex(
+    ({ name }) => name === nameToRemove
+  );
 
   participantsList.splice(removeIndex, 1);
   usersList[inUsersListIndex].isChecked = false;
@@ -39,16 +43,16 @@ function createReplaceHtmlInWrapp(wrappClassName) {
 }
 
 function returnUsersHTML() {
-  return usersList
-    .map((user) => createUserHTML(user))
-    .join('');
+  return usersList.map((user) => createUserHTML(user)).join("");
 }
 
 function addParticipantsToLisInOrder(user) {
   if (user.isChecked && !participantsList.includes(user)) {
     participantsList.push(user);
   } else if (!user.isChecked && participantsList.includes(user)) {
-    const partsIndex = participantsList.findIndex((part) => part.name === user.name);
+    const partsIndex = participantsList.findIndex(
+      (part) => part.name === user.name
+    );
 
     participantsList.splice(partsIndex, 1);
   }
@@ -57,16 +61,15 @@ function addParticipantsToLisInOrder(user) {
 function returnParticipantsHTML() {
   usersList.forEach(addParticipantsToLisInOrder);
 
-  if (participantsList.length === 0) return createParticipantsWrappPlaceholder();
+  if (participantsList.length === 0)
+    return createParticipantsWrappPlaceholder();
 
-  return participantsList
-    .map((user) => createParticipantHTML(user))
-    .join('');
+  return participantsList.map((user) => createParticipantHTML(user)).join("");
 }
 
 function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
   return function handle(e) {
-    const target = e.target.closest('.user');
+    const target = e.target.closest(".user");
 
     if (!target) return;
 
@@ -79,8 +82,8 @@ function usersReplaceHTMLClickHandle(usersReplace, participantsReplace) {
 }
 
 function start(users) {
-  const usersReplaceHTML = createReplaceHtmlInWrapp('.users__wrapp');
-  const participantsReplaceHTML = createReplaceHtmlInWrapp('.participants');
+  const usersReplaceHTML = createReplaceHtmlInWrapp(".users__wrapp");
+  const participantsReplaceHTML = createReplaceHtmlInWrapp(".participants");
 
   usersList = prepareUserslist(users);
 
@@ -89,12 +92,17 @@ function start(users) {
   usersReplaceHTML(returnUsersHTML());
   participantsReplaceHTML(returnParticipantsHTML());
 
-  document.querySelector('.users__wrapp').addEventListener('click', usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML));
-  document.querySelector('.participants').addEventListener('click', (e) => {
+  document
+    .querySelector(".users__wrapp")
+    .addEventListener(
+      "click",
+      usersReplaceHTMLClickHandle(usersReplaceHTML, participantsReplaceHTML)
+    );
+  document.querySelector(".participants").addEventListener("click", (e) => {
     e.preventDefault();
-    const target = e.target.closest('.participant__btn-remove');
+    const target = e.target.closest(".participant__btn-remove");
     if (!target) return;
-
+  
     const nameToRemove = target.dataset.name;
     removeParticipant(nameToRemove);
 
@@ -102,5 +110,5 @@ function start(users) {
     participantsReplaceHTML(returnParticipantsHTML());
   });
 }
-events.on('users-loaded', start);
+events.on("users-loaded", start);
 // start();

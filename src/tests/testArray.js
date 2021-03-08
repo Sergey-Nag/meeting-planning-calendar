@@ -6,9 +6,10 @@ export default function toBeArrayAndLengthToBeGreaterThan(received, max) {
       message: () => `expected array length is greater than ${max}`,
       pass: true,
     };
-  } if (!Array.isArray(received)) {
+  }
+  if (!Array.isArray(received)) {
     return {
-      message: () => 'received value is not array',
+      message: () => "received value is not array",
       pass: false,
     };
   }

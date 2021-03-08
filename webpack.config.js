@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = (env) => ({
   entry: {
@@ -47,6 +48,7 @@ module.exports = (env) => ({
   },
   devtool: env.production ? undefined : 'eval-source-map',
   plugins: [
+    new StylelintPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),
