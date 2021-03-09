@@ -1,6 +1,6 @@
 @import './variables';
 
-select.form-select {
+.form-select {
   @extend %appearance;
 }
 
@@ -21,8 +21,8 @@ select.form-select {
     }
 
     th:first-child {
-      text-align: center;
       padding-top: 14px;
+      text-align: center;
     }
   }
 
@@ -31,16 +31,16 @@ select.form-select {
   }
 
   &__card {
-    padding: 5px;
-    height: 100%;
     background: $card-color;
+    height: 100%;
+    padding: 5px;
 
     &:hover {
-      & .calendar__btn_close {
+      .calendar__btn_close {
         opacity: 0.5;
       }
 
-      & .card__avatar {
+      .card__avatar {
         margin-right: -5px;
       }
     }
@@ -59,26 +59,26 @@ select.form-select {
   &__btn {
     &_close {
       @extend %transition;
+      box-sizing: border-box;
       display: none;
+      height: 15px;
       opacity: 0;
       position: absolute;
       right: 5px;
       top: calc(50% - 8.5px);
-      box-sizing: border-box;
       width: 15px;
-      height: 15px;
     }
   }
 }
 
-td.put {
+.put {
   &.allow {
     outline: 4px dashed $card-color;
   }
 
   &.disallow {
-    outline-color: none;
     background-color: lighten($danger, 35%);
+    outline-color: none;
 
     .card {
       opacity: 0.3;
@@ -94,19 +94,19 @@ td.put {
   }
 
   &__avatar {
-    cursor: default;
     @extend %transition;
+    background-color: #fff;
+    border: 2px solid $card-color;
+    border-radius: 50%;
+    cursor: default;
+    margin-right: -10px;
     position: relative;
     width: 25px;
-    border-radius: 50%;
-    background-color: white;
-    border: 2px solid $card-color;
-    margin-right: -10px;
     z-index: 1;
 
     &:hover {
-      z-index: 2;
       transform: scale(1.2);
+      z-index: 2;
     }
 
     &:active {

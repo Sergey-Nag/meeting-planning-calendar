@@ -11,7 +11,8 @@
     "dev:serve": "webpack serve --mode=development",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "stylelint:fix": "stylelint \"./src/**/*.scss\" --fix"
   },
   "keywords": [],
   "author": "Sergey-Nag",
@@ -44,8 +45,7 @@
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "stylelint": "^13.12.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-prettier": "^1.2.0",
+    "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-webpack-plugin": "^2.1.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^4.4.0",

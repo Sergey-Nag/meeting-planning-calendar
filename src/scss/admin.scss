@@ -1,5 +1,4 @@
 .admin {
-  #create-event-btn-wrapp,
   .calendar__btn_close {
     display: block;
   }
@@ -7,4 +6,8 @@
   .calendar__card {
     cursor: grab;
   }
+}
+
+#create-event-btn-wrapp {
+  @extend .calendar__btn_close;
 }

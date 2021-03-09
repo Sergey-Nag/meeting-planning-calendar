@@ -4,21 +4,23 @@
 
 .user {
   cursor: pointer;
-  padding: 10px;
   margin-bottom: 10px;
+  padding: 10px;
 
   &s__cover {
     height: 320px;
-    overflow-y: auto;
     overflow-x: hidden;
+    overflow-y: auto;
     padding-right: 10px;
 
     &::-webkit-scrollbar {
       width: 5px;
     }
+
     &::-webkit-scrollbar-thumb {
       background: rgba(136, 136, 136, 0.3);
     }
+
     &::-webkit-scrollbar-thumb:hover {
       background: rgba(136, 136, 136, 0.8);
     }
@@ -31,20 +33,20 @@
 
 .participant {
   @extend .d-flex, .justify-content-center, .flex-column, .align-items-center;
-  position: relative;
   margin-right: -10px;
+  position: relative;
 
   &__avatar {
     @extend .rounded-circle;
-    width: 65px;
-    max-height: 65px;
-    border: 3px solid $primary;
     background: #fff;
+    border: 3px solid $primary;
+    max-height: 65px;
+    width: 65px;
   }
 
   &__name {
-    font-weight: bold;
     font-size: 0.8em;
+    font-weight: bold;
   }
 
   &s.is-invalid h5 {
@@ -53,21 +55,21 @@
   }
 
   &__btn-remove {
-    opacity: 0;
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    top: 0;
-    right: 0;
-    background-color: #ffffff;
+    background-color: #fff;
     background-size: 90%;
     border-radius: 50%;
+    height: 7px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 7px;
   }
 
   &:hover {
     z-index: 100;
 
-    & .participant__btn-remove {
+    .participant__btn-remove {
       opacity: 0.5;
 
       &:active {
