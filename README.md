@@ -180,3 +180,8 @@ For generate full compiled project use the command `npm run build` and wait unti
 
 For development run the command `npm run dev`, then, after saving any file in this folder project will be recompiled.
 Also, you can run command `npm run dev:serve` to run local server on 9000 port, and after saving any files page will be reloaded automatically with all changes.
+
+### Other commands in this project
+
+- `npm run test` - running tests.
+- `npm run stylelint:fix` - fixing (where possible) errors in styles.
