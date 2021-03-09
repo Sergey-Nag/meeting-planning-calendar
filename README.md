@@ -24,6 +24,7 @@ How to launch project locally:
 - [Install dependencies](#install-dependencies)
 - [Build ready app](#build-ready-app)
 - [Run for development](#run-for-development)
+- [Other commands](#other-commands-in-this-project)
 
 ## Calendar
 
